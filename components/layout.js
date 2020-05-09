@@ -4,7 +4,7 @@ import Header from "./header";
 import Footer from "./footer";
 
 export default ({ children, title = "Omnivector Solutions" }) => (
-  <div>
+  <div style={width: "100vw"}>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />

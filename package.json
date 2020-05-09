@@ -19,6 +19,7 @@
     "yup": "^0.28.5"
   },
   "devDependencies": {
-    "@svgr/webpack": "^5.4.0"
+    "@svgr/webpack": "^5.4.0",
+    "serverless-next.js": "^1.11.5"
   }
 }
