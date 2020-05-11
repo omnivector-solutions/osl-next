@@ -1,2 +1,22 @@
 {
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "Helvetica, Cascadia Code, Consolas, New Courier, monospace",
+    "editor.fontSize": 16,
+    "files.autoGuessEncoding": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+    "workbench.preferredLightColorTheme": "Visual Studio Light",
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.revealIfOpen": true,
+    "prettier.jsxBracketSameLine": true,
+    "terminal.integrated.allowMnemonics": true,
+    "terminal.integrated.confirmOnExit": true,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.experimentalLinkProvider": true,
+    "terminal.integrated.experimentalUseTitleEvent": true
 }

@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     margin: 0,
     fontSize: "4vw",
+    textTransform: "uppercase",
     textShadow: "4px 4px 8px rgba(0, 0, 0, 1)",
   },
   smallHeader: {
@@ -52,11 +53,9 @@ const HomeHeader = () => {
       />
       <div className={classes.headerTextContainer}>
         <h5 className={classes.smallHeader}>
-          Cloud Computing, Software Engineering, DevOPS, DataOPS.
+          Secure, dependency-free and open-source!
         </h5>
-        <h1 className={classes.headerText}>
-          SMART, FLEXIBLE, SCALEABLE. NO STRINGS ATTACHED.
-        </h1>
+        <h1 className={classes.headerText}>Cross-platform SLURM packaging</h1>
       </div>
     </div>
   );
