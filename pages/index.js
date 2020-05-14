@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
     width: "65%",
     justifyContent: "center",
   },
+  testing: {
+    width: "100%",
+    height: "1500px",
+    backgroundColor: "red",
+  },
 }));
 
 const Home = () => {

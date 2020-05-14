@@ -30,12 +30,44 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     top: "-1000px",
   },
+  CardContainer: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "row",
+    textAlign: "center",
+    marginBottom: "3vw",
+  },
+  ServiceTitle: {
+    fontSize: "3em",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontFamily: "Ubuntu,Arial,libra sans,sans-serif",
+    margin: "8px",
+    color: "black",
+  },
+  ServiceText: {
+    fontSize: "1em",
+    textAlign: "center",
+    fontFamily: "Ubuntu,Arial,libra sans,sans-serif",
+    color: "black",
+  },
+  ServiceTextContainer: {
+    width: "65vw",
+    height: "15vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    margin: "auto",
+  },
+  Link: {
+    textDecoration: "none",
+  },
 }));
 
 const Slider = () => {
   const classes = useStyles();
 
-  const newServices = configServiceRoutes.map((service, index) => (
+  const services = configServiceRoutes.map((service, index) => (
     <div key={index}>
       <div className={classes.ServiceTextContainer}>
         <Link to={service.path} className={classes.Link}>
@@ -45,9 +77,8 @@ const Slider = () => {
       </div>
       <Grid container className={classes.CardContainer}>
         {service.cardData.map((card, i) => (
-          <Grid item>
+          <Grid item key={i}>
             <ServiceCard
-              key={i}
               dataId={card.cardDataId}
               title={card.cardTitle}
               cardImg={card.cardImg}
@@ -61,15 +92,6 @@ const Slider = () => {
     </div>
   ));
 
-  const services = configServiceRoutes.map((service, serviceIndex) => {
-    return (
-      <div key={serviceIndex}>
-        <img src={service.serviceImage} />
-        <Typography className={classes.text}>{service.serviceTitle}</Typography>
-        <Typography className={classes.text}>{service.serviceText}</Typography>
-      </div>
-    );
-  });
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -82,17 +104,15 @@ const Slider = () => {
       <Carousel
         showDots
         ssr
-        infinite
         arrows={false}
-        autoPlay
+        autoPlay={false}
         keyBoardControl
         autoPlaySpeed={8000}
         draggable
         minimumTouchDrag={80}
         renderButtonGroupOutside={false}
-        responsive={responsive}
-        className={classes.container}>
-        {newServices}
+        responsive={responsive}>
+        {services}
       </Carousel>
     </Fragment>
   );

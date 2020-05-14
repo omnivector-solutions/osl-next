@@ -36,5 +36,12 @@ export default createMuiTheme({
       fontWeight: 600,
       color: "white",
     },
+    subheader: {
+      fontFamily: "Ubuntu",
+      textTransform: "none",
+      fontSize: "1.2em",
+      fontWeight: 500,
+      color: "white",
+    },
   },
 });

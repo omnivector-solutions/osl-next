@@ -8,13 +8,13 @@ import ServiceCard from "./serviceCard/ServiceCard";
 
 import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   CardContainer: {
     display: "flex",
     justifyContent: "center",
     flexDirection: "row",
     textAlign: "center",
-    marginBottom: "3vw"
+    marginBottom: "3vw",
   },
   ServiceTitle: {
     fontSize: "3em",
@@ -22,13 +22,13 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     fontFamily: "Ubuntu,Arial,libra sans,sans-serif",
     margin: "8px",
-    color: "black"
+    color: "black",
   },
   ServiceText: {
     fontSize: "1em",
     textAlign: "center",
     fontFamily: "Ubuntu,Arial,libra sans,sans-serif",
-    color: "black"
+    color: "black",
   },
   ServiceTextContainer: {
     width: "65vw",
@@ -36,11 +36,11 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    margin: "auto"
+    margin: "auto",
   },
   Link: {
-    textDecoration: "none"
-  }
+    textDecoration: "none",
+  },
 }));
 
 const Services = () => {

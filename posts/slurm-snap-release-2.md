@@ -1,9 +1,9 @@
 ---
-title: "Anouncing the release of Slurm Workload manager to the Canonical Snap store."
-description: "This is a description of the post details."
+title: "Anouncing the release of Slurm Workload manager to the Canonical Snap store 2."
+description: "This is a description of the post 2."
 date: "2020-04-05"
 author: "Joe Blow"
-image: "https://source.unsplash.com/random"
+image: "/images/hpc.jpg"
 ---
 
 ![slurm logo](/images/slurm.png)

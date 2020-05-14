@@ -8,7 +8,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Hidden from "@material-ui/core/Hidden";
-import Link from "@material-ui/core/Link";
+import Link from "../components/link";
 import Container from "@material-ui/core/Container";
 
 import { getSortedPostsData } from "../lib/posts";
@@ -17,7 +17,7 @@ import Layout from "../components/layout";
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    height: "7.5em",
+    height: "8.5em",
     [theme.breakpoints.down("md")]: {
       height: "4.5em",
     },
@@ -28,30 +28,13 @@ const useStyles = makeStyles((theme) => ({
   marginDiv: {
     height: "1em",
   },
-  toolbar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  toolbarTitle: {
-    flex: 1,
-  },
-  mainFeaturedPost: {
-    position: "relative",
+  mainPostContainer: {
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: "url(https://source.unsplash.com/user/erondu)",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    height: "200px",
   },
-  overlay: {
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    backgroundColor: "rgba(0,0,0,.7)",
-  },
+
   mainFeaturedPostContent: {
     position: "relative",
     padding: theme.spacing(3),
@@ -69,10 +52,61 @@ const useStyles = makeStyles((theme) => ({
   cardMedia: {
     width: 160,
   },
+  img: {
+    width: "100%",
+    height: "300px",
+    objectFit: "cover",
+    backgroundColor: theme.palette.grey[800],
+    marginBottom: theme.spacing(1),
+    filter: "brightness(30%)",
+    borderRadius: "8px",
+    boxShadow: "2px 2px 1px #aaaaaa",
+  },
+  headerText: {
+    ...theme.typography.header,
+    color: theme.palette.primary.light,
+    width: "500px",
+    position: "absolute",
+    top: "5em",
+    marginLeft: "1em",
+    [theme.breakpoints.down("md")]: {
+      top: "2.2em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      top: "1.8em",
+    },
+  },
+  subheaderText: {
+    ...theme.typography.subheader,
+    width: "500px",
+    position: "absolute",
+    top: "18em",
+    marginLeft: "2em",
+    [theme.breakpoints.down("md")]: {
+      top: "2.2em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      top: "1.8em",
+    },
+  },
+  linkText: {
+    color: theme.palette.secondary.light,
+    width: "500px",
+    position: "absolute",
+    top: "25em",
+    marginLeft: "2em",
+    [theme.breakpoints.down("md")]: {
+      top: "2.2em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      top: "1.8em",
+    },
+  },
 }));
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
+
   return {
     props: {
       allPostsData,
@@ -82,67 +116,43 @@ export async function getStaticProps() {
 
 const Blog = (props) => {
   const classes = useStyles();
-
   return (
     <Layout>
       <div className={classes.toolbarMargin} />
       <Container maxWidth="lg">
         <div className={classes.marginDiv} />
         <main>
-          {/* Main featured post */}
-          <Paper className={classes.mainFeaturedPost}>
-            {
-              <img
-                style={{ display: "none" }}
-                src="https://source.unsplash.com/user/erondu"
-                alt="background"
-              />
-            }
-            <div className={classes.overlay} />
-            <Grid container>
-              <Grid item md={6}>
-                <div className={classes.mainFeaturedPostContent}>
-                  <Typography
-                    component="h1"
-                    variant="h3"
-                    color="inherit"
-                    gutterBottom>
-                    Slurm Packaging
-                  </Typography>
-                  <Typography variant="h5" color="inherit" paragraph>
-                    Slurm is an open source, fault-tolerant, and highly scalable
-                    cluster management and job scheduling system for large and
-                    small Linux clusters. Slurm requires no kernel modifications
-                    for its operation and is relatively self-contained.
-                  </Typography>
-                  <Link variant="subtitle1" href="#">
-                    Continue reading...
-                  </Link>
-                </div>
-              </Grid>
-            </Grid>
-          </Paper>
+          <Link href={`/posts/${props.allPostsData[0].id}`}>
+            <img className={classes.img} src={props.allPostsData[0].image} />
+            <Typography className={classes.headerText}>
+              {props.allPostsData[0].title}
+            </Typography>
+            <Typography className={classes.subheaderText}>
+              {props.allPostsData[0].description}
+            </Typography>
+            <Typography className={classes.linkText}>
+              Continue reading...
+            </Typography>
+          </Link>
           {/* End main featured post */}
           {/* Sub featured posts */}
-          <Grid container spacing={4}>
+          <Grid container spacing={4} className={classes.grid}>
             {props.allPostsData.map((post) => (
               <Grid item key={post.id} xs={12} md={6}>
-                <CardActionArea component="a" href={`/posts/${post.id}`}>
+                <Link href={`/posts/${post.id}`}>
                   <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                       <CardContent>
-                        <Typography component="h2" variant="h5">
-                          {post.title}
-                        </Typography>
                         <Typography variant="subtitle1" color="textSecondary">
                           {post.date}
+                        </Typography>
+                        <Typography component="h2" variant="h5">
+                          {post.title}
                         </Typography>
                         <Typography variant="subtitle1" paragraph>
                           {post.description}
                         </Typography>
-                        <Typography variant="subtitle1" color="primary">
-                          Continue reading...
-                        </Typography>
+                        <Typography>Continue reading...</Typography>
                       </CardContent>
                     </div>
                     <Hidden xsDown>
@@ -153,7 +163,7 @@ const Blog = (props) => {
                       />
                     </Hidden>
                   </Card>
-                </CardActionArea>
+                </Link>
               </Grid>
             ))}
           </Grid>
