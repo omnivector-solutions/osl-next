@@ -116,6 +116,7 @@ export async function getStaticProps() {
 
 const Blog = (props) => {
   const classes = useStyles();
+  console.log("First: ", props.allPostsData);
   return (
     <Layout>
       <div className={classes.toolbarMargin} />
@@ -137,7 +138,7 @@ const Blog = (props) => {
           {/* End main featured post */}
           {/* Sub featured posts */}
           <Grid container spacing={4} className={classes.grid}>
-            {props.allPostsData.map((post) => (
+            {props.allPostsData.slice(1).map((post) => (
               <Grid item key={post.id} xs={12} md={6}>
                 <Link href={`/posts/${post.id}`}>
                   <Card className={classes.card}>
