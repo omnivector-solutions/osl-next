@@ -7,8 +7,6 @@ import { useTheme } from "@material-ui/core/styles";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
@@ -283,14 +281,12 @@ export default function Header(props) {
         href="https://community.omnivector.solutions/"
         target="_blank"
         rel="noopener noreferrer"
-        className={classes.anchor}
-      >
+        className={classes.anchor}>
         <Button
           variant="outlined"
           color="secondary"
           endIcon={<OpenInNewIcon />}
-          className={classes.discourseHeaderButton}
-        >
+          className={classes.discourseHeaderButton}>
           Discourse
         </Button>
       </a>
@@ -305,8 +301,7 @@ export default function Header(props) {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         onOpen={() => setDrawerOpen(true)}
-        classes={{ paper: classes.drawer }}
-      >
+        classes={{ paper: classes.drawer }}>
         <List dense>
           <div className={classes.toolbarMargin} />
           <ListItem
@@ -319,8 +314,7 @@ export default function Header(props) {
             to={"/"}
             className={classes.serviceslistItem}
             selected={selectedValue === 0}
-            classes={{ selected: classes.selectedServiceslistItem }}
-          >
+            classes={{ selected: classes.selectedServiceslistItem }}>
             <ListItemText disableTypography>Home</ListItemText>
           </ListItem>
           <Divider variant="middle" classes={{ root: classes.divider }} />
@@ -335,8 +329,7 @@ export default function Header(props) {
                 to={route.to}
                 selected={index === selectedIndex}
                 className={classes.serviceslistItem}
-                classes={{ selected: classes.selectedServiceslistItem }}
-              >
+                classes={{ selected: classes.selectedServiceslistItem }}>
                 <ListItemText disableTypography>{route.label}</ListItemText>
               </ListItem>
               <Divider variant="middle" classes={{ root: classes.divider }} />
@@ -345,8 +338,7 @@ export default function Header(props) {
           <a
             href="https://community.omnivector.solutions/"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             <div className={classes.discourseDrawerButton}>
               Discourse
               <OpenInNewIcon className={classes.openInNew} />
@@ -358,8 +350,7 @@ export default function Header(props) {
       <IconButton
         className={classes.drawerIconContainer}
         onClick={() => setDrawerOpen(!drawerOpen)}
-        disableRipple
-      >
+        disableRipple>
         <MenuIcon className={classes.hamburger} />
       </IconButton>
     </Fragment>
@@ -376,8 +367,7 @@ export default function Header(props) {
               currentRoute !== "/"
                 ? classes.toolbar
                 : classes.toolbarTransparent
-            }
-          >
+            }>
             <Button onClick={() => setSelectedValue(false)}>
               <OVLogo className={classes.logo} />
             </Button>

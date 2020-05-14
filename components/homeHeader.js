@@ -47,13 +47,13 @@ const HomeHeader = () => {
   return (
     <div className={classes.headerContainer}>
       <img
-        src={"/images/homepage.jpg"}
+        src={"/images/containers-dark.jpg"}
         alt="Header"
         className={classes.headerImg}
       />
       <div className={classes.headerTextContainer}>
         <h5 className={classes.smallHeader}>
-          Secure, dependency-free and open-source!
+          Open-source, secure, and dependency-free
         </h5>
         <h1 className={classes.headerText}>Cross-platform SLURM packaging</h1>
       </div>

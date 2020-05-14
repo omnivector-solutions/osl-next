@@ -1,7 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -13,6 +11,7 @@ import Hidden from "@material-ui/core/Hidden";
 import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
 
+import { getSortedPostsData } from "../lib/posts";
 import Layout from "../components/layout";
 
 const useStyles = makeStyles((theme) => ({
@@ -72,46 +71,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const featuredPosts = [
-  {
-    title: "Featured post",
-    date: "Nov 12",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-  },
-  {
-    title: "Post title",
-    date: "Nov 11",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-  },
-  {
-    title: "Featured post",
-    date: "Nov 12",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-  },
-  {
-    title: "Post title",
-    date: "Nov 11",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-  },
-  {
-    title: "Featured post",
-    date: "Nov 12",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-  },
-  {
-    title: "Post title",
-    date: "Nov 11",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-  },
-];
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
 
-const Blog = () => {
+const Blog = (props) => {
   const classes = useStyles();
 
   return (
@@ -122,7 +91,6 @@ const Blog = () => {
         <main>
           {/* Main featured post */}
           <Paper className={classes.mainFeaturedPost}>
-            {/* Increase the priority of the hero background image */}
             {
               <img
                 style={{ display: "none" }}
@@ -138,8 +106,7 @@ const Blog = () => {
                     component="h1"
                     variant="h3"
                     color="inherit"
-                    gutterBottom
-                  >
+                    gutterBottom>
                     Slurm Packaging
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
@@ -149,7 +116,7 @@ const Blog = () => {
                     for its operation and is relatively self-contained.
                   </Typography>
                   <Link variant="subtitle1" href="#">
-                    Continue reading…
+                    Continue reading...
                   </Link>
                 </div>
               </Grid>
@@ -158,9 +125,9 @@ const Blog = () => {
           {/* End main featured post */}
           {/* Sub featured posts */}
           <Grid container spacing={4}>
-            {featuredPosts.map((post) => (
-              <Grid item key={post.title} xs={12} md={6}>
-                <CardActionArea component="a" href="#">
+            {props.allPostsData.map((post) => (
+              <Grid item key={post.id} xs={12} md={6}>
+                <CardActionArea component="a" href={`/posts/${post.id}`}>
                   <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                       <CardContent>
@@ -181,7 +148,7 @@ const Blog = () => {
                     <Hidden xsDown>
                       <CardMedia
                         className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
+                        image={post.image}
                         title="Image title"
                       />
                     </Hidden>

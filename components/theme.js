@@ -7,27 +7,34 @@ export default createMuiTheme({
   palette: {
     common: {
       blue: `${oslBlue}`,
-      orange: `${oslOrange}`
+      orange: `${oslOrange}`,
     },
     primary: {
-      main: `${oslBlue}`
+      main: `${oslBlue}`,
     },
     secondary: {
-      main: `${oslOrange}`
-    }
+      main: `${oslOrange}`,
+    },
   },
   typography: {
     tab: {
       fontFamily: "Ubuntu",
       textTransform: "none",
-      fontWeight: 700
+      fontWeight: 700,
     },
     deploy: {
       fontFamily: "Ubuntu",
       textTransform: "none",
       fontWeight: 700,
       fontSize: "1 rem",
-      color: "white"
-    }
-  }
+      color: "white",
+    },
+    header: {
+      fontFamily: "Ubuntu",
+      textTransform: "none",
+      fontSize: "2.2em",
+      fontWeight: 600,
+      color: "white",
+    },
+  },
 });

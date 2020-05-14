@@ -12,6 +12,8 @@ const useStyles = makeStyles({
   },
 });
 
+export const siteTitle = "Omnivector Solutions";
+
 const Layout = ({ children, title = "Omnivector Solutions" }) => {
   const classes = useStyles();
   return (

@@ -2,8 +2,8 @@
   "name": "mo54z9-zj06xs",
   "arn": "arn:aws:iam::212021838531:role/mo54z9-zj06xs",
   "service": [
-    "lambda.amazonaws.com",
-    "edgelambda.amazonaws.com"
+    "edgelambda.amazonaws.com",
+    "lambda.amazonaws.com"
   ],
   "policy": {
     "arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
