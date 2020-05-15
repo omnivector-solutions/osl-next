@@ -1,12 +1,14 @@
 import React from "react";
 import Iframe from "react-iframe";
 import Layout from "../components/layout";
-import { getCharmData } from "../lib/charms";
+import { getCharms } from "../lib/charmstore";
 
-export async function getStaticProps({ preview = false }) {
-  const charmData = (await getCharmData()) || [];
+export async function getStaticProps() {
+  const data = await getCharms();
   return {
-    props: { charmData },
+    props: {
+      charmData: data,
+    },
   };
 }
 
