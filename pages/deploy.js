@@ -1,6 +1,14 @@
 import React from "react";
 import Iframe from "react-iframe";
 import Layout from "../components/layout";
+import { getCharmData } from "../lib/charms";
+
+export async function getStaticProps({ preview = false }) {
+  const charmData = (await getCharmData()) || [];
+  return {
+    props: { charmData },
+  };
+}
 
 const Deploy = () => {
   return (
