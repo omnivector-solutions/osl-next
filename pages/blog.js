@@ -120,8 +120,9 @@ const Blog = (props) => {
   return (
     <Layout>
       <div className={classes.toolbarMargin} />
+      <div className={classes.marginDiv} />
+
       <Container maxWidth="lg">
-        <div className={classes.marginDiv} />
         <main>
           <Link href={`/posts/${props.allPostsData[0].id}`}>
             <img className={classes.img} src={props.allPostsData[0].image} />
