@@ -4,6 +4,9 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Chip from "@material-ui/core/Chip";
+import Button from "@material-ui/core/Button";
+
+import Link from "./link";
 
 const useStyles = makeStyles((theme) => ({
   headerContainer: {
@@ -37,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
   metaTitle: {
     fontWeight: 600,
   },
+  button: {
+    width: "175px",
+    margin: "4px",
+  },
 }));
 
 const CharmDetails = (props) => {
@@ -53,6 +60,31 @@ const CharmDetails = (props) => {
           <Divider className={classes.horizDivider} />
           <Typography>{props.meta.Summary}</Typography>
           <Divider className={classes.horizDivider} />
+          <Typography className={classes.metaTitle}>Links:</Typography>
+          <Button
+            className={classes.button}
+            variant="outlined"
+            color="secondary"
+            size="small"
+            href={props.links.homepage}>
+            View on Github...
+          </Button>
+          <Button
+            className={classes.button}
+            variant="outlined"
+            color="secondary"
+            size="small"
+            href={props.links.homepage}>
+            Submit a Bug...
+          </Button>
+          <Button
+            className={classes.button}
+            variant="outlined"
+            color="secondary"
+            size="small"
+            href={props.links.homepage}>
+            Deploy on JAAS...
+          </Button>
         </Paper>
         <Paper className={classes.metaContainer}>
           <Typography className={classes.metaTitle}>Description:</Typography>

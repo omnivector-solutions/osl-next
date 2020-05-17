@@ -68,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
   chip: {
     margin: "4px",
+    alignItems: "left",
   },
   headerContainer: {
     height: "60px",
@@ -91,6 +92,9 @@ const useStyles = makeStyles((theme) => ({
   cli: {
     margin: "10px",
     width: "400px",
+  },
+  charmLink: {
+    marginLeft: 0,
   },
 }));
 
@@ -116,93 +120,6 @@ const charmsPanel = (props) => {
     setCharmList(results);
   }, [searchTerm]);
 
-  const panels = charmList.map((charm, index) => {
-    return (
-      <ExpansionPanel
-        key={charm.Id}
-        expanded={expanded === index}
-        onChange={expandPanel(index)}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls={charm.data.Name}
-          id={charm.data.Name}>
-          <img
-            src={`https://api.jujucharms.com/charmstore/v5/${charm.Id.substring(
-              3
-            )}/icon.svg`}
-            alt="icon"
-            className={classes.img}
-          />
-          <Typography className={classes.heading}>{charm.data.Name}</Typography>
-          <Typography className={classes.secondaryHeading}>
-            {charm.data.Summary}
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails className={classes.details}>
-          <div className={classes.column50}>
-            <Typography variant="caption">Description:</Typography>
-            <Typography variant="body2">{charm.data.Description}</Typography>
-          </div>
-          <div className={clsx(classes.column25, classes.divider)}>
-            <Typography variant="caption">Tags:</Typography>
-            <div>
-              {charm.data.Tags.map((tag, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    label={tag}
-                    variant="outlined"
-                    color="secondary"
-                    size="small"
-                    className={classes.chip}
-                  />
-                );
-              })}
-            </div>
-          </div>
-          <div className={clsx(classes.column25, classes.divider)}>
-            <Typography variant="caption">Supported Series:</Typography>
-            <div>
-              {charm.data.SupportedSeries.map((series, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    label={series}
-                    variant="outlined"
-                    color="primary"
-                    size="small"
-                    className={classes.chip}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </ExpansionPanelDetails>
-        <Divider />
-        <ExpansionPanelActions>
-          <Link href={`/charms/${charm.data.Name}`}>Read More...</Link>
-          <TextField
-            id="outlined-basic"
-            label="Deploy with CLI:"
-            type="text"
-            size="small"
-            variant="outlined"
-            placeholder="Search"
-            value={`juju deploy ${charm.Id}`}
-            className={classes.cli}
-          />
-          <Button
-            size="small"
-            color="primary"
-            variant="contained"
-            href={`https://jujucharms.com/new/?dd=${charm.Id.substring(3)}`}>
-            Deploy with JAAS
-          </Button>
-        </ExpansionPanelActions>
-      </ExpansionPanel>
-    );
-  });
-
   return (
     <div className={classes.root}>
       <div className={classes.headerContainer}>
@@ -219,7 +136,117 @@ const charmsPanel = (props) => {
           className={classes.filter}
         />
       </div>
-      {panels}
+      {charmList.map((charm, index) => {
+        return (
+          <ExpansionPanel
+            key={charm.Id}
+            expanded={expanded === index}
+            onChange={expandPanel(index)}>
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls={charm.data.Name}
+              id={charm.data.Name}>
+              <img
+                src={`https://api.jujucharms.com/charmstore/v5/${charm.Id.substring(
+                  3
+                )}/icon.svg`}
+                alt="icon"
+                className={classes.img}
+              />
+              <Typography className={classes.heading}>
+                {charm.data.Name}
+              </Typography>
+              <Typography className={classes.secondaryHeading}>
+                {charm.data.Summary}
+              </Typography>
+              {charm.data.SupportedSeries.map((series, index) => {
+                return (
+                  <Chip
+                    key={index}
+                    label={series}
+                    variant="outlined"
+                    color="secondary"
+                    size="small"
+                    className={classes.chip}
+                  />
+                );
+              })}
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails className={classes.details}>
+              <div className={classes.column50}>
+                <Typography variant="caption">Description:</Typography>
+                <Typography variant="body2">
+                  {charm.data.Description}
+                </Typography>
+              </div>
+              <div className={clsx(classes.column25, classes.divider)}>
+                <Typography variant="caption">Tags:</Typography>
+                <div>
+                  {charm.data.Tags.map((tag, index) => {
+                    return (
+                      <Chip
+                        key={index}
+                        label={tag}
+                        variant="outlined"
+                        color="secondary"
+                        size="small"
+                        className={classes.chip}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+              <div className={clsx(classes.column25, classes.divider)}>
+                <Typography variant="caption">Supported Series:</Typography>
+                <div>
+                  {charm.data.SupportedSeries.map((series, index) => {
+                    return (
+                      <Chip
+                        key={index}
+                        label={series}
+                        variant="outlined"
+                        color="primary"
+                        size="small"
+                        className={classes.chip}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            </ExpansionPanelDetails>
+            <Divider />
+            <ExpansionPanelActions>
+              <Button
+                size="small"
+                color="secondary"
+                variant="contained"
+                href={`/charms/${charm.data.Name}`}>
+                Charm Details
+              </Button>
+
+              <TextField
+                id="outlined-basic"
+                label="Deploy with CLI:"
+                type="text"
+                size="small"
+                variant="outlined"
+                placeholder="Search"
+                value={`juju deploy ${charm.Id}`}
+                className={classes.cli}
+              />
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                href={`https://jujucharms.com/new/?dd=${charm.Id.substring(
+                  3
+                )}`}>
+                Deploy with JAAS
+              </Button>
+            </ExpansionPanelActions>
+          </ExpansionPanel>
+        );
+      })}
     </div>
   );
 };
