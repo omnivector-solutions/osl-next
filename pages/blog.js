@@ -114,7 +114,6 @@ export async function getStaticProps() {
 
 const Blog = (props) => {
   const classes = useStyles();
-  console.log("First: ", props.allPostsData);
   return (
     <Layout>
       <div className={classes.toolbarMargin} />

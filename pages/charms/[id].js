@@ -2,9 +2,13 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
-
+import Paper from "@material-ui/core/Paper";
+import Divider from "@material-ui/core/Divider";
+import CharmConfig from "../../components/charmConfig";
+import CharmReadme from "../../components/charmReadme";
+import CharmDetails from "../../components/charmDetails";
 import Layout from "../../components/layout";
-import { getCharmIds, getOneCharm } from "../../lib/charmstore";
+import { getCharmNames, getOneCharm } from "../../lib/charmstore";
 import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,73 +25,26 @@ const useStyles = makeStyles((theme) => ({
   marginDiv: {
     height: "1em",
   },
-  img: {
-    position: "relative",
-    width: "100%",
-    height: "300px",
-    objectFit: "cover",
-    backgroundColor: theme.palette.grey[800],
-    marginBottom: theme.spacing(1),
-    filter: "brightness(30%)",
-    borderRadius: "8px",
-    boxShadow: "2px 2px 1px #aaaaaa",
-  },
   headerText: {
-    ...theme.typography.header,
-    color: theme.palette.primary.light,
-    width: "500px",
-    position: "absolute",
-    top: "5em",
-    marginLeft: "1em",
-    [theme.breakpoints.down("md")]: {
-      top: "2.2em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "1.8em",
-    },
+    fontFamily: "Ubuntu",
+    fontSize: "2.2em",
+    fontWeight: 600,
+    marginLeft: "12px",
+    marginTop: "12px",
+    color: theme.palette.primary.main,
   },
-  subheaderText: {
-    ...theme.typography.subheader,
-    width: "500px",
-    position: "absolute",
-    top: "18em",
-    marginLeft: "2em",
-    [theme.breakpoints.down("md")]: {
-      top: "2.2em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "1.8em",
-    },
+  titleContainer: {
+    display: "flex",
+    height: "70px",
   },
-  linkText: {
-    color: theme.palette.secondary.light,
-    width: "500px",
-    position: "absolute",
-    top: "25em",
-    marginLeft: "2em",
-    [theme.breakpoints.down("md")]: {
-      top: "2.2em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "1.8em",
-    },
-  },
-  text: {
-    ...theme.typography.header,
-    width: "500px",
-    position: "absolute",
-    top: "4em",
-    padding: theme.spacing(3),
-    [theme.breakpoints.down("md")]: {
-      top: "2.2em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "1.8em",
-    },
+  img: {
+    marginTop: "20px",
+    marginLeft: "12px",
+    height: "30px",
   },
 }));
 
-const Charm = ({ charmData }) => {
+const Charm = (props) => {
   const classes = useStyles();
 
   return (
@@ -95,20 +52,36 @@ const Charm = ({ charmData }) => {
       <div className={classes.toolbarMargin} />
       <div className={classes.marginDiv} />
       <Container maxWidth="lg">
-        <Typography className={classes.headerText}>
-          {charmData.data.Name}
-        </Typography>
+        <Paper>
+          <div className={classes.titleContainer}>
+            <img
+              src={`https://api.jujucharms.com/charmstore/v5/${props.charmData.id.substring(
+                3
+              )}/icon.svg`}
+              alt="icon"
+              className={classes.img}
+            />
+            <Typography className={classes.headerText}>
+              {props.charmData.name}
+            </Typography>
+          </div>
+        </Paper>
+        <CharmDetails
+          meta={props.charmData.metadata}
+          links={props.charmData.common}
+        />
+        <CharmReadme readme={props.charmData.readme} />
+        <CharmConfig config={props.charmData.config} />
       </Container>
+      <div className={classes.marginDiv} />
     </Layout>
   );
 };
 
 export async function getStaticPaths() {
-  const charmIds = await getCharmIds();
-
-  const paths = charmIds.Results.map((charm) => {
-    console.log(charm.Id.substring(3));
-    return charm.Id.substring(3);
+  const names = await getCharmNames();
+  const paths = names.map((name) => {
+    return { params: { id: name } };
   });
   return {
     paths,
@@ -118,7 +91,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const charmData = await getOneCharm(params.id);
-
   return {
     props: { charmData },
   };

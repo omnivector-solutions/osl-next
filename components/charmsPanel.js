@@ -116,12 +116,10 @@ const charmsPanel = (props) => {
     setCharmList(results);
   }, [searchTerm]);
 
-  // console.log(props.charms[0]);
-
   const panels = charmList.map((charm, index) => {
     return (
       <ExpansionPanel
-        key={index}
+        key={charm.Id}
         expanded={expanded === index}
         onChange={expandPanel(index)}>
         <ExpansionPanelSummary
@@ -148,9 +146,10 @@ const charmsPanel = (props) => {
           <div className={clsx(classes.column25, classes.divider)}>
             <Typography variant="caption">Tags:</Typography>
             <div>
-              {charm.data.Tags.map((tag) => {
+              {charm.data.Tags.map((tag, index) => {
                 return (
                   <Chip
+                    key={index}
                     label={tag}
                     variant="outlined"
                     color="secondary"
@@ -164,9 +163,10 @@ const charmsPanel = (props) => {
           <div className={clsx(classes.column25, classes.divider)}>
             <Typography variant="caption">Supported Series:</Typography>
             <div>
-              {charm.data.SupportedSeries.map((series) => {
+              {charm.data.SupportedSeries.map((series, index) => {
                 return (
                   <Chip
+                    key={index}
                     label={series}
                     variant="outlined"
                     color="primary"
