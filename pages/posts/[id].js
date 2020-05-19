@@ -1,7 +1,8 @@
 import React from "react";
-
+import ReactMarkdown from "react-markdown";
 import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
 import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
@@ -85,9 +86,12 @@ const useStyles = makeStyles((theme) => ({
       top: "1.8em",
     },
   },
+  readmeContainer: {
+    padding: "24px",
+  },
 }));
 
-const Post = ({ postData }) => {
+const Post = (props) => {
   const classes = useStyles();
 
   return (
@@ -95,25 +99,30 @@ const Post = ({ postData }) => {
       <div className={classes.toolbarMargin} />
       <div className={classes.marginDiv} />
       <Container maxWidth="lg">
-        <img className={classes.img} src={postData.image} />
-        <Typography className={classes.headerText}>{postData.title}</Typography>
+        <img className={classes.img} src={props.postData.image} />
+        <Typography className={classes.headerText}>
+          {props.postData.title}
+        </Typography>
         <Typography className={classes.subheaderText}>
-          {postData.description}
+          {props.postData.description}
         </Typography>
-        <Typography
-          className={classes.dateAuthor}
-          variant="subtitle2"
-          color="textSecondary">
-          Author: {postData.author}
-        </Typography>
-        <Typography
-          className={classes.dateAuthor}
-          variant="subtitle2"
-          color="textSecondary">
-          Posted: {postData.date}
-        </Typography>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <Paper className={classes.readmeContainer}>
+          <Typography
+            className={classes.dateAuthor}
+            variant="subtitle2"
+            color="textSecondary">
+            Author: {props.postData.author}
+          </Typography>
+          <Typography
+            className={classes.dateAuthor}
+            variant="subtitle2"
+            color="textSecondary">
+            Posted: {props.postData.date}
+          </Typography>
+          <ReactMarkdown source={props.postData.content} />
+        </Paper>
       </Container>
+      <div className={classes.marginDiv} />
     </Layout>
   );
 };

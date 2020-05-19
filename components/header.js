@@ -261,11 +261,9 @@ export default function Header(props) {
       <Link href="/blog">
         <Button className={classes.navButton}>Blog</Button>
       </Link>
-      <Link href="/services">
-        <Button className={classes.navButton}>Services</Button>
-      </Link>
-      <Link href="/deploy">
-        <Button className={classes.navButton}>Deploy</Button>
+
+      <Link href="/solutions">
+        <Button className={classes.navButton}>Solutions</Button>
       </Link>
 
       <Contact

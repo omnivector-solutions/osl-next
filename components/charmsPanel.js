@@ -11,6 +11,9 @@ import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+
+import FilterListIcon from "@material-ui/icons/FilterList";
 
 import Link from "../components/link";
 
@@ -73,28 +76,32 @@ const useStyles = makeStyles((theme) => ({
   headerContainer: {
     height: "60px",
     backgroundColor: theme.palette.primary.main,
-    marginBottom: "12px",
+    marginBottom: "1em",
     display: "flex",
   },
   headerText: {
-    fontFamily: "Ubuntu",
-    textTransform: "none",
-    fontSize: "1.4em",
-    fontWeight: 400,
+    ...theme.typography.header,
+    fontSize: "1.5em",
     color: "white",
-    padding: "16px",
+    padding: ".6em",
   },
   filter: {
-    backgroundColor: "lightgrey",
+    backgroundColor: theme.palette.grey[200],
     margin: "10px",
     borderRadius: "4px",
+    marginRight: "8px",
+    marginLeft: "auto",
   },
   cli: {
     margin: "10px",
     width: "400px",
   },
   charmLink: {
-    marginLeft: 0,
+    marginRight: "auto",
+    marginLeft: "8px",
+  },
+  deploy: {
+    marginRight: "8px",
   },
 }));
 
@@ -126,14 +133,20 @@ const charmsPanel = (props) => {
         <Typography className={classes.headerText}>Charm Library:</Typography>
         <TextField
           id="outlined-basic"
-          label="Filter..."
           type="text"
           size="small"
           variant="outlined"
-          placeholder="Search"
+          placeholder="Filter"
           value={searchTerm}
           onChange={() => filterCharms(event)}
           className={classes.filter}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <FilterListIcon color="secondary" />
+              </InputAdornment>
+            ),
+          }}
         />
       </div>
       {charmList.map((charm, index) => {
@@ -159,18 +172,6 @@ const charmsPanel = (props) => {
               <Typography className={classes.secondaryHeading}>
                 {charm.data.Summary}
               </Typography>
-              {charm.data.SupportedSeries.map((series, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    label={series}
-                    variant="outlined"
-                    color="secondary"
-                    size="small"
-                    className={classes.chip}
-                  />
-                );
-              })}
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.details}>
               <div className={classes.column50}>
@@ -220,6 +221,7 @@ const charmsPanel = (props) => {
                 size="small"
                 color="secondary"
                 variant="contained"
+                className={classes.charmLink}
                 href={`/charms/${charm.data.Name}`}>
                 Charm Details
               </Button>
@@ -238,6 +240,7 @@ const charmsPanel = (props) => {
                 size="small"
                 color="primary"
                 variant="contained"
+                className={classes.deploy}
                 href={`https://jujucharms.com/new/?dd=${charm.Id.substring(
                   3
                 )}`}>

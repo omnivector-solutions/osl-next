@@ -3,8 +3,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
+import CharmContent from "../../components/charmContent";
 import CharmConfig from "../../components/charmConfig";
+import CharmFiles from "../../components/charmFiles";
 import CharmReadme from "../../components/charmReadme";
 import CharmDetails from "../../components/charmDetails";
 import Layout from "../../components/layout";
@@ -55,23 +57,31 @@ const Charm = (props) => {
         <Paper>
           <div className={classes.titleContainer}>
             <img
-              src={`https://api.jujucharms.com/charmstore/v5/${props.charmData.id.substring(
+              src={`https://api.jujucharms.com/charmstore/v5/${props.charmData.Id.substring(
                 3
               )}/icon.svg`}
               alt="icon"
               className={classes.img}
             />
             <Typography className={classes.headerText}>
-              {props.charmData.name}
+              {props.charmData.Meta["charm-metadata"].Name}
             </Typography>
           </div>
         </Paper>
+        <CharmContent />
         <CharmDetails
-          meta={props.charmData.metadata}
-          links={props.charmData.common}
+          meta={props.charmData.Meta["charm-metadata"]}
+          links={props.charmData.Meta["common-info"]}
         />
-        <CharmReadme readme={props.charmData.readme} />
-        <CharmConfig config={props.charmData.config} />
+        <Grid container spacing={1}>
+          <Grid item xs={9}>
+            <CharmReadme readme={props.charmData.readme} />
+          </Grid>
+          <Grid item xs={3}>
+            <CharmFiles files={props.charmData.Meta.manifest} />
+          </Grid>
+        </Grid>
+        <CharmConfig config={props.charmData.Meta["charm-config"].Options} />
       </Container>
       <div className={classes.marginDiv} />
     </Layout>
