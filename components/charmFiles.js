@@ -1,9 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import { Treebeard } from "react-treebeard";
+import filelistToTree from "../lib/filelistToTree";
+
 import { makeStyles } from "@material-ui/styles";
 import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Treebeard } from "react-treebeard";
+
 import style from "../components/treeviewStyle";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 110,
@@ -26,54 +32,71 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     padding: "8px",
   },
+  readmeContainer: {
+    padding: "1px 18px",
+  },
 }));
-
-const pathsToJson = (paths) => {
-  var obj = {};
-  paths.forEach((p) =>
-    p.Name.split("/").reduce((o, name) => (o[name] = o[name] || {}), obj)
-  );
-
-  return obj;
-};
-
-const jsonPathsToTree = (obj) =>
-  Object.keys(obj).map((key, i) =>
-    Object.keys(obj[key]).length
-      ? { name: key, id: i.toString(), children: jsonPathsToTree(obj[key]) }
-      : { name: key, id: i.toString() }
-  );
 
 const CharmFiles = (props) => {
   const classes = useStyles();
-  const paths = pathsToJson(props.files);
-  var treeData = jsonPathsToTree(paths);
+  var treeData = filelistToTree(props.files);
+
+  const [content, setContent] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState(treeData);
-  const [cursor, setCursor] = useState(false);
+  const [selected, setSelected] = useState({ name: "README.md" });
 
   const onToggle = (node, toggled) => {
-    if (cursor) {
-      cursor.active = false;
+    if (selected) {
+      selected.active = false;
     }
     node.active = true;
     if (node.children) {
       node.toggled = toggled;
     }
-    console.log(node);
-
-    setCursor(node);
+    setSelected(node);
     setData(data);
   };
+  useEffect(() => {
+    if (!selected.children) {
+      fetch(
+        `https://api.jujucharms.com/charmstore/v5/${props.id.substring(
+          3
+        )}/archive/${selected.path}`,
+        {
+          method: "GET",
+        }
+      )
+        .then((res) => res.text())
+        .then((response) => {
+          setContent(response);
+          setIsLoading(false);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [selected, content]);
 
   return (
-    <Fragment>
-      <Paper className={classes.headerContainer}>
-        <Typography className={classes.headerText}>Files:</Typography>
-      </Paper>
-      <Paper className={classes.bodyContainer}>
-        <Treebeard data={data} onToggle={onToggle} style={style} />
-      </Paper>
-    </Fragment>
+    <Grid container spacing={1}>
+      <Grid item xs={3}>
+        <Paper className={classes.headerContainer}>
+          <Typography className={classes.headerText}>Files:</Typography>
+        </Paper>
+        <Paper className={classes.bodyContainer}>
+          <Treebeard data={data} onToggle={onToggle} style={style} />
+        </Paper>
+      </Grid>
+      <Grid item xs={9}>
+        <Paper className={classes.headerContainer}>
+          <Typography className={classes.headerText}>
+            {selected.name} :
+          </Typography>
+        </Paper>
+        <Paper className={classes.readmeContainer}>
+          <ReactMarkdown source={`\`\`\`${content}\`\`\``} />
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 

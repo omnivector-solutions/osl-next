@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import CharmContent from "../../components/charmContent";
 import CharmConfig from "../../components/charmConfig";
 import CharmFiles from "../../components/charmFiles";
 import CharmReadme from "../../components/charmReadme";
@@ -48,6 +47,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Charm = (props) => {
   const classes = useStyles();
+  const [selectedFile, setSelectedFile] = useState("README.md");
+
+  const changeFileSelection = (fileName) => {
+    console.log("changeFileSelection: filename", fileName);
+    setSelectedFile(fileName);
+  };
 
   return (
     <Layout>
@@ -68,17 +73,16 @@ const Charm = (props) => {
             </Typography>
           </div>
         </Paper>
-        <CharmContent />
         <CharmDetails
           meta={props.charmData.Meta["charm-metadata"]}
           links={props.charmData.Meta["common-info"]}
         />
         <Grid container spacing={1}>
-          <Grid item xs={9}>
-            <CharmReadme readme={props.charmData.readme} />
-          </Grid>
-          <Grid item xs={3}>
-            <CharmFiles files={props.charmData.Meta.manifest} />
+          <Grid item xs={12}>
+            <CharmFiles
+              id={props.charmData.Id}
+              files={props.charmData.Meta.manifest}
+            />
           </Grid>
         </Grid>
         <CharmConfig config={props.charmData.Meta["charm-config"].Options} />
