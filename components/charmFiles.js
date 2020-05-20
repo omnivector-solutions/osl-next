@@ -44,7 +44,10 @@ const CharmFiles = (props) => {
   const [content, setContent] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState(treeData);
-  const [selected, setSelected] = useState({ name: "README.md" });
+  const [selected, setSelected] = useState({
+    path: "README.md",
+    name: "README.md",
+  });
 
   const onToggle = (node, toggled) => {
     if (selected) {
@@ -57,6 +60,7 @@ const CharmFiles = (props) => {
     setSelected(node);
     setData(data);
   };
+
   useEffect(() => {
     if (!selected.children) {
       fetch(

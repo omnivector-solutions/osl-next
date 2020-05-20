@@ -5,9 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
-import Button from "@material-ui/core/Button";
-
-import Link from "./link";
 
 const useStyles = makeStyles((theme) => ({
   headerContainer: {
@@ -82,28 +79,39 @@ const CharmDetails = (props) => {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Paper className={classes.metaContainer}>
-              <Typography className={classes.metaTitle}>Tags:</Typography>
-              {props.meta.Tags.map((tag, index) => {
+              <Typography className={classes.metaTitle}>Provides:</Typography>
+              {Object.keys(props.meta.Provides).map((key, index) => {
                 return (
                   <Chip
                     key={index}
-                    label={tag}
-                    variant="outlined"
-                    color="secondary"
+                    label={key}
+                    color="primary"
                     size="small"
                     className={classes.chip}
                   />
                 );
               })}
               <Divider className={classes.horizDivider} />
-              <Typography className={classes.metaTitle}>Series:</Typography>
-              {props.meta.SupportedSeries.map((tag, index) => {
+              <Typography className={classes.metaTitle}>Requires:</Typography>
+              {Object.keys(props.meta.Requires).map((key, index) => {
                 return (
                   <Chip
                     key={index}
-                    label={tag}
-                    variant="outlined"
-                    color="secondary"
+                    label={key}
+                    color="primary"
+                    size="small"
+                    className={classes.chip}
+                  />
+                );
+              })}
+              <Divider className={classes.horizDivider} />
+              <Typography className={classes.metaTitle}>Peers:</Typography>
+              {Object.keys(props.meta.Peers).map((key, index) => {
+                return (
+                  <Chip
+                    key={index}
+                    label={key}
+                    color="primary"
                     size="small"
                     className={classes.chip}
                   />
@@ -114,7 +122,6 @@ const CharmDetails = (props) => {
           <Grid item xs={12} sm={6} md={3}>
             <Paper className={classes.metaContainer}>
               <Typography className={classes.metaTitle}>Tags:</Typography>
-              <Divider className={classes.horizDivider} />
               {props.meta.Tags.map((tag, index) => {
                 return (
                   <Chip
@@ -127,8 +134,8 @@ const CharmDetails = (props) => {
                   />
                 );
               })}
-              <Typography className={classes.metaTitle}>Series:</Typography>
               <Divider className={classes.horizDivider} />
+              <Typography className={classes.metaTitle}>Series:</Typography>
               {props.meta.SupportedSeries.map((tag, index) => {
                 return (
                   <Chip

@@ -78,7 +78,7 @@ const charmConfig = (props) => {
                   {props.config[key].Default ? (
                     <Typography className={classes.paramText}>
                       <strong> Default: </strong>
-                      {props.config[key].Default}
+                      {props.config[key].Default.toString()}
                     </Typography>
                   ) : null}
                 </div>
