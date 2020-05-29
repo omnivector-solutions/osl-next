@@ -113,8 +113,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const bundlesPanel = (props) => {
-  // console.log(props.bundles[0]);
-
   const [searchTerm, setSearchTerm] = useState("");
   const [bundleList, setBundleList] = useState(props.bundles);
 
@@ -194,7 +192,7 @@ const bundlesPanel = (props) => {
                 <div></div>
               </div>
               <div className={clsx(classes.column25, classes.divider)}>
-                <Typography variant="caption">Applications:</Typography>
+                <Typography variant="caption">Configuration:</Typography>
                 <div className={classes.relatedCharmsContainer}>
                   {Object.keys(bundle.Meta["bundle-metadata"].applications).map(
                     (key, index) => {
@@ -223,7 +221,6 @@ const bundlesPanel = (props) => {
             </ExpansionPanelDetails>
             <Divider />
             <ExpansionPanelActions>
-              {/* {console.log(bundle)} */}
               <Button
                 size="small"
                 color="secondary"

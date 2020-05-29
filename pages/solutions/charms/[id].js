@@ -4,11 +4,11 @@ import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import CharmConfig from "../../../components/config";
-import CharmFiles from "../../../components/files";
-import CharmDetails from "../../../components/details";
+import CharmConfig from "../../../components/charmConfig";
+import Files from "../../../components/Files";
+import CharmDetails from "../../../components/charmDetails";
 import Layout from "../../../components/layout";
-import { getCharmNames, getOneCharm } from "../../../lib/charms";
+import { getCharmNames, getOneCharm } from "../../../lib/charmstore";
 import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
@@ -42,9 +42,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "12px",
     height: "30px",
   },
-  description: {
-    marginLeft: "12px",
-  },
 }));
 
 const Charm = (props) => {
@@ -52,7 +49,6 @@ const Charm = (props) => {
   const [selectedFile, setSelectedFile] = useState("README.md");
 
   const changeFileSelection = (fileName) => {
-    console.log("changeFileSelection: filename", fileName);
     setSelectedFile(fileName);
   };
 
@@ -61,7 +57,7 @@ const Charm = (props) => {
       <div className={classes.toolbarMargin} />
       <div className={classes.marginDiv} />
       <Container maxWidth="lg">
-        <Paper elevation={4}>
+        <Paper>
           <div className={classes.titleContainer}>
             <img
               src={`https://api.jujucharms.com/charmstore/v5/${props.charmData.Id.substring(
@@ -74,18 +70,14 @@ const Charm = (props) => {
               {props.charmData.Meta["charm-metadata"].Name}
             </Typography>
           </div>
-          <Typography className={classes.description}>
-            {props.charmData.Meta["charm-metadata"].Description}
-          </Typography>
         </Paper>
         <CharmDetails
-          id={props.charmData.Id}
           meta={props.charmData.Meta["charm-metadata"]}
           links={props.charmData.Meta["common-info"]}
         />
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <CharmFiles
+            <Files
               id={props.charmData.Id}
               files={props.charmData.Meta.manifest}
             />

@@ -4,11 +4,11 @@ import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import CharmConfig from "../../../components/config";
-import CharmFiles from "../../../components/files";
-import CharmDetails from "../../../components/details";
+import BundleConfig from "../../../components/bundleConfig";
+import Files from "../../../components/Files";
+import BundleDetails from "../../../components/bundleDetails";
 import Layout from "../../../components/layout";
-import { getCharmNames, getOneCharm } from "../../../lib/charms";
+import { getBundleNames, getOneBundle } from "../../../lib/charmstore";
 import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
@@ -42,17 +42,13 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "12px",
     height: "30px",
   },
-  description: {
-    marginLeft: "12px",
-  },
 }));
 
-const Charm = (props) => {
+const Bundle = (props) => {
   const classes = useStyles();
   const [selectedFile, setSelectedFile] = useState("README.md");
 
   const changeFileSelection = (fileName) => {
-    console.log("changeFileSelection: filename", fileName);
     setSelectedFile(fileName);
   };
 
@@ -63,35 +59,21 @@ const Charm = (props) => {
       <Container maxWidth="lg">
         <Paper>
           <div className={classes.titleContainer}>
-            <img
-              src={`https://api.jujucharms.com/charmstore/v5/${props.charmData.Id.substring(
-                3
-              )}/icon.svg`}
-              alt="icon"
-              className={classes.img}
-            />
             <Typography className={classes.headerText}>
-              {props.charmData.Meta["charm-metadata"].Name}
+              {props.bundleData.Meta["id-name"].Name}
             </Typography>
           </div>
-          <Typography className={classes.description}>
-            {props.charmData.Meta["charm-metadata"].Description}
-          </Typography>
         </Paper>
-        <CharmDetails
-          id={props.charmData.Id}
-          meta={props.charmData.Meta["charm-metadata"]}
-          links={props.charmData.Meta["common-info"]}
-        />
+        <BundleDetails meta={props.bundleData.Meta} id={props.bundleData.Id} />
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <CharmFiles
-              id={props.charmData.Id}
-              files={props.charmData.Meta.manifest}
+            <Files
+              files={props.bundleData.Meta.manifest}
+              id={props.bundleData.Id}
             />
           </Grid>
         </Grid>
-        <CharmConfig config={props.charmData.Meta["charm-config"].Options} />
+        <BundleConfig config={props.bundleData.Meta} />
       </Container>
       <div className={classes.marginDiv} />
     </Layout>
@@ -99,7 +81,8 @@ const Charm = (props) => {
 };
 
 export async function getStaticPaths() {
-  const names = await getCharmNames();
+  const names = await getBundleNames();
+
   const paths = names.map((name) => {
     return { params: { id: name } };
   });
@@ -110,10 +93,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const charmData = await getOneCharm(params.id);
+  const bundleData = await getOneBundle(params.id);
   return {
-    props: { charmData },
+    props: { bundleData },
   };
 }
 
-export default Charm;
+export default Bundle;

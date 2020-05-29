@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CharmDetails = (props) => {
   const classes = useStyles();
+  console.log("DETAILS: ", props);
 
   return (
     <Fragment>
@@ -80,74 +81,84 @@ const CharmDetails = (props) => {
           <Grid item xs={12} sm={6} md={3}>
             <Paper className={classes.metaContainer}>
               <Typography className={classes.metaTitle}>Provides:</Typography>
-              {Object.keys(props.meta.Provides).map((key, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    label={key}
-                    color="primary"
-                    size="small"
-                    className={classes.chip}
-                  />
-                );
-              })}
+              {props.meta.Provides
+                ? Object.keys(props.meta.Provides).map((key, index) => {
+                    return (
+                      <Chip
+                        key={index}
+                        label={key}
+                        color="primary"
+                        size="small"
+                        className={classes.chip}
+                      />
+                    );
+                  })
+                : null}
               <Divider className={classes.horizDivider} />
               <Typography className={classes.metaTitle}>Requires:</Typography>
-              {Object.keys(props.meta.Requires).map((key, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    label={key}
-                    color="primary"
-                    size="small"
-                    className={classes.chip}
-                  />
-                );
-              })}
+              {props.meta.Requires
+                ? Object.keys(props.meta.Requires).map((key, index) => {
+                    return (
+                      <Chip
+                        key={index}
+                        label={key}
+                        color="primary"
+                        size="small"
+                        className={classes.chip}
+                      />
+                    );
+                  })
+                : null}
               <Divider className={classes.horizDivider} />
               <Typography className={classes.metaTitle}>Peers:</Typography>
-              {Object.keys(props.meta.Peers).map((key, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    label={key}
-                    color="primary"
-                    size="small"
-                    className={classes.chip}
-                  />
-                );
-              })}
+              {props.meta.Peers
+                ? Object.keys(props.meta.Peers).map((key, index) => {
+                    return (
+                      <Chip
+                        key={index}
+                        label={key}
+                        color="primary"
+                        size="small"
+                        className={classes.chip}
+                      />
+                    );
+                  })
+                : null}
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Paper className={classes.metaContainer}>
               <Typography className={classes.metaTitle}>Tags:</Typography>
-              {props.meta.Tags.map((tag, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    label={tag}
-                    variant="outlined"
-                    color="secondary"
-                    size="small"
-                    className={classes.chip}
-                  />
-                );
-              })}
+              {props.meta.Tags
+                ? props.meta.Tags.map((tag, index) => {
+                    return (
+                      <Chip
+                        key={index}
+                        label={tag}
+                        variant="outlined"
+                        color="secondary"
+                        size="small"
+                        className={classes.chip}
+                      />
+                    );
+                  })
+                : null}
               <Divider className={classes.horizDivider} />
               <Typography className={classes.metaTitle}>Series:</Typography>
-              {props.meta.SupportedSeries.map((tag, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    label={tag}
-                    variant="outlined"
-                    color="secondary"
-                    size="small"
-                    className={classes.chip}
-                  />
-                );
-              })}
+              {props.meta.SupportedSeries
+                ? props.meta.SupportedSeries.map((tag, index) => {
+                    return (
+                      <Chip
+                        key={index}
+                        label={tag}
+                        variant="outlined"
+                        color="secondary"
+                        size="small"
+                        className={classes.chip}
+                      />
+                    );
+                  })
+                : null}
             </Paper>
           </Grid>
         </Grid>

@@ -222,7 +222,7 @@ const charmsPanel = (props) => {
                 color="secondary"
                 variant="contained"
                 className={classes.charmLink}
-                href={`/charms/${charm.data.Name}`}>
+                href={`/solutions/charms/${charm.data.Name}`}>
                 Charm Details
               </Button>
 
