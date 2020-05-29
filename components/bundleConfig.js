@@ -59,9 +59,9 @@ const charmConfig = (props) => {
   return (
     <Fragment>
       <Paper className={classes.headerContainer}>
-        <Typography className={classes.headerText}>Configuration:</Typography>
+        <Typography className={classes.headerText}>Other Details:</Typography>
       </Paper>
-      <Paper>
+      {/* <Paper>
         {Object.keys(props.config).map((key, index) => {
           const config = props.config;
 
@@ -97,7 +97,7 @@ const charmConfig = (props) => {
             </Fragment>
           );
         })}
-      </Paper>
+      </Paper> */}
     </Fragment>
   );
 };

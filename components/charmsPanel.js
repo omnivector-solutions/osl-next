@@ -6,6 +6,9 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import CodeIcon from "@material-ui/icons/Code";
+
 import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
@@ -222,8 +225,10 @@ const charmsPanel = (props) => {
                 color="secondary"
                 variant="contained"
                 className={classes.charmLink}
+                startIcon={<CodeIcon />}
+                size="large"
                 href={`/solutions/charms/${charm.data.Name}`}>
-                Charm Details
+                Details
               </Button>
 
               <TextField
@@ -241,10 +246,12 @@ const charmsPanel = (props) => {
                 color="primary"
                 variant="contained"
                 className={classes.deploy}
+                size="large"
+                startIcon={<CloudUploadIcon />}
                 href={`https://jujucharms.com/new/?dd=${charm.Id.substring(
                   3
                 )}`}>
-                Deploy with JAAS
+                Deploy
               </Button>
             </ExpansionPanelActions>
           </ExpansionPanel>

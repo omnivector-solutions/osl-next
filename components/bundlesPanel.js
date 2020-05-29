@@ -14,6 +14,9 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import FilterListIcon from "@material-ui/icons/FilterList";
+import CodeIcon from "@material-ui/icons/Code";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+
 import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles((theme) => ({
@@ -225,9 +228,11 @@ const bundlesPanel = (props) => {
                 size="small"
                 color="secondary"
                 variant="contained"
+                startIcon={<CodeIcon />}
                 className={classes.bundleLink}
+                size="large"
                 href={`/solutions/bundles/${bundle.Meta["id-name"].Name}`}>
-                Bundle Details
+                Details
               </Button>
 
               <TextField
@@ -245,10 +250,12 @@ const bundlesPanel = (props) => {
                 color="primary"
                 variant="contained"
                 className={classes.deploy}
+                startIcon={<CloudUploadIcon />}
+                size="large"
                 href={`https://jujucharms.com/new/?dd=${bundle.Id.substring(
                   3
                 )}`}>
-                Deploy with JAAS
+                Deploy
               </Button>
             </ExpansionPanelActions>
           </ExpansionPanel>

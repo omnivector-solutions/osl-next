@@ -102,14 +102,21 @@ const BundleDetails = (props) => {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Paper className={classes.metaContainer}>
-              <Typography className={classes.metaTitle}>???:</Typography>
+              <Typography className={classes.metaTitle}>Links:</Typography>
+              <div className={classes.linksContainer}>
+                <a href={props.meta["common-info"].homepage}>
+                  View on Github...
+                </a>
+                <a href={props.meta["common-info"]["bugs-url"]}>
+                  Submit a Bug...
+                </a>
+              </div>
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Paper className={classes.metaContainer}>
               <Typography className={classes.metaTitle}>Tags:</Typography>
               <Divider className={classes.horizDivider} />
-
               {props.meta.Tags
                 ? props.meta.tags.Tags.map((tag, index) => {
                     return (

@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 
 const CharmDetails = (props) => {
   const classes = useStyles();
-  console.log("DETAILS: ", props);
 
   return (
     <Fragment>
