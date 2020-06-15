@@ -18,8 +18,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 
 import FilterListIcon from "@material-ui/icons/FilterList";
 
-import Link from "../components/link";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -82,11 +80,25 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1em",
     display: "flex",
   },
+  headerContainerSm: {
+    height: "40px",
+    backgroundColor: theme.palette.primary.main,
+    marginBottom: ".3em",
+    display: "flex",
+    borderRadius: "8px 8px 0 0",
+  },
   headerText: {
     ...theme.typography.header,
     fontSize: "1.5em",
     color: "white",
     padding: ".6em",
+  },
+  headerTextSm: {
+    ...theme.typography.header,
+    fontSize: "1.5em",
+    color: "white",
+    padding: ".25em",
+    marginLeft: ".4em",
   },
   filter: {
     backgroundColor: theme.palette.grey[200],
@@ -116,6 +128,8 @@ const charmsPanel = (props) => {
   const [expanded, setExpanded] = React.useState(false);
 
   const expandPanel = (panel) => (event, isExpanded) => {
+    console.log("Event: ", event);
+
     setExpanded(isExpanded ? panel : false);
   };
 
@@ -132,26 +146,32 @@ const charmsPanel = (props) => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.headerContainer}>
-        <Typography className={classes.headerText}>Charm Library:</Typography>
-        <TextField
-          id="outlined-basic"
-          type="text"
-          size="small"
-          variant="outlined"
-          placeholder="Filter"
-          value={searchTerm}
-          onChange={() => filterCharms(event)}
-          className={classes.filter}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <FilterListIcon color="secondary" />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </div>
+      {props.header ? (
+        <div className={classes.headerContainer}>
+          <Typography className={classes.headerText}>Charm Library:</Typography>
+          <TextField
+            id="outlined-basic"
+            type="text"
+            size="small"
+            variant="outlined"
+            placeholder="Filter"
+            value={searchTerm}
+            onChange={() => filterCharms(event)}
+            className={classes.filter}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <FilterListIcon color="secondary" />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </div>
+      ) : (
+        <div className={classes.headerContainerSm}>
+          <Typography className={classes.headerTextSm}>Charms:</Typography>
+        </div>
+      )}
       {charmList.map((charm, index) => {
         return (
           <ExpansionPanel

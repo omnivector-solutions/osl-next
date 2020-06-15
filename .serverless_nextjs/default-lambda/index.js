@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const prerender_manifest_json_1 = __importDefault(require("./prerender-manifest.json"));
 const manifest_json_1 = __importDefault(require("./manifest.json"));
 const next_aws_cloudfront_1 = __importDefault(require("next-aws-cloudfront"));
+const addS3HostHeader = (req, s3DomainName) => {
+    req.headers["host"] = [{ key: "host", value: s3DomainName }];
+};
 const router = (manifest) => {
     const { pages: { ssr, html } } = manifest;
     const allDynamicRoutes = Object.assign(Object.assign({}, ssr.dynamic), html.dynamic);
@@ -49,6 +52,7 @@ exports.handler = (event) => __awaiter(void 0, void 0, void 0, function* () {
     if (isHTMLPage || isPublicFile) {
         s3Origin.path = isHTMLPage ? "/static-pages" : "/public";
         if (isHTMLPage) {
+            addS3HostHeader(request, s3Origin.domainName);
             request.uri = uri + ".html";
         }
         return request;
@@ -57,6 +61,7 @@ exports.handler = (event) => __awaiter(void 0, void 0, void 0, function* () {
     if (pagePath.endsWith(".html")) {
         s3Origin.path = "/static-pages";
         request.uri = pagePath.replace("pages", "");
+        addS3HostHeader(request, s3Origin.domainName);
         return request;
     }
     const { req, res, responsePromise } = next_aws_cloudfront_1.default(event.Records[0].cf);

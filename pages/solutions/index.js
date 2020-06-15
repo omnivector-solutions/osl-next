@@ -3,7 +3,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-
 import CharmsPanel from "../../components/charmsPanel";
 import BundlesPanel from "../../components/bundlesPanel";
 import Layout from "../../components/layout";
@@ -53,7 +52,7 @@ const Solutions = (props) => {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <CharmsPanel charms={props.charms} />
+            <CharmsPanel charms={props.charms} header={true} />
           </Grid>
         </Grid>
         <div className={classes.marginDiv} />

@@ -1,12 +1,20 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-const oslBlue = "#0075b2";
+const oslBlue = "#0075B2";
+const oslDarkBlue = "#06509B";
+const oslLightBlue = "#7FB2F0";
+const oslRed = "#E6191E";
+const oslPink = "#F17398";
 const oslOrange = "#FF8B00";
 
 export default createMuiTheme({
   palette: {
     common: {
       blue: `${oslBlue}`,
+      darkBlue: `${oslDarkBlue}`,
+      lightBlue: `${oslLightBlue}`,
+      red: `${oslRed}`,
+      pink: `${oslPink}`,
       orange: `${oslOrange}`,
     },
     primary: {
@@ -42,6 +50,12 @@ export default createMuiTheme({
       fontSize: "1.2em",
       fontWeight: 500,
       color: "white",
+    },
+    body: {
+      fontFamily: "Ubuntu",
+      textTransform: "none",
+      fontWeight: 200,
+      color: "black",
     },
   },
 });
