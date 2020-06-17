@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import CodeIcon from "@material-ui/icons/Code";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import Chip from "@material-ui/core/Chip";
@@ -23,21 +25,19 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   heading: {
-    width: "250px",
+    width: "35%",
     fontFamily: "Ubuntu",
     textTransform: "none",
-    fontSize: "2.2em",
+    fontSize: "1em",
     fontWeight: 600,
     color: theme.palette.primary.main,
-    fontSize: theme.typography.pxToRem(15),
     margin: "8px",
   },
   secondaryHeading: {
     fontFamily: "Ubuntu",
     textTransform: "none",
-    fontSize: "2.2em",
+    fontSize: "1em",
     fontWeight: 200,
-    fontSize: theme.typography.pxToRem(15),
     margin: "8px",
     color: "black",
   },
@@ -50,9 +50,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   column50: {
-    flexBasis: "50%",
+    width: "50%",
     display: "flex",
+    marginRight: "6px",
     flexDirection: "column",
+    wordWrap: "break-word",
   },
   divider: {
     borderLeft: `2px solid ${theme.palette.divider}`,
@@ -121,10 +123,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const charmsPanel = (props) => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const small = useMediaQuery(theme.breakpoints.up("sm"));
+
   const [searchTerm, setSearchTerm] = useState("");
   const [charmList, setCharmList] = useState(props.charms);
 
-  const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const expandPanel = (panel) => (event, isExpanded) => {
@@ -167,11 +172,7 @@ const charmsPanel = (props) => {
             }}
           />
         </div>
-      ) : (
-        <div className={classes.headerContainerSm}>
-          <Typography className={classes.headerTextSm}>Charms:</Typography>
-        </div>
-      )}
+      ) : null}
       {charmList.map((charm, index) => {
         return (
           <ExpansionPanel
@@ -245,8 +246,7 @@ const charmsPanel = (props) => {
                 color="secondary"
                 variant="contained"
                 className={classes.charmLink}
-                startIcon={<CodeIcon />}
-                size="large"
+                startIcon={small ? <CodeIcon /> : null}
                 href={`/solutions/charms/${charm.data.Name}`}>
                 Details
               </Button>
@@ -266,8 +266,7 @@ const charmsPanel = (props) => {
                 color="primary"
                 variant="contained"
                 className={classes.deploy}
-                size="large"
-                startIcon={<CloudUploadIcon />}
+                startIcon={small ? <CloudUploadIcon /> : null}
                 href={`https://jujucharms.com/new/?dd=${charm.Id.substring(
                   3
                 )}`}>

@@ -18,20 +18,30 @@ const next_aws_cloudfront_1 = __importDefault(require("next-aws-cloudfront"));
 const addS3HostHeader = (req, s3DomainName) => {
     req.headers["host"] = [{ key: "host", value: s3DomainName }];
 };
+const isDataRequest = (uri) => uri.startsWith("/_next/data");
 const router = (manifest) => {
     const { pages: { ssr, html } } = manifest;
     const allDynamicRoutes = Object.assign(Object.assign({}, ssr.dynamic), html.dynamic);
-    return (path) => {
-        if (ssr.nonDynamic[path]) {
-            return ssr.nonDynamic[path];
+    return (uri) => {
+        let normalisedUri = uri;
+        if (isDataRequest(uri)) {
+            normalisedUri = uri
+                .replace(`/_next/data/${manifest.buildId}`, "")
+                .replace(".json", "");
+        }
+        if (ssr.nonDynamic[normalisedUri]) {
+            return ssr.nonDynamic[normalisedUri];
         }
         for (const route in allDynamicRoutes) {
             const { file, regex } = allDynamicRoutes[route];
             const re = new RegExp(regex, "i");
-            const pathMatchesRoute = re.test(path);
+            const pathMatchesRoute = re.test(normalisedUri);
             if (pathMatchesRoute) {
                 return file;
             }
+        }
+        if (html.nonDynamic["/404"] !== undefined) {
+            return "pages/404.html";
         }
         return "pages/_error.js";
     };
@@ -64,8 +74,15 @@ exports.handler = (event) => __awaiter(void 0, void 0, void 0, function* () {
         addS3HostHeader(request, s3Origin.domainName);
         return request;
     }
-    const { req, res, responsePromise } = next_aws_cloudfront_1.default(event.Records[0].cf);
     const page = require(`./${pagePath}`);
-    page.render(req, res);
+    const { req, res, responsePromise } = next_aws_cloudfront_1.default(event.Records[0].cf);
+    if (isDataRequest(uri)) {
+        const { renderOpts } = yield page.renderReqToHTML(req, res, "passthrough");
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify(renderOpts.pageData));
+    }
+    else {
+        page.render(req, res);
+    }
     return responsePromise;
 });

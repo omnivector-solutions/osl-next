@@ -1,2 +1,4 @@
-nextApp:
-  component: "serverless-next.js"
+myApp:
+  component: serverless-next.js
+  inputs:
+    domain: ["staging", "omnivector.technology"] # [ sub-domain, domain ]
