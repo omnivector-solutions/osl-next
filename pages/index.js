@@ -47,20 +47,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "2.5em",
     color: "black",
     lineHeight: "1.15em",
-    marginBottom: "1vh",
-    marginTop: "10vh",
     [theme.breakpoints.down("md")]: {
       fontSize: "2em",
-      marginTop: "10vh",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "2em",
-      marginTop: "10vh",
-      marginLeft: "8vw",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "4vh",
-      marginLeft: "12vw",
     },
   },
   main: {
@@ -68,12 +59,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.4em",
     [theme.breakpoints.down("md")]: {
       fontSize: "1.2em",
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "8vw",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: "12vw",
     },
   },
   body: {
@@ -83,6 +68,10 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.2em",
     },
   },
+  cardHeaderContainer: {
+    backgroundColor: theme.palette.primary.main,
+    width: "100%",
+  },
   cardHeader: {
     ...theme.typography.header,
     fontSize: "1.5em",
@@ -90,16 +79,12 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1em",
     padding: "12px",
   },
-  cardSubHead: {
+  cardSubHeader: {
     ...theme.typography.header,
     fontSize: "1.3em",
     color: theme.palette.primary.main,
     lineHeight: "1em",
     padding: "12px 0",
-  },
-  cardHeaderContainer: {
-    backgroundColor: theme.palette.primary.main,
-    width: "100%",
   },
   cardBody: {
     ...theme.typography.body,
@@ -108,10 +93,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: "12px 0",
     [theme.breakpoints.down("sm")]: {
-      margin: "12px 3vw",
-    },
-    [theme.breakpoints.down("sm")]: {
-      margin: "12px 12vw",
+      margin: "12px 0",
     },
   },
   boxesImg: {
@@ -130,6 +112,10 @@ const useStyles = makeStyles((theme) => ({
   gridContainer: {
     margin: "0 10vw",
     width: "80vw",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 3vw",
+      width: "94vw",
+    },
   },
   badge: {
     margin: "10vh 0",
@@ -168,7 +154,7 @@ const Home = (props) => {
     <Layout>
       <div className={classes.toolbarMargin} />
       <div className={classes.backgroundImage}>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} className={classes.gridContainer}>
           {small ? (
             <Grid item xs={10} sm={5} md={6}>
               <img
@@ -178,7 +164,7 @@ const Home = (props) => {
               />
             </Grid>
           ) : null}
-          <Grid item xs={11} sm={6} md={4} className={classes.header}>
+          <Grid item xs={12} sm={6} md={4} className={classes.header}>
             <Typography className={classes.title}>
               Introducing a better way to deploy Slurm Workload Manager
             </Typography>
@@ -210,7 +196,7 @@ const Home = (props) => {
                 </Typography>
               </div>
               <CardContent>
-                <Typography className={classes.cardSubHead}>
+                <Typography className={classes.cardSubHeader}>
                   Slurm workload manager by SchedMD® (
                   <a href={"https://schedmd.com/"}>website</a>)
                 </Typography>
@@ -224,7 +210,7 @@ const Home = (props) => {
                   systems in the
                   <a href={"https://www.top500.org/lists/top500/"}> TOP500.</a>
                 </Typography>
-                <Typography className={classes.cardSubHead}>
+                <Typography className={classes.cardSubHeader}>
                   Slurm on Snapcraft.io
                 </Typography>
                 <Typography className={classes.body}>
@@ -232,7 +218,7 @@ const Home = (props) => {
                   without modification across many different Linux
                   distributions.
                 </Typography>
-                <Typography className={classes.cardSubHead}>
+                <Typography className={classes.cardSubHeader}>
                   on JAAS.ai:
                 </Typography>
                 <Typography className={classes.body}>
@@ -241,7 +227,7 @@ const Home = (props) => {
                   approach to deploying Slurm, allowing full automation and
                   DevOps agility.
                 </Typography>
-                <Typography className={classes.cardSubHead}>
+                <Typography className={classes.cardSubHeader}>
                   Juju Charms:
                 </Typography>
                 <Typography className={classes.body}>
@@ -249,7 +235,7 @@ const Home = (props) => {
                   entire logic required to install, configure, connect and
                   maintain each Slurm application?!!?!?!?!? .
                 </Typography>
-                <Typography className={classes.cardSubHead}>
+                <Typography className={classes.cardSubHeader}>
                   Slurm Bundles:
                 </Typography>
                 <Typography className={classes.body}>
@@ -323,7 +309,7 @@ const Home = (props) => {
             </Card>
           </Grid>
         </Grid>
-        <img src={"/images/badge.svg"} alt="icon" className={classes.badge} />
+        {/* <img src={"/images/badge.svg"} alt="icon" className={classes.badge} /> */}
         <Grid container spacing={4} className={classes.gridContainer}>
           <Grid item sm={12} lg={4}>
             <Card>
@@ -331,7 +317,7 @@ const Home = (props) => {
                 <Typography className={classes.cardHeader}>Links:</Typography>
               </div>
               <CardContent>
-                <Typography className={classes.cardSubHead}>
+                <Typography className={classes.cardSubHeader}>
                   Slurm Workload Manager:
                 </Typography>
                 <a
@@ -383,11 +369,13 @@ const Home = (props) => {
                 </Typography>
               </div>
               <CardContent>
-                <Typography className={classes.cardSubHead}>Email:</Typography>
+                <Typography className={classes.cardSubHeader}>
+                  Email:
+                </Typography>
                 <Typography className={classes.body}>
                   info@omnivector.solutions
                 </Typography>
-                <Typography className={classes.cardSubHead}>
+                <Typography className={classes.cardSubHeader}>
                   Community:
                 </Typography>
                 <a

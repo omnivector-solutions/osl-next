@@ -55,7 +55,7 @@ const SlurmSnapDistros = () => {
     {
       name: "KDE Neon",
       link: "https://snapcraft.io/install/slurm/kde-neon",
-      logo: "/images/Distro_Logo_KDE+Neon.svg",
+      logo: "/images/Distro_Logo_KDENeon.svg",
     },
     {
       name: "Kubuntu",
@@ -90,7 +90,7 @@ const SlurmSnapDistros = () => {
     {
       name: "RaspPi",
       link: "https://snapcraft.io/install/slurm/raspbian",
-      logo: "/images/RGB+RPi.svg",
+      logo: "/images/RGBRPi.svg",
     },
   ];
 

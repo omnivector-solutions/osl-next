@@ -366,7 +366,7 @@ export default function Header(props) {
                 ? classes.toolbar
                 : classes.toolbarTransparent
             }>
-            <Button onClick={() => setSelectedValue(false)}>
+            <Button onClick={() => setSelectedValue(false)} href={"/"}>
               <OVLogo className={classes.logo} />
             </Button>
             {matches ? drawer : buttons}
