@@ -9,6 +9,8 @@ import {
   useTheme,
   useMediaQuery,
 } from "@material-ui/core";
+
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import { makeStyles } from "@material-ui/styles";
 
@@ -91,22 +93,17 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1em",
   },
   button: {
-    margin: "12px 0",
-    [theme.breakpoints.down("sm")]: {
-      margin: "12px 0",
-    },
+    ...theme.typography.header,
+    fontSize: "1.3em",
+    color: theme.palette.primary.main,
+    width: "40%",
+    margin: "12px 60%",
   },
   boxesImg: {
     width: "35vw",
-    margin: "2vw 12vw",
+    margin: "2vw",
     [theme.breakpoints.down("xs")]: {
       width: "0",
-    },
-    [theme.breakpoints.down("sm")]: {
-      margin: "8vw 4vw",
-    },
-    [theme.breakpoints.down("md")]: {
-      margin: "8vw 12vw",
     },
   },
   gridContainer: {
@@ -117,18 +114,47 @@ const useStyles = makeStyles((theme) => ({
       width: "94vw",
     },
   },
+  badgeContainer: {
+    width: "100vw",
+    overflow: "hidden",
+  },
   badge: {
     margin: "10vh 0",
     [theme.breakpoints.down("lg")]: {
       objectFit: "cover,",
-      objectPosition: "-25vw 0",
-      width: "150%",
+      objectPosition: "-10vw 0",
+      width: "120%",
     },
     [theme.breakpoints.down("md")]: {
       objectFit: "cover,",
       objectPosition: "-50vw 0",
       width: "200%",
     },
+    [theme.breakpoints.down("sm")]: {
+      objectFit: "cover,",
+      objectPosition: "-100vw 0",
+      width: "300%",
+    },
+  },
+  introContainer: {
+    margin: "12px",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  links: {
+    width: "250px",
+  },
+  logo: {
+    color: "black",
+    width: "100px",
+    margin: "12px",
+  },
+  logosContainer: {
+    display: "flex",
+    margin: "row",
+    justifyContent: "center",
   },
 }));
 
@@ -164,26 +190,27 @@ const Home = (props) => {
               />
             </Grid>
           ) : null}
-          <Grid item xs={12} sm={6} md={4} className={classes.header}>
-            <Typography className={classes.title}>
-              Introducing a better way to deploy Slurm Workload Manager
-            </Typography>
-            <Typography className={classes.main}>
-              OmniVector is excited to intruduce an new set of packaging and
-              automation tools developed to simplify the deploymet of Slurm
-              Workload Manager onto any Linux custer. You want a toe? I can get
-              ya a toe. Believe me there are ways dude, you don't even wanna
-              know about em believe me. Hell I can get ya a toe by three o'clock
-              this afternoon, with nail polish.
-            </Typography>
-
-            <Button
-              variant="contained"
-              color="primary"
-              href={"/posts/slurm-snap-release-1"}
-              className={classes.button}>
-              Read More...
-            </Button>
+          <Grid item xs={12} sm={7} md={6} className={classes.header}>
+            <div className={classes.introContainer}>
+              <Typography className={classes.title}>
+                Introducing a better way to deploy Slurm Workload Manager
+              </Typography>
+              <Typography className={classes.main}>
+                OmniVector is excited to intruduce an new set of packaging and
+                automation tools developed to simplify the deploymet of Slurm
+                Workload Manager onto any Linux custer. You want a toe? I can
+                get ya a toe. Believe me there are ways dude, you don't even
+                wanna know about em believe me. Hell I can get ya a toe by three
+                o'clock this afternoon, with nail polish.
+              </Typography>
+              <Button
+                size="small"
+                href={"/posts/slurm-snap-release-1"}
+                className={classes.button}
+                startIcon={<NavigateNextIcon />}>
+                Read More
+              </Button>
+            </div>
           </Grid>
         </Grid>
 
@@ -201,8 +228,8 @@ const Home = (props) => {
                   <a href={"https://schedmd.com/"}>website</a>)
                 </Typography>
                 <Typography className={classes.body}>
-                  SchedMD® is the core company behind the Slurm workload manager
-                  software, a free open-source workload manager designed
+                  SchedMD® is the core company behind the Slurm workload
+                  manager software, a free open-source workload manager designed
                   specifically to satisfy the demanding needs of high
                   performance computing. Slurm is in widespread use at
                   government laboratories, universities and companies world wide
@@ -309,7 +336,10 @@ const Home = (props) => {
             </Card>
           </Grid>
         </Grid>
-        {/* <img src={"/images/badge.svg"} alt="icon" className={classes.badge} /> */}
+
+        <div className={classes.badgeContainer}>
+          <img src={"/images/badge.svg"} alt="icon" className={classes.badge} />
+        </div>
         <Grid container spacing={4} className={classes.gridContainer}>
           <Grid item sm={12} lg={4}>
             <Card>
@@ -320,28 +350,71 @@ const Home = (props) => {
                 <Typography className={classes.cardSubHeader}>
                   Slurm Workload Manager:
                 </Typography>
-                <a
-                  href="https://schedmd.com/"
-                  target="_blank"
-                  rel="noopener noreferrer">
+                <div className={classes.links}>
                   <Button
-                    variant="outlined"
                     color="secondary"
-                    endIcon={<OpenInNewIcon />}>
+                    startIcon={<NavigateNextIcon />}
+                    href="https://schedmd.com/">
                     SchedMD
                   </Button>
-                </a>
-                <a
-                  href="https://slurm.schedmd.com/"
-                  target="_blank"
-                  rel="noopener noreferrer">
                   <Button
-                    variant="outlined"
                     color="secondary"
-                    endIcon={<OpenInNewIcon />}>
+                    startIcon={<NavigateNextIcon />}
+                    href="https://schedmd.com/">
                     Slurm Docs
                   </Button>
-                </a>
+                </div>
+                <Typography className={classes.cardSubHeader}>
+                  Slurm Snap:
+                </Typography>
+                <div className={classes.links}>
+                  <Button
+                    color="secondary"
+                    startIcon={<NavigateNextIcon />}
+                    href="https://snapcraft.io/slurm">
+                    Snapcraft.io
+                  </Button>
+                </div>
+                <Typography className={classes.cardSubHeader}>
+                  Slurm Charms:
+                </Typography>
+                <div className={classes.links}>
+                  <Button
+                    color="secondary"
+                    startIcon={<NavigateNextIcon />}
+                    href="/solutions/charms/slurm-controller">
+                    Slurm Controller
+                  </Button>
+                  <Button
+                    color="secondary"
+                    startIcon={<NavigateNextIcon />}
+                    href="/solutions/charms/slurm-dbd">
+                    Slurm Dbd
+                  </Button>
+                  <Button
+                    color="secondary"
+                    startIcon={<NavigateNextIcon />}
+                    href="/solutions/charms/slurm-node">
+                    Slurm Node
+                  </Button>
+                </div>
+                <Typography className={classes.cardSubHeader}>
+                  Slurm Bundles:
+                </Typography>
+                <div className={classes.links}>
+                  <Button
+                    color="secondary"
+                    startIcon={<NavigateNextIcon />}
+                    href="https://jaas.ai/slurm-core/bundle/0">
+                    Slurm Core
+                  </Button>
+                  <Button
+                    color="secondary"
+                    startIcon={<NavigateNextIcon />}
+                    href="https://jaas.ai/slurm-openfoam/bundle/0">
+                    Slurm OpenFoam
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </Grid>
@@ -353,9 +426,29 @@ const Home = (props) => {
                 </Typography>
               </div>
               <CardContent>
+                <div className={classes.logosContainer}>
+                  <img
+                    src={"/images/Canonical-logo.png"}
+                    alt="icon"
+                    className={classes.logo}
+                  />
+                  <img
+                    src={"/images/juju-logo.png"}
+                    alt="icon"
+                    className={classes.logo}
+                  />
+                  <img
+                    src={"/images/ubuntulogo_3.png"}
+                    alt="icon"
+                    className={classes.logo}
+                  />
+                </div>
                 <Typography className={classes.body}>
                   OmniVector Solutions partners with Canonical to deliver
-                  scaleable and maintainable software. Check us out at
+                  scaleable and maintainable software. Our connections to this
+                  open source community provide our clients a valuable resource
+                  when it comes to expediting progress on their JuJu based
+                  inititives. Check us out at
                   <a href={"jaas.ai/u/omnivector"}> jaas.ai</a>
                 </Typography>
               </CardContent>

@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   heading: {
-    width: "250px",
     fontFamily: "Ubuntu",
     textTransform: "none",
     fontSize: "2.2em",
@@ -34,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "8px",
   },
   secondaryHeading: {
-    maxWidth: "30vw",
     fontFamily: "Ubuntu",
     textTransform: "none",
     fontSize: "2.2em",
@@ -47,12 +45,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   column25: {
-    flexBasis: "25%",
+    width: "25%",
     display: "flex",
     flexDirection: "column",
   },
   column50: {
-    flexBasis: "50%",
+    width: "50%",
     display: "flex",
     flexDirection: "column",
   },
@@ -169,10 +167,15 @@ const bundlesPanel = (props) => {
               expandIcon={<ExpandMoreIcon />}
               aria-controls={bundle.Id}
               id={bundle.Id}>
-              <Typography className={classes.heading}>
+              <Typography className={clsx(classes.column50, classes.heading)}>
                 {bundle.Meta["id-name"].Name}
               </Typography>
-              <Typography className={classes.secondaryHeading}>
+              <Typography
+                className={clsx(
+                  classes.column50,
+                  classes.secondaryHeading,
+                  classes.divider
+                )}>
                 {bundle.Meta["bundle-metadata"].Description}
               </Typography>
             </ExpansionPanelSummary>
@@ -204,13 +207,13 @@ const bundlesPanel = (props) => {
                           key={key}
                           label={key}
                           className={classes.chip}
-                          avatar={
-                            <Avatar
-                              src={`https://api.jujucharms.com/charmstore/v5/${bundle.Meta[
-                                "bundle-metadata"
-                              ].applications[key].Charm.substring(3)}/icon.svg`}
-                            />
-                          }
+                          // avatar={
+                          //   <Avatar
+                          //     src={`https://api.jujucharms.com/charmstore/v5/${bundle.Meta[
+                          //       "bundle-metadata"
+                          //     ].applications[key].Charm.substring(3)}/icon.svg`}
+                          //   />
+                          // }
                           component="a"
                           href={`/charms/${bundle.Meta["id-name"].Name}`}
                           clickable

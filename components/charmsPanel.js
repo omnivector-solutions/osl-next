@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   column25: {
-    flexBasis: "25%",
+    width: "25%",
     display: "flex",
     flexDirection: "column",
   },
@@ -190,10 +190,15 @@ const charmsPanel = (props) => {
                 alt="icon"
                 className={classes.img}
               />
-              <Typography className={classes.heading}>
+              <Typography className={clsx(classes.column50, classes.heading)}>
                 {charm.data.Name}
               </Typography>
-              <Typography className={classes.secondaryHeading}>
+              <Typography
+                className={clsx(
+                  classes.column50,
+                  classes.secondaryHeading,
+                  classes.divider
+                )}>
                 {charm.data.Summary}
               </Typography>
             </ExpansionPanelSummary>
