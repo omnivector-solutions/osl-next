@@ -18,6 +18,7 @@ import Layout from "../components/layout";
 import SlurmSnapDistros from "../components/slurmSnapDistros";
 import { getFilteredCharmMetadata } from "../lib/charmstore";
 import CharmsPanel from "../components/charmsPanel";
+import ContactForm from "../components/contactForm";
 
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {

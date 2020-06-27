@@ -63,7 +63,7 @@ exports.handler = (event) => __awaiter(void 0, void 0, void 0, function* () {
         s3Origin.path = isHTMLPage ? "/static-pages" : "/public";
         if (isHTMLPage) {
             addS3HostHeader(request, s3Origin.domainName);
-            request.uri = uri + ".html";
+            request.uri = `${uri}.html`;
         }
         return request;
     }

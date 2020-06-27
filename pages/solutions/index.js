@@ -147,7 +147,7 @@ const Solutions = (props) => {
             </Grid>
             <Grid item xs={12} className={classes.marginDiv} />
 
-            <Grid item xs={4}>
+            <Grid item xs={12}>
               <Card>
                 <div className={classes.cardHeaderContainer}>
                   <Typography className={classes.cardHeader}>
@@ -166,7 +166,7 @@ const Solutions = (props) => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12}>
               <Card>
                 <div className={classes.cardHeaderContainer}>
                   <Typography className={classes.cardHeader}>
@@ -185,7 +185,7 @@ const Solutions = (props) => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12}>
               <Card>
                 <div className={classes.cardHeaderContainer}>
                   <Typography className={classes.cardHeader}>

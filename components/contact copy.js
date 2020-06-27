@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,62 +7,72 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import axios from "axios";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
-// import { DisplayFormikState } from './formikHelper';
 
-const styles = {};
+const useStyles = makeStyles((theme) => ({
+  tab: {
+    ...theme.typography.tab,
+    minWidth: 110,
+    marginLeft: "5px",
+    marginTop: 0,
+    color: "white",
+    opacity: 0.7,
+    position: "relative",
+    top: "-8px",
+  },
+}));
 
-const contactFormEndpoint = process.env.REACT_APP_CONTACT_ENDPOINT;
-
-function Contact(props) {
-  const { classes } = props;
+const Contact = (props) => {
+  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [isSubmitionCompleted, setSubmitionCompleted] = useState(false);
 
-  function handleClose() {
+  const handleClose = () => {
     setOpen(false);
-  }
+  };
 
-  function handleClickOpen() {
+  const handleClickOpen = () => {
     setSubmitionCompleted(false);
     setOpen(true);
-  }
+  };
 
   return (
     <React.Fragment>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Contact us!
+      <Button color="primary" onClick={handleClickOpen}>
+        Button Text Here
       </Button>
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title">
+        aria-labelledby="form-dialog-title"
+        style={{ zIndex: 1303 }}>
         {!isSubmitionCompleted && (
           <React.Fragment>
-            <DialogTitle id="form-dialog-title">Contact</DialogTitle>
+            <DialogTitle id="form-dialog-title">
+              Contact Omnivector Solutions
+            </DialogTitle>
             <DialogContent>
-              <DialogContentText>Send us a comment!</DialogContentText>
+              <DialogContentText>
+                Please fill out your contact details along with a message to let
+                us know what we can help you with. We can usually respond to
+                requests withing 24 hours. Thanks!
+              </DialogContentText>
               <Formik
-                initialValues={{ email: "", name: "", comment: "" }}
-                onSubmit={(values, { setSubmitting }) => {
-                  setSubmitting(true);
-                  axios
-                    .post(contactFormEndpoint, values, {
-                      headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Content-Type": "application/json",
-                      },
-                    })
-                    .then((resp) => {
-                      setSubmitionCompleted(true);
-                    });
+                initialValues={{
+                  email: "",
+                  name: "",
+                  message: "",
+                  subject: "",
                 }}
+                onSubmit={() => handleSubmit(values)}
                 validationSchema={Yup.object().shape({
-                  email: Yup.string().email().required("Required"),
-                  name: Yup.string().required("Required"),
-                  comment: Yup.string().required("Required"),
+                  email: Yup.string()
+                    .email()
+                    .required("Email address is required."),
+                  name: Yup.string().required("Name is required."),
+                  message: Yup.string().required("Message is required."),
+                  subject: Yup.string().required("Subject is required."),
                 })}>
                 {(props) => {
                   const {
@@ -79,8 +89,14 @@ function Contact(props) {
                   return (
                     <form onSubmit={handleSubmit}>
                       <TextField
+                        size="small"
+                        color="secondary"
+                        fullWidth
+                        error={errors.name && touched.name}
                         label="name"
                         name="name"
+                        variant="outlined"
+                        required
                         className={classes.textField}
                         value={values.name}
                         onChange={handleChange}
@@ -90,6 +106,11 @@ function Contact(props) {
                       />
 
                       <TextField
+                        size="small"
+                        color="secondary"
+                        fullWidth
+                        required
+                        variant="outlined"
                         error={errors.email && touched.email}
                         label="email"
                         name="email"
@@ -104,14 +125,41 @@ function Contact(props) {
                       />
 
                       <TextField
-                        label="comment"
-                        name="comment"
+                        size="small"
+                        color="secondary"
+                        fullWidth
+                        variant="outlined"
+                        required
+                        label="subject"
+                        name="subject"
+                        defaultValue={"Subject Default Value"}
                         className={classes.textField}
-                        value={values.comment}
+                        value={values.subject}
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        error={errors.subject && touched.subject}
                         helperText={
-                          errors.comment && touched.comment && errors.comment
+                          errors.subject && touched.subject && errors.subject
+                        }
+                        margin="normal"
+                      />
+                      <TextField
+                        size="small"
+                        color="secondary"
+                        fullWidth
+                        variant="outlined"
+                        error={errors.message && touched.message}
+                        label="message"
+                        name="message"
+                        required
+                        className={classes.textField}
+                        value={values.message}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        multiline
+                        rows="8"
+                        helperText={
+                          errors.message && touched.message && errors.message
                         }
                         margin="normal"
                       />
@@ -126,7 +174,6 @@ function Contact(props) {
                         <Button type="submit" disabled={isSubmitting}>
                           Submit
                         </Button>
-                        {/* <DisplayFormikState {...props} /> */}
                       </DialogActions>
                     </form>
                   );
@@ -137,21 +184,17 @@ function Contact(props) {
         )}
         {isSubmitionCompleted && (
           <React.Fragment>
-            <DialogTitle id="form-dialog-title">Thanks!</DialogTitle>
+            <DialogTitle id="form-dialog-title">
+              Thanks for contacting us!
+            </DialogTitle>
             <DialogContent>
-              <DialogContentText>Thanks</DialogContentText>
-              <DialogActions>
-                <Button type="button" className="outline" onClick={handleClose}>
-                  Back to app
-                </Button>
-                {/* <DisplayFormikState {...props} /> */}
-              </DialogActions>
+              <DialogContentText>We will get back you soon.</DialogContentText>
             </DialogContent>
           </React.Fragment>
         )}
       </Dialog>
     </React.Fragment>
   );
-}
+};
 
-export default withStyles(styles)(Contact);
+export default Contact;

@@ -1,4 +1,5 @@
 myApp:
   component: serverless-next.js
   inputs:
-    domain: ["staging", "omnivector.technology"] # [ sub-domain, domain ]
+    domain: ["rats", "omnivector.solutions"] # [ sub-domain, domain ]
+
