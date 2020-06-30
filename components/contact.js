@@ -15,17 +15,11 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { sendContactEmail } from "../lib/mail-api";
 
-const styles = {};
-
 const useStyles = makeStyles((theme) => ({
   tab: {
     ...theme.typography.tab,
     minWidth: 110,
-    marginLeft: "5px",
-    marginRight: "24px",
     color: "white",
-    position: "relative",
-    top: "-10px",
   },
 }));
 

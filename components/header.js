@@ -18,7 +18,6 @@ import {
 } from "@material-ui/core/";
 
 import MenuIcon from "@material-ui/icons/Menu";
-import HomeIcon from "@material-ui/icons/Home";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
 import OVLogo from "../public/images/OVLogoHoriz2color.svg";
@@ -68,13 +67,6 @@ const useStyles = makeStyles((theme) => ({
       height: "50px",
     },
   },
-  navButtonsContainer: {
-    width: "100%",
-    display: "flex",
-    alignContent: "flex-end",
-    textAlign: "right",
-    float: "right",
-  },
   logo: {
     height: "6em",
     marginLeft: "24px",
@@ -86,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
       height: "3em",
       margin: "2px",
     },
+  },
+  contactContainer: {
+    marginRight: "36px",
   },
   deploy: {
     ...theme.typography.deploy,
@@ -101,12 +96,6 @@ const useStyles = makeStyles((theme) => ({
     alignContent: "flex-end",
     textAlign: "right",
     float: "right",
-  },
-  navButtonSelected: {
-    ...theme.typography.deploy,
-    backgroundColor: theme.palette.secondary.main,
-    width: "100px",
-    margin: "0 30px 20px 20px ",
   },
   hamburger: {
     color: "white",
@@ -136,12 +125,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     margin: "auto",
     color: "white",
-    opacity: 0.5,
     marginLeft: "auto",
-  },
-  selectedItem: {
-    color: theme.palette.primary.dark,
-    opacity: 1,
   },
   appBar: {
     zIndex: theme.zIndex.modal + 1,
@@ -150,50 +134,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.light,
     opacity: 0.7,
   },
-  servicesLabel: {
-    ...theme.typography.tab,
-    color: "white",
-    width: "20vw",
-    marginLeft: "1.5vw",
-    textAlign: "center",
-    opacity: 0.5,
-  },
-  servicesIcon: {
-    color: "white",
-    textAlign: "center",
-    opacity: 0.5,
-    marginLeft: "15px",
-  },
-  servicesContainer: {
-    width: "20vw",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  serviceslistItem: {
-    fontFamily: "Ubuntu",
-    textTransform: "none",
-    fontWeight: 700,
-    display: "flex",
-    justifyContent: "left",
-    textAlign: "left",
-    margin: "auto",
-    color: "white",
-    opacity: 0.5,
-    marginLeft: "2vw",
-  },
-  selectedServiceslistItem: {
-    fontFamily: "Ubuntu",
-    textTransform: "none",
-    fontWeight: 700,
-    display: "flex",
-    justifyContent: "left",
-    textAlign: "left",
-    margin: "auto",
-    color: theme.palette.primary.light,
-    opacity: 1,
-    marginLeft: "2vw",
-  },
   discourseHeaderButton: {
     ...theme.typography.deploy,
     color: theme.palette.secondary.main,
@@ -201,16 +141,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 40px 20px 20px ",
   },
   discourseDrawerButton: {
-    fontFamily: "Ubuntu",
-    fontWeight: 700,
-    fontSize: "16px",
+    ...theme.typography.deploy,
     color: theme.palette.secondary.main,
-    opacity: 0.7,
-    marginLeft: "3.2vw",
-    height: "36px",
-    textDecoration: "none",
-    position: "relative",
-    top: "-10px",
+    marginTop: "16px",
   },
   anchor: {
     color: "black",
@@ -222,39 +155,8 @@ export default function Header(props) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const [selectedValue, setSelectedValue] = useState(0);
-  const [selectedIndex, setSelectedIndex] = useState(null);
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const handleChange = (event, newValue) => {
-    setSelectedValue(newValue);
-    setSelectedIndex(null);
-  };
-
-  const handleDrawerServiceClick = (event) => {
-    setSelectedIndex(event);
-    setSelectedValue(false);
-  };
-
-  const mainRoutes = [
-    { name: "Home", link: "/", activeIndex: 0, icon: <HomeIcon /> },
-  ];
-
-  const menuOptions = [
-    { to: "/big-data", label: "Big Data", activeIndex: 1, selectedIndex: 0 },
-    { to: "/hpc", label: "HPC", activeIndex: 1, selectedIndex: 1 },
-    {
-      to: "/elasticsearch",
-      label: "Elasticsearch",
-      activeIndex: 1,
-      selectedIndex: 2,
-    },
-    { to: "/redis", label: "Redis", activeIndex: 1, selectedIndex: 3 },
-    { to: "/ceph", label: "Ceph", activeIndex: 1, selectedIndex: 4 },
-    { to: "/devops", label: "DevOps", activeIndex: 1, selectedIndex: 5 },
-    { to: "/logging", label: "Logging", activeIndex: 1, selectedIndex: 6 },
-  ];
 
   const buttons = (
     <Grid container justify="flex-end">
@@ -268,29 +170,20 @@ export default function Header(props) {
       <Link href="/solutions">
         <Button className={classes.navButton}>Solutions</Button>
       </Link>
+      <div className={classes.contactContainer}>
+        <Contact />
+      </div>
 
-      <Contact
-        buttonPrefix=""
-        buttonContext="Contact Us"
-        buttonSuffix=""
-        subjectPrefix=""
-        subjectContext=""
-        subjectSuffix=""
-        buttonType="text"
-      />
-      <a
+      <Button
+        variant="outlined"
+        color="secondary"
         href="https://community.omnivector.solutions/"
         target="_blank"
         rel="noopener noreferrer"
-        className={classes.anchor}>
-        <Button
-          variant="outlined"
-          color="secondary"
-          endIcon={<OpenInNewIcon />}
-          className={classes.discourseHeaderButton}>
-          Discourse
-        </Button>
-      </a>
+        endIcon={<OpenInNewIcon />}
+        className={classes.discourseHeaderButton}>
+        Discourse
+      </Button>
     </Grid>
   );
 
@@ -305,47 +198,41 @@ export default function Header(props) {
         classes={{ paper: classes.drawer }}>
         <List dense>
           <div className={classes.toolbarMargin} />
-          <ListItem
-            onClick={() => [
-              setDrawerOpen(false),
-              setSelectedValue(0),
-              setSelectedIndex(null),
-            ]}
-            button
-            to={"/"}
-            className={classes.serviceslistItem}
-            selected={selectedValue === 0}
-            classes={{ selected: classes.selectedServiceslistItem }}>
+          <ListItem href={"/"} component={Link} className={classes.listItem}>
             <ListItemText disableTypography>Home</ListItemText>
           </ListItem>
           <Divider variant="middle" classes={{ root: classes.divider }} />
-          {menuOptions.map((route, index) => (
-            <Fragment key={index}>
-              <ListItem
-                onClick={() => [
-                  setDrawerOpen(false),
-                  handleDrawerServiceClick(index),
-                ]}
-                button
-                to={route.to}
-                selected={index === selectedIndex}
-                className={classes.serviceslistItem}
-                classes={{ selected: classes.selectedServiceslistItem }}>
-                <ListItemText disableTypography>{route.label}</ListItemText>
-              </ListItem>
-              <Divider variant="middle" classes={{ root: classes.divider }} />
-            </Fragment>
-          ))}
-          <a
-            href="https://community.omnivector.solutions/"
-            target="_blank"
-            rel="noopener noreferrer">
-            <div className={classes.discourseDrawerButton}>
-              Discourse
-              <OpenInNewIcon className={classes.openInNew} />
-            </div>
-          </a>
+          <ListItem
+            href={"/blog"}
+            component={Link}
+            className={classes.listItem}>
+            <ListItemText disableTypography>Blog</ListItemText>
+          </ListItem>
           <Divider variant="middle" classes={{ root: classes.divider }} />
+          <ListItem
+            href={"/solutions"}
+            component={Link}
+            className={classes.listItem}>
+            <ListItemText disableTypography>Solutions</ListItemText>
+          </ListItem>
+          <Divider variant="middle" classes={{ root: classes.divider }} />
+          <ListItem component={Contact}>
+            <ListItemText disableTypography>Contact</ListItemText>
+          </ListItem>
+          <Divider variant="middle" classes={{ root: classes.divider }} />
+
+          <ListItem>
+            <Button
+              variant="outlined"
+              color="secondary"
+              href="https://community.omnivector.solutions/"
+              target="_blank"
+              rel="noopener noreferrer"
+              endIcon={<OpenInNewIcon />}
+              className={classes.discourseDrawerButton}>
+              Discourse
+            </Button>
+          </ListItem>
         </List>
       </SwipeableDrawer>
       <IconButton
@@ -369,7 +256,7 @@ export default function Header(props) {
                 ? classes.toolbar
                 : classes.toolbarTransparent
             }>
-            <Button onClick={() => setSelectedValue(false)} href={"/"}>
+            <Button href={"/"}>
               <OVLogo className={classes.logo} />
             </Button>
             {matches ? drawer : buttons}
