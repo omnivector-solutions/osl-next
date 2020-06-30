@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
-import Chip from "@material-ui/core/Chip";
-import Divider from "@material-ui/core/Divider";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FilterListIcon from "@material-ui/icons/FilterList";
-import CodeIcon from "@material-ui/icons/Code";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import {
+  makeStyles,
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
+  ExpansionPanelActions,
+  Typography,
+  Chip,
+  Divider,
+  Button,
+  TextField,
+  InputAdornment,
+} from "@material-ui/core/";
 
-import Avatar from "@material-ui/core/Avatar";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import CodeIcon from "@material-ui/icons/Code";
+import FilterListIcon from "@material-ui/icons/FilterList";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+import Link from "./link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -207,16 +210,6 @@ const bundlesPanel = (props) => {
                           key={key}
                           label={key}
                           className={classes.chip}
-                          // avatar={
-                          //   <Avatar
-                          //     src={`https://api.jujucharms.com/charmstore/v5/${bundle.Meta[
-                          //       "bundle-metadata"
-                          //     ].applications[key].Charm.substring(3)}/icon.svg`}
-                          //   />
-                          // }
-                          component="a"
-                          href={`/charms/${bundle.Meta["id-name"].Name}`}
-                          clickable
                           variant="outlined"
                         />
                       );
@@ -234,6 +227,7 @@ const bundlesPanel = (props) => {
                 startIcon={<CodeIcon />}
                 className={classes.bundleLink}
                 size="large"
+                component={Link}
                 href={`/solutions/bundles/${bundle.Meta["id-name"].Name}`}>
                 Details
               </Button>
@@ -255,6 +249,7 @@ const bundlesPanel = (props) => {
                 className={classes.deploy}
                 startIcon={<CloudUploadIcon />}
                 size="large"
+                component={Link}
                 href={`https://jujucharms.com/new/?dd=${bundle.Id.substring(
                   3
                 )}`}>

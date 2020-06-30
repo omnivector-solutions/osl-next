@@ -1,11 +1,16 @@
 import React, { Fragment } from "react";
+import Link from "./link";
+
+//MUI COMPONENTS
+import {
+  Paper,
+  Typography,
+  Divider,
+  Grid,
+  Chip,
+  Avatar,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import Grid from "@material-ui/core/Grid";
-import Chip from "@material-ui/core/Chip";
-import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles((theme) => ({
   headerContainer: {
@@ -89,7 +94,7 @@ const BundleDetails = (props) => {
                             ].applications[key].Charm.substring(3)}/icon.svg`}
                           />
                         }
-                        component="a"
+                        component={Link}
                         href={`/charms/${props.meta["id-name"].Name}`}
                         clickable
                         variant="outlined"

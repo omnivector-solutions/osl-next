@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Link from "./link";
+
+//MUI COMPONENTS
+import {
+  useTheme,
+  makeStyles,
+  Chip,
+  Divider,
+  Button,
+  InputAdornment,
+  TextField,
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
+  ExpansionPanelActions,
+  Typography,
+  useMediaQuery,
+} from "@material-ui/core/";
+
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import CodeIcon from "@material-ui/icons/Code";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useTheme } from "@material-ui/core/styles";
-
-import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
-import Chip from "@material-ui/core/Chip";
-import Divider from "@material-ui/core/Divider";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-
 import FilterListIcon from "@material-ui/icons/FilterList";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -252,6 +256,7 @@ const charmsPanel = (props) => {
                 variant="contained"
                 className={classes.charmLink}
                 startIcon={small ? <CodeIcon /> : null}
+                component={Link}
                 href={`/solutions/charms/${charm.data.Name}`}>
                 Details
               </Button>

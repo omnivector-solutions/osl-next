@@ -14,6 +14,7 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import { makeStyles } from "@material-ui/styles";
 
+import Link from "../components/link";
 import Layout from "../components/layout";
 import SlurmSnapDistros from "../components/slurmSnapDistros";
 import { getFilteredCharmMetadata } from "../lib/charmstore";
@@ -206,6 +207,7 @@ const Home = (props) => {
               </Typography>
               <Button
                 size="small"
+                component={Link}
                 href={"/posts/slurm-snap-release-1"}
                 className={classes.button}
                 startIcon={<NavigateNextIcon />}>
@@ -286,7 +288,7 @@ const Home = (props) => {
                 <Typography className={classes.cardBody}>
                   Choose your Linux distribution to get detailed installation
                   instructions. If yours is not shown, get more details on
-                  installing snapd documentation <a href={"#"}> here.</a>
+                  installing snapd documentation <a href={"/"}> here.</a>
                 </Typography>
                 <SlurmSnapDistros />
               </CardContent>
@@ -308,7 +310,7 @@ const Home = (props) => {
                 </Typography>
               </CardContent>
               <CharmsPanel
-                key={"elast"}
+                key={"12312"}
                 charms={props.slurm.charms}
                 header={false}
               />
@@ -330,7 +332,7 @@ const Home = (props) => {
                 </Typography>
               </CardContent>
               <CharmsPanel
-                key={"elast"}
+                key={"3244"}
                 charms={props.slurm.charms}
                 header={false}
               />
@@ -383,18 +385,21 @@ const Home = (props) => {
                   <Button
                     color="secondary"
                     startIcon={<NavigateNextIcon />}
+                    component={Link}
                     href="/solutions/charms/slurm-controller">
                     Slurm Controller
                   </Button>
                   <Button
                     color="secondary"
                     startIcon={<NavigateNextIcon />}
+                    component={Link}
                     href="/solutions/charms/slurm-dbd">
                     Slurm Dbd
                   </Button>
                   <Button
                     color="secondary"
                     startIcon={<NavigateNextIcon />}
+                    component={Link}
                     href="/solutions/charms/slurm-node">
                     Slurm Node
                   </Button>

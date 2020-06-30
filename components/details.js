@@ -1,15 +1,18 @@
 import React, { Fragment } from "react";
+import Link from "./link";
 
-import { makeStyles } from "@material-ui/styles";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import Chip from "@material-ui/core/Chip";
+import {
+  Paper,
+  Typography,
+  Divider,
+  Grid,
+  Button,
+  Chip,
+} from "@material-ui/core/";
 import BugReportIcon from "@material-ui/icons/BugReport";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import SystemUpdateAltIcon from "@material-ui/icons/SystemUpdateAlt";
+import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
   headerContainer: {
@@ -89,6 +92,7 @@ const CharmDetails = (props) => {
                 <Button
                   variant="contained"
                   color="default"
+                  component={Link}
                   href={`https://jujucharms.com/new/?deploy-target=${props.id}`}
                   className={classes.button}
                   startIcon={<SystemUpdateAltIcon />}>

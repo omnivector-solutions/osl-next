@@ -33,5 +33,5 @@ yarn-error.log*
 
 # serverless
 .serverless
-.serverless_nextjs
+.serverless_nextjs/
 sendgrid.env
