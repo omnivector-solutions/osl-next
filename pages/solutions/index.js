@@ -53,19 +53,24 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "2.5em",
     color: "black",
     lineHeight: "1.15em",
+  },
+  headerBody: {
+    marginTop: "8px",
+    width: "40vw",
+    ...theme.typography.body,
+    fontSize: "1.4em",
     [theme.breakpoints.down("md")]: {
-      fontSize: "2em",
+      width: "60vw",
+      fontSize: "1.2em",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "2em",
+    [theme.breakpoints.down("xs")]: {
+      width: "88vw",
+      marginTop: "16px",
     },
   },
   body: {
     ...theme.typography.body,
-    fontSize: "1.4em",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "1.2em",
-    },
+    fontSize: "1.2em",
   },
   headerContainer: {
     display: "flex",
@@ -125,76 +130,97 @@ const Solutions = (props) => {
             ) : null}
             <Grid item sm={8} md={8} className={classes.headerContainer}>
               <Typography className={classes.title}>
-                Snaps, Charms and Bundles
+                Application modelling for every cloud
               </Typography>
-              <Typography className={classes.body}>
-                By providing a declarative application deployment and
-                operations, Juju enables an infrastructure as code (IaC)
-                approach to deploying Slurm, allowing full automation and DevOps
-                agility.
+              <Typography className={classes.headerBody}>
+                Juju is an open source application modelling tool that allows us
+                to deploy, configure, scale and operate cloud infrastructures
+                quickly and efficiently on public clouds such as AWS, GCE, and
+                Azure along with private ones such as MAAS, OpenStack, and
+                VSphere.
                 <br />
                 <br />
-                Bundles are collections of charms. In this case, they represent
-                an entire Slurm model, rather than a single application. The
-                Slurm bundles provide a declarative devops approach to deploying
-                Slurm onto an HPC cluster.
+                One of the main advantages of Juju is its dynamic configuration
+                ability, which allows you to re-configure services on the fly,
+                add, remove, or change relationships between services, and scale
+                in or out with ease, sharing the operational knowledge and
+                making the most of the wider community.
               </Typography>
             </Grid>
             <Grid item xs={12} className={classes.marginDiv} />
 
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={12} md={4}>
               <Card>
                 <div className={classes.cardHeaderContainer}>
-                  <Typography className={classes.cardHeader}>
-                    Snaps, Charms and Bundles
-                  </Typography>
+                  <Typography className={classes.cardHeader}>Snaps </Typography>
                 </div>
                 <CardContent>
-                  <Typography className={classes.cardSubHeader}>
-                    Slurm on Snapcraft.io
-                  </Typography>
                   <Typography className={classes.body}>
-                    This snap is a bundle of Slurm and its dependencies that
-                    works without modification across many different Linux
-                    distributions.
+                    Snaps are app packages for desktop, cloud and IoT that are
+                    easy to install, secure, cross-platform and dependency-free.
+                    <ul>
+                      <li>
+                        <strong>snap </strong>is both the command line interface
+                        and the application package format
+                      </li>
+                      <li>
+                        <strong>snapd </strong>is the background service that
+                        manages and maintains snaps
+                      </li>
+                      <li>
+                        <strong>snapcraft </strong>is the command and the
+                        framework we use to build snaps
+                      </li>
+                      <li>
+                        <strong>Snap Store </strong>provides a place to upload
+                        and distribute snaps
+                      </li>
+                    </ul>
                   </Typography>
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={12} md={4}>
               <Card>
                 <div className={classes.cardHeaderContainer}>
-                  <Typography className={classes.cardHeader}>
-                    Snaps, Charms and Bundles
-                  </Typography>
+                  <Typography className={classes.cardHeader}>Charms</Typography>
                 </div>
                 <CardContent>
-                  <Typography className={classes.cardSubHeader}>
-                    Slurm on Snapcraft.io
-                  </Typography>
                   <Typography className={classes.body}>
-                    This snap is a bundle of Slurm and its dependencies that
-                    works without modification across many different Linux
-                    distributions.
+                    Charms are collections of scripts that contain all the
+                    operations necessary to deploy, configure, scale, and
+                    maintain cloud applications easily with Juju. Charms
+                    encapsulate a single application and all the code and
+                    know-how it takes to operate it, such as how to combine and
+                    work with other related applications or how to upgrade it.
                   </Typography>
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={12} md={4}>
               <Card>
                 <div className={classes.cardHeaderContainer}>
                   <Typography className={classes.cardHeader}>
-                    Snaps, Charms and Bundles
+                    Bundles
                   </Typography>
                 </div>
                 <CardContent>
-                  <Typography className={classes.cardSubHeader}>
-                    Slurm on Snapcraft.io
-                  </Typography>
                   <Typography className={classes.body}>
-                    This snap is a bundle of Slurm and its dependencies that
-                    works without modification across many different Linux
-                    distributions.
+                    Bundles are ready-to-run collections of applications which
+                    have been modelled to work together — this can include
+                    particular configurations and relations between the software
+                    to be deployed.
+                    <br />
+                    Bundles may also be optimised for different deployment
+                    scenarios of the same software — for example, a scale-out
+                    production ready version like{" "}
+                    <a href={"https://jaas.ai/canonical-kubernetes"}>
+                      The Canonical Distribution of Kubernetes
+                    </a>
+                    , or a development friendly test version like{" "}
+                    <a href={"https://jaas.ai/kubernetes-core"}>
+                      Kubernetes Core.
+                    </a>
                   </Typography>
                 </CardContent>
               </Card>

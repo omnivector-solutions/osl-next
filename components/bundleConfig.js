@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "8px",
     display: "flex",
   },
-
   column25: {
     flexBasis: "25%",
     display: "flex",
