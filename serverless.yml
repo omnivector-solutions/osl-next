@@ -1,5 +1,7 @@
+# SEE AVAILABLE INPUTS HERE:
+# https://github.com/serverless-nextjs/serverless-next.js/blob/master/README.md#inputs
+
 myApp:
   component: serverless-next.js
   inputs:
     domain: ["rats", "omnivector.solutions"] # [ sub-domain, domain ]
-

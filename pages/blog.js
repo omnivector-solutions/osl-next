@@ -23,6 +23,12 @@ const useStyles = makeStyles((theme) => ({
       height: 0,
     },
   },
+  backgroundImage: {
+    backgroundColor: "#f0f0f0",
+    backgroundImage: `url(
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dbdbdb' fill-opacity='0.62'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"
+    )`,
+  },
   marginDiv: {
     height: "1em",
   },
@@ -118,56 +124,57 @@ const Blog = (props) => {
     <Layout>
       <div className={classes.toolbarMargin} />
       <div className={classes.marginDiv} />
-      <Container maxWidth="lg">
-        <main>
-          <Link href={`/posts/${props.allPostsData[0].id}`}>
-            <img className={classes.img} src={props.allPostsData[0].image} />
-            <Typography className={classes.headerText}>
-              {props.allPostsData[0].title}
-            </Typography>
-            <Typography className={classes.subheaderText}>
-              {props.allPostsData[0].description}
-            </Typography>
-            <Typography className={classes.linkText}>
-              Continue reading...
-            </Typography>
-          </Link>
-          {/* End main featured post */}
-          {/* Sub featured posts */}
-          <Grid container spacing={4} className={classes.grid}>
-            {props.allPostsData.slice(1).map((post) => (
-              <Grid item key={post.id} xs={12} md={6}>
-                <Link href={`/posts/${post.id}`}>
-                  <Card className={classes.card}>
-                    <div className={classes.cardDetails}>
-                      <CardContent>
-                        <Typography variant="subtitle1" color="textSecondary">
-                          {post.date}
-                        </Typography>
-                        <Typography component="h2" variant="h5">
-                          {post.title}
-                        </Typography>
-                        <Typography variant="subtitle1" paragraph>
-                          {post.description}
-                        </Typography>
-                        <Typography>Continue reading...</Typography>
-                      </CardContent>
-                    </div>
-                    <Hidden xsDown>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image={post.image}
-                        title="Image title"
-                      />
-                    </Hidden>
-                  </Card>
-                </Link>
-              </Grid>
-            ))}
-          </Grid>
-          {/* End sub featured posts */}
-        </main>
-      </Container>
+      <div className={classes.backgroundImage}>
+        <Container maxWidth="lg">
+          <main>
+            <Link href={`/posts/${props.allPostsData[0].id}`}>
+              <img className={classes.img} src={props.allPostsData[0].image} />
+              <Typography className={classes.headerText}>
+                {props.allPostsData[0].title}
+              </Typography>
+              <Typography className={classes.subheaderText}>
+                {props.allPostsData[0].description}
+              </Typography>
+              <Typography className={classes.linkText}>
+                Continue reading...
+              </Typography>
+            </Link>
+            {/* End main featured post */}
+            {/* Sub featured posts */}
+            <Grid container spacing={4} className={classes.grid}>
+              {props.allPostsData.slice(1).map((post) => (
+                <Grid item key={post.id} xs={12} md={6}>
+                  <Link href={`/posts/${post.id}`}>
+                    <Card className={classes.card}>
+                      <div className={classes.cardDetails}>
+                        <CardContent>
+                          <Typography variant="subtitle1" color="textSecondary">
+                            {post.date}
+                          </Typography>
+                          <Typography component="h2" variant="h5">
+                            {post.title}
+                          </Typography>
+                          <Typography variant="subtitle1" paragraph>
+                            {post.description}
+                          </Typography>
+                          <Typography>Continue reading...</Typography>
+                        </CardContent>
+                      </div>
+                      <Hidden xsDown>
+                        <CardMedia
+                          className={classes.cardMedia}
+                          image={post.image}
+                          title="Image title"
+                        />
+                      </Hidden>
+                    </Card>
+                  </Link>
+                </Grid>
+              ))}
+            </Grid>
+          </main>
+        </Container>
+      </div>
       <div className={classes.marginDiv} />
     </Layout>
   );

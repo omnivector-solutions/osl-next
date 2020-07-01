@@ -249,7 +249,6 @@ const bundlesPanel = (props) => {
                 className={classes.deploy}
                 startIcon={<CloudUploadIcon />}
                 size="large"
-                component={Link}
                 href={`https://jujucharms.com/new/?dd=${bundle.Id.substring(
                   3
                 )}`}>

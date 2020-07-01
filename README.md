@@ -1,30 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+# OSL-NEXT
 
-## Getting Started
+> Omnivector Solutions Limited marketing site.
+> serverless-next.js
+> Bootstrapped with create-next-app.
+> Material UI for styling.
+> Sendgrid for contact form.
 
-First, run the development server:
+![](header.png)
 
-```bash
+## Setup
+
+```
+git clone https://github.com/omnivector-solutions/osl-next.git
+npm install
+touch .env.local
+     add the SENDGRID_API_KEY kay and value
+source .env.local
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+deploy to AWS:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+npx serverless
+```
 
-## Learn More
+## Meta
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Distributed under the GNU license. See `LICENSE` for more information.
+[https://github.com/omnivector-solutions/github-link](https://github.com/omnivector-solutions/)
