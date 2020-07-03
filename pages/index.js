@@ -253,10 +253,10 @@ const Home = (props) => {
               </div>
               <CardContent>
                 <Typography className={classes.body}>
-                  OmniVector has developed and open sourced Charms for
-                  Slurmctld, Slurmnode, Slurmdbd, Slurmrestd. These Charms make
-                  it esay to configure how each service is deployed and
-                  connected. You can read more about charms here.
+                  Bundles are ready-to-run collections of applications which
+                  have been modelled to work together -- this can include
+                  particular configurations and relations between the software
+                  to be deployed.
                 </Typography>
               </CardContent>
               <BundlesPanel bundles={props.slurm.bundles} header={false} />

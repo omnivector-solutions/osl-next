@@ -164,28 +164,28 @@ const Solutions = (props) => {
                   </Typography>
                   <List dense>
                     <ListItem>
-                      <ListItemText>
-                        snap is both the command line interface and the
-                        application package format
-                      </ListItemText>
+                      <Typography className={classes.body}>
+                        <strong>snap</strong> is both the command line interface
+                        and the application package format
+                      </Typography>
                     </ListItem>
                     <ListItem>
-                      <ListItemText>
-                        snapd is the background service that manages and
-                        maintains snaps
-                      </ListItemText>
+                      <Typography className={classes.body}>
+                        <strong>snapd</strong> is the background service that
+                        manages and maintains snaps
+                      </Typography>
                     </ListItem>
                     <ListItem>
-                      <ListItemText>
-                        snapcraft is the command and the framework we use to
-                        build snaps
-                      </ListItemText>
+                      <Typography className={classes.body}>
+                        <strong>snapcraft </strong> is the command and the
+                        framework we use to build snaps
+                      </Typography>
                     </ListItem>
                     <ListItem>
-                      <ListItemText>
-                        Snap Store provides a place to upload and distribute
-                        snaps
-                      </ListItemText>
+                      <Typography className={classes.body}>
+                        <strong>Snap Store </strong>provides a place to upload
+                        and distribute snaps
+                      </Typography>
                     </ListItem>
                   </List>
                 </CardContent>

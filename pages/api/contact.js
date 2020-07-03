@@ -10,19 +10,21 @@ export default async (req, res) => {
     })
     .catch((error) => {
       // Log friendly error
-      console.error(error);
+      console.log("error ", error);
 
       if (error.response) {
         // Extract error msg
         const { message, code, response } = error;
-        console.log(message);
-        console.log(code);
-
         // Extract response msg
         const { headers, body } = response;
-        console.log(headers);
-        console.log(body);
+        console.log("code, body: ", code, body.errors[0].message);
+        return { statusCode: code, message: body.errors[0].message };
       }
     });
-  return res.status(sgRes[0].statusCode).json({ body: sgRes[0].body });
+  if (sgRes.ResponseError) {
+    // handle errors ugh!
+    return sgRes;
+  } else {
+    res.status(sgRes[0].statusCode).json({ body: sgRes[0].body });
+  }
 };
