@@ -1,4 +1,5 @@
 import React from "react";
+import Iframe from "react-iframe";
 
 import {
   Typography,
@@ -16,10 +17,14 @@ import { makeStyles } from "@material-ui/styles";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
-import SlurmSnapDistros from "../components/slurmSnapDistros";
-import { getFilteredCharmMetadata } from "../lib/charmstore";
-import CharmsPanel from "../components/charmsPanel";
 import ContactForm from "../components/contactForm";
+import SlurmSnapDistros from "../components/slurmSnapDistros";
+import {
+  getFilteredCharmMetadata,
+  getFilteredBundleMetadata,
+} from "../lib/charmstore";
+import CharmsPanel from "../components/charmsPanel";
+import BundlesPanel from "../components/bundlesPanel";
 
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
@@ -36,8 +41,9 @@ const useStyles = makeStyles((theme) => ({
     height: "4em",
   },
   backgroundImage: {
+    background: `
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23dbdbdb' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
     backgroundColor: "#f0f0f0",
-    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23dbdbdb' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
   },
   title: {
     ...theme.typography.header,
@@ -52,13 +58,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   main: {
-    ...theme.typography.body,
-    fontSize: "1.4em",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "1.2em",
-    },
-  },
-  body: {
     ...theme.typography.body,
     fontSize: "1.4em",
     [theme.breakpoints.down("md")]: {
@@ -83,9 +82,9 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1em",
     padding: "12px 0",
   },
-  cardBody: {
+  body: {
     ...theme.typography.body,
-    fontSize: "1em",
+    fontSize: "1.2em",
   },
   button: {
     ...theme.typography.header,
@@ -151,6 +150,12 @@ const useStyles = makeStyles((theme) => ({
     margin: "row",
     justifyContent: "center",
   },
+  card: {
+    height: "100%",
+  },
+  iframe: {
+    marginTop: "12px",
+  },
 }));
 
 export async function getStaticProps() {
@@ -159,6 +164,10 @@ export async function getStaticProps() {
     { Id: "cs:slurm-controller-3" },
     { Id: "cs:slurm-dbd-0" },
     { Id: "cs:slurm-node-3" },
+  ]);
+  slurm.bundles = await getFilteredBundleMetadata([
+    { Id: "cs:bundle/slurm-core-0" },
+    { Id: "cs:bundle/slurm-openfoam-0" },
   ]);
   return {
     props: {
@@ -175,7 +184,7 @@ const Home = (props) => {
     <Layout>
       <div className={classes.toolbarMargin} />
       <div className={classes.backgroundImage}>
-        <Grid container spacing={4} className={classes.gridContainer}>
+        <Grid container spacing={2} className={classes.gridContainer}>
           {small ? (
             <Grid item xs={10} sm={5} md={6}>
               <img
@@ -191,12 +200,11 @@ const Home = (props) => {
                 Introducing a better way to deploy Slurm Workload Manager
               </Typography>
               <Typography className={classes.main}>
-                OmniVector is excited to intruduce an new set of packaging and
-                automation tools developed to simplify the deploymet of Slurm
-                Workload Manager onto any Linux custer. You want a toe? I can
-                get ya a toe. Believe me there are ways dude, you don't even
-                wanna know about em believe me. Hell I can get ya a toe by three
-                o'clock this afternoon, with nail polish.
+                We are excited to introduce the OmniVector Slurm HPC suite. We
+                have cultivated elements from each domain; infrastructure
+                lifecycle automation, CICD, user workflow tools and service
+                orchestration software, geared toward simplifying the Slurm
+                operational lifecycle.
               </Typography>
               <Button
                 size="small"
@@ -210,9 +218,74 @@ const Home = (props) => {
           </Grid>
         </Grid>
 
-        <Grid container spacing={4} className={classes.gridContainer}>
-          <Grid item sm={12} lg={8}>
+        <Grid container spacing={2} className={classes.gridContainer}>
+          <Grid item xs={12} sm={12} lg={4} className={classes.gridItem}>
+            <Card className={classes.card}>
+              <div className={classes.cardHeaderContainer}>
+                <Typography className={classes.cardHeader}>
+                  Slurm Snap
+                </Typography>
+              </div>
+              <CardContent>
+                <Typography className={classes.body}>
+                  OmniVector's Slurm snap can be found in the snap store{" "}
+                  <a href={"https://www.snapcraft.io/slurm"}>here</a>. We have
+                  created an open ecosystem around the packaging and delivery of
+                  Slurm itself and supporting software systems.
+                </Typography>
+                <Iframe
+                  url="https://snapcraft.io/slurm/embedded?button=black"
+                  width="100%"
+                  height="400px"
+                  display="initial"
+                  position="relative"
+                  className={classes.iframe}
+                />
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={4} className={classes.gridItem}>
             <Card>
+              <div className={classes.cardHeaderContainer}>
+                <Typography className={classes.cardHeader}>
+                  Slurm Bundles
+                </Typography>
+              </div>
+              <CardContent>
+                <Typography className={classes.body}>
+                  OmniVector has developed and open sourced Charms for
+                  Slurmctld, Slurmnode, Slurmdbd, Slurmrestd. These Charms make
+                  it esay to configure how each service is deployed and
+                  connected. You can read more about charms here.
+                </Typography>
+              </CardContent>
+              <BundlesPanel bundles={props.slurm.bundles} header={false} />
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={4} className={classes.gridItem}>
+            <Card>
+              <div className={classes.cardHeaderContainer}>
+                <Typography className={classes.cardHeader}>
+                  Slurm Charms
+                </Typography>
+              </div>
+              <CardContent>
+                <Typography className={classes.body}>
+                  OmniVector has developed and open sourced Charms for
+                  Slurmctld, Slurmnode, Slurmdbd, Slurmrestd. These Charms make
+                  it esay to configure how each service is deployed and
+                  connected. You can read more about charms here.
+                </Typography>
+              </CardContent>
+              <CharmsPanel
+                key={"3244"}
+                charms={props.slurm.charms}
+                header={false}
+              />
+            </Card>
+          </Grid>
+          <Grid item sm={12} lg={7}>
+            <Card className={classes.card}>
               <div className={classes.cardHeaderContainer}>
                 <Typography className={classes.cardHeader}>
                   Slurm Snap, Charms and Bundles
@@ -220,26 +293,28 @@ const Home = (props) => {
               </div>
               <CardContent>
                 <Typography className={classes.cardSubHeader}>
-                  Slurm workload manager by SchedMD® (
-                  <a href={"https://schedmd.com/"}>website</a>)
+                  Slurm workload manager by SchedMD®
                 </Typography>
                 <Typography className={classes.body}>
-                  SchedMD® is the core company behind the Slurm workload
-                  manager software, a free open-source workload manager designed
-                  specifically to satisfy the demanding needs of high
-                  performance computing. Slurm is in widespread use at
-                  government laboratories, universities and companies world wide
-                  and performs workload management for over half of the top 10
-                  systems in the
+                  SchedMD® (<a href={"https://schedmd.com/"}>website</a>) is
+                  the core company behind the Slurm workload manager software, a
+                  free open-source workload manager designed specifically to
+                  satisfy the demanding needs of high performance computing.
+                  Slurm is in widespread use at government laboratories,
+                  universities and companies world wide and performs workload
+                  management for over half of the top 10 systems in the
                   <a href={"https://www.top500.org/lists/top500/"}> TOP500.</a>
                 </Typography>
                 <Typography className={classes.cardSubHeader}>
                   Slurm on Snapcraft.io
                 </Typography>
                 <Typography className={classes.body}>
-                  This snap is a bundle of Slurm and its dependencies that works
-                  without modification across many different Linux
-                  distributions.
+                  OmniVector's Slurm snap can be found in the snap store here:
+                  <a href={"https://www.snapcraft.io/slurm"}>
+                    www.snapcraft.io/slurm
+                  </a>
+                  . We have created an open ecosystem around the packaging and
+                  delivery of Slurm itself and supporting software systems.
                 </Typography>
                 <Typography className={classes.cardSubHeader}>
                   on JAAS.ai:
@@ -270,15 +345,15 @@ const Home = (props) => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item lg={4} className={classes.gridItem}>
-            <Card>
+          <Grid item lg={5} className={classes.gridItem}>
+            <Card className={classes.card}>
               <div className={classes.cardHeaderContainer}>
                 <Typography className={classes.cardHeader}>
                   Instructions by distro:
                 </Typography>
               </div>
               <CardContent>
-                <Typography className={classes.cardBody}>
+                <Typography className={classes.body}>
                   Choose your Linux distribution to get detailed installation
                   instructions. If yours is not shown, get more details on
                   installing snapd documentation <a href={"/"}> here.</a>
@@ -287,58 +362,14 @@ const Home = (props) => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={12} lg={6} className={classes.gridItem}>
-            <Card>
-              <div className={classes.cardHeaderContainer}>
-                <Typography className={classes.cardHeader}>
-                  Slurm Bundles
-                </Typography>
-              </div>
-              <CardContent>
-                <Typography className={classes.cardBody}>
-                  OmniVector has developed and open sourced Charms for
-                  Slurmctld, Slurmnode, Slurmdbd, Slurmrestd. These Charms make
-                  it esay to configure how each service is deployed and
-                  connected. You can read more about charms here.
-                </Typography>
-              </CardContent>
-              <CharmsPanel
-                key={"12312"}
-                charms={props.slurm.charms}
-                header={false}
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={6} className={classes.gridItem}>
-            <Card>
-              <div className={classes.cardHeaderContainer}>
-                <Typography className={classes.cardHeader}>
-                  Slurm Charms
-                </Typography>
-              </div>
-              <CardContent>
-                <Typography className={classes.cardBody}>
-                  OmniVector has developed and open sourced Charms for
-                  Slurmctld, Slurmnode, Slurmdbd, Slurmrestd. These Charms make
-                  it esay to configure how each service is deployed and
-                  connected. You can read more about charms here.
-                </Typography>
-              </CardContent>
-              <CharmsPanel
-                key={"3244"}
-                charms={props.slurm.charms}
-                header={false}
-              />
-            </Card>
-          </Grid>
         </Grid>
 
         <div className={classes.badgeContainer}>
           <img src={"/images/badge.svg"} alt="icon" className={classes.badge} />
         </div>
-        <Grid container spacing={4} className={classes.gridContainer}>
+        <Grid container spacing={2} className={classes.gridContainer}>
           <Grid item sm={12} lg={4}>
-            <Card>
+            <Card className={classes.card}>
               <div className={classes.cardHeaderContainer}>
                 <Typography className={classes.cardHeader}>Links:</Typography>
               </div>
@@ -427,7 +458,7 @@ const Home = (props) => {
               <CardContent>
                 <div className={classes.logosContainer}>
                   <img
-                    src={"/images/Canonical-logo.png"}
+                    src={"/images/canonicalLogo.png"}
                     alt="icon"
                     className={classes.logo}
                   />
@@ -454,7 +485,7 @@ const Home = (props) => {
             </Card>
           </Grid>
           <Grid item sm={12} lg={4}>
-            <Card>
+            <Card className={classes.card}>
               <div className={classes.cardHeaderContainer}>
                 <Typography className={classes.cardHeader}>
                   Contact us:
@@ -462,10 +493,15 @@ const Home = (props) => {
               </div>
               <CardContent>
                 <Typography className={classes.cardSubHeader}>
-                  Email:
+                  Contact Omnivector Solutions:
                 </Typography>
+                {/* CONTACT FORM */}
+                <ContactForm />
                 <Typography className={classes.body}>
-                  info@omnivector.solutions
+                  <strong> Email: </strong>
+                  <a href="mailto:info@omnivector.solutions">
+                    info@omnivector.solutions
+                  </a>
                 </Typography>
                 <Typography className={classes.cardSubHeader}>
                   Community:

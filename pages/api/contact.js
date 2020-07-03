@@ -6,17 +6,23 @@ export default async (req, res) => {
   const sgRes = await sgMail
     .send(data)
     .then((res) => {
-      console.log("res[0] type: ", typeof res[0]);
-      console.log("res[0]: ", res[0].statusCode);
-
       return res;
     })
     .catch((error) => {
+      // Log friendly error
+      console.error(error);
+
       if (error.response) {
-        console.error(error.response.body);
-        return error;
+        // Extract error msg
+        const { message, code, response } = error;
+        console.log(message);
+        console.log(code);
+
+        // Extract response msg
+        const { headers, body } = response;
+        console.log(headers);
+        console.log(body);
       }
     });
-
-  res.status(sgRes[0].statusCode).json({ body: sgRes[0].body });
+  return res.status(sgRes[0].statusCode).json({ body: sgRes[0].body });
 };

@@ -140,26 +140,30 @@ const bundlesPanel = (props) => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.headerContainer}>
-        <Typography className={classes.headerText}>Bundle Library:</Typography>
-        <TextField
-          id="outlined-basic"
-          type="text"
-          size="small"
-          variant="outlined"
-          placeholder="Filter"
-          value={searchTerm}
-          onChange={() => filterBundles(event)}
-          className={classes.filter}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <FilterListIcon color="secondary" />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </div>
+      {props.header ? (
+        <div className={classes.headerContainer}>
+          <Typography className={classes.headerText}>
+            Bundle Library:
+          </Typography>
+          <TextField
+            id="outlined-basic"
+            type="text"
+            size="small"
+            variant="outlined"
+            placeholder="Filter"
+            value={searchTerm}
+            onChange={() => filterBundles(event)}
+            className={classes.filter}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <FilterListIcon color="secondary" />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </div>
+      ) : null}
       {bundleList.map((bundle, index) => {
         return (
           <ExpansionPanel

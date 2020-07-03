@@ -1,6 +1,9 @@
 import React from "react";
 
 import {
+  List,
+  ListItem,
+  ListItemText,
   makeStyles,
   Container,
   Grid,
@@ -117,7 +120,7 @@ const Solutions = (props) => {
       <div className={classes.toolbarMargin} />
       <div className={classes.backgroundImage}>
         <Container maxWidth="lg">
-          <Grid container spacing={1} className={classes.gridContainer}>
+          <Grid container spacing={2} className={classes.gridContainer}>
             <Grid item xs={12} className={classes.marginDiv} />
             {small ? (
               <Grid item xs={4} className={classes.imgContainer}>
@@ -158,25 +161,33 @@ const Solutions = (props) => {
                   <Typography className={classes.body}>
                     Snaps are app packages for desktop, cloud and IoT that are
                     easy to install, secure, cross-platform and dependency-free.
-                    <ul>
-                      <li>
-                        <strong>snap </strong>is both the command line interface
-                        and the application package format
-                      </li>
-                      <li>
-                        <strong>snapd </strong>is the background service that
-                        manages and maintains snaps
-                      </li>
-                      <li>
-                        <strong>snapcraft </strong>is the command and the
-                        framework we use to build snaps
-                      </li>
-                      <li>
-                        <strong>Snap Store </strong>provides a place to upload
-                        and distribute snaps
-                      </li>
-                    </ul>
                   </Typography>
+                  <List dense>
+                    <ListItem>
+                      <ListItemText>
+                        snap is both the command line interface and the
+                        application package format
+                      </ListItemText>
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText>
+                        snapd is the background service that manages and
+                        maintains snaps
+                      </ListItemText>
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText>
+                        snapcraft is the command and the framework we use to
+                        build snaps
+                      </ListItemText>
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText>
+                        Snap Store provides a place to upload and distribute
+                        snaps
+                      </ListItemText>
+                    </ListItem>
+                  </List>
                 </CardContent>
               </Card>
             </Grid>
@@ -229,6 +240,7 @@ const Solutions = (props) => {
 
             <Grid item xs={12} md={6}>
               <BundlesPanel
+                header
                 bundles={props.bundles}
                 className={classes.gridItem}
               />

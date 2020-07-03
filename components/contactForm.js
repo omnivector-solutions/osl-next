@@ -1,201 +1,140 @@
-import { Component } from "react";
-import TextareaAutosize from "react-autosize-textarea";
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/styles";
+
+import { TextField, Button, Typography } from "@material-ui/core";
+
+import { Formik } from "formik";
+import * as Yup from "yup";
 import { sendContactEmail } from "../lib/mail-api";
 
-class ContactForm extends Component {
-  state = {
-    formButtonDisabled: false,
-    formButtonText: "Send",
-    name: "",
-    mail: "",
-    formContent: "",
-  };
+const useStyles = makeStyles((theme) => ({
+  tab: {
+    ...theme.typography.tab,
+    minWidth: 110,
+    color: "white",
+  },
+}));
 
-  render() {
-    const {
-      formButtonText,
-      formButtonDisabled,
-      name,
-      mail,
-      formContent,
-    } = this.state;
+const Contact = () => {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [isSubmitionCompleted, setSubmitionCompleted] = useState(false);
 
-    const btnClass = formButtonDisabled ? "disabled" : "";
-
-    return (
-      <div>
-        <div className="grid">
-          <div className="col-8">
-            <h2>Contact form title</h2>
-            <p>Contact form introduction text</p>
-          </div>
-        </div>
-        <div className="grid">
-          <div className="col-4">
-            <input
-              type="text"
-              placeholder="Name"
-              value={name}
-              name="fname"
-              onChange={this.onNameChange}
-            />
-          </div>
-          <div className="col-4">
-            <input
-              type="email"
-              placeholder="E-Mail"
-              value={mail}
-              name="email"
-              onChange={this.onMailChange}
-            />
-          </div>
-        </div>
-        <div className="grid">
-          <div className="col-8">
-            <TextareaAutosize
-              name="text"
-              placeholder="Message"
-              value={formContent}
-              onChange={this.onFormContentChange}
-              style={{
-                minHeight: "48px",
-                width: "100%",
-                border: "none",
-                borderRadius: "0px",
-                margin: "8px 0px",
-                resize: "none",
-                padding: "0px",
-                paddingBottom: "14px",
-                WebkitAppearance: "none",
-                MozAppearance: "none",
-              }}
-            />
-          </div>
-          <div className="col-8">
-            <button
-              className={btnClass}
-              type="submit"
-              onClick={this.submitContactForm}
-              disabled={formButtonDisabled}>
-              {formButtonText}
-            </button>
-          </div>
-        </div>
-        <style jsx>{`
-          .grid {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            max-width: 1280px;
-            margin-right: auto;
-            margin-left: auto;
-            padding-left: 12px;
-            padding-right: 12px;
-          }
-
-          .col-4,
-          .col-8 {
-            padding: 8px 12px;
-            box-sizing: border-box;
-          }
-          .col-4 {
-            flex-basis: 50%;
-            max-width: 50%;
-          }
-          .col-8 {
-            flex-basis: 100%;
-            max-width: 100%;
-          }
-          @media only screen and (max-width: 768px) {
-            .grid {
-              flex-direction: column;
-              padding-left: 0px;
-              padding-right: 0px;
-            }
-            .col-4,
-            .col-8 {
-              padding-left: 24px;
-              padding-right: 24px;
-              flex-basis: 100%;
-              max-width: 100%;
-            }
-          }
-          input[type="text"],
-          input[type="email"] {
-            height: 48px;
-            width: 100%;
-            border: none;
-            border-radius: 0px;
-            border-bottom: 1px solid #121212;
-            margin: 8px 0px;
-            box-shadow: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            padding: 0px;
-            outline: none;
-          }
-
-          ::placeholder {
-            color: #c8cbce;
-          }
-
-          ::-ms-input-placeholder {
-            color: #c8cbce;
-          }
-
-          button {
-            padding: 0px 24px;
-            height: 48px;
-            background-color: #f83850;
-            margin: 16px 0px;
-            border: none;
-            border-radius: 0px;
-            cursor: pointer;
-            color: #fff;
-          }
-
-          .disabled {
-            background-color: #fff;
-            color: #121212;
-            cursor: auto;
-            padding-left: 0px;
-          }
-        `}</style>
-      </div>
-    );
+  function handleClose() {
+    setOpen(false);
   }
 
-  onNameChange = (event) => {
-    this.setState({ name: event.target.value });
-  };
+  function handleClickOpen() {
+    setSubmitionCompleted(false);
+    setOpen(true);
+  }
+  const date = Date.now();
 
-  onMailChange = (event) => {
-    this.setState({ mail: event.target.value });
-  };
+  return (
+    <React.Fragment>
+      <Typography>
+        Please fill out your contact details along with a message to let us know
+        what we can help you with. We can usually respond to requests withing 24
+        hours.
+      </Typography>
+      <Formik
+        initialValues={{
+          email: "",
+          name: "",
+          message: "",
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          setSubmitting(true);
+          const msg = {
+            to: "info@omnivector.solutions",
+            from: "info@omnivector.solutions",
+            subject: `Website Contact Form: ${Date(Date.now())}`,
+            html: `<p><strong>Name: </strong> ${values.name}</p><p><strong>Email: </strong> ${values.email}</p> <hr /><p><strong>Message: </strong> ${values.message}</p>`,
+          };
+          sendContactEmail(msg);
+          setSubmitionCompleted(true);
+        }}
+        validationSchema={Yup.object().shape({
+          email: Yup.string().email().required("Email Required"),
+          name: Yup.string().required("Name Required"),
+          message: Yup.string().required("Message Required"),
+        })}>
+        {(props) => {
+          const {
+            values,
+            touched,
+            errors,
+            dirty,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            handleReset,
+          } = props;
+          return (
+            <form onSubmit={handleSubmit}>
+              <TextField
+                size="small"
+                variant="outlined"
+                fullWidth
+                error={errors.name && touched.name}
+                label="name"
+                name="name"
+                className={classes.textField}
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                helperText={errors.name && touched.name && errors.name}
+                margin="normal"
+              />
 
-  onFormContentChange = (event) => {
-    this.setState({ formContent: event.target.value });
-  };
+              <TextField
+                size="small"
+                variant="outlined"
+                fullWidth
+                error={errors.email && touched.email}
+                label="email"
+                name="email"
+                className={classes.textField}
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                helperText={errors.email && touched.email && errors.email}
+                margin="normal"
+              />
 
-  submitContactForm = async (event) => {
-    event.preventDefault();
+              <TextField
+                size="small"
+                variant="outlined"
+                fullWidth
+                multiline
+                rows={8}
+                error={errors.message && touched.message}
+                label="message"
+                name="message"
+                className={classes.textField}
+                value={values.message}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                helperText={errors.message && touched.message && errors.message}
+                margin="normal"
+              />
+              <Button
+                type="button"
+                className="outline"
+                onClick={handleReset}
+                disabled={!dirty || isSubmitting}>
+                Reset
+              </Button>
+              <Button type="submit" disabled={isSubmitting}>
+                Submit
+              </Button>
+            </form>
+          );
+        }}
+      </Formik>
+    </React.Fragment>
+  );
+};
 
-    const recipientMail = "yourmail@example.com";
-    const { name, mail, formContent } = this.state;
-
-    const res = await sendContactMail(recipientMail, name, mail, formContent);
-    if (res.status < 300) {
-      this.setState({
-        formButtonDisabled: true,
-        formButtonText: "Thanks for your message",
-        name: "",
-        mail: "",
-        formContent: "",
-      });
-    } else {
-      this.setState({ formButtonText: "Please fill out all fields." });
-    }
-  };
-}
-
-export default ContactForm;
+export default Contact;
