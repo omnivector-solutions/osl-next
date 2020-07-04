@@ -92,6 +92,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     width: "40%",
     margin: "12px 60%",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.2em",
+    },
   },
   boxesImg: {
     width: "35vw",
@@ -144,6 +147,9 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     width: "100px",
     margin: "12px",
+    [theme.breakpoints.down("sm")]: {
+      width: "75px",
+    },
   },
   logosContainer: {
     display: "flex",
@@ -368,7 +374,7 @@ const Home = (props) => {
           <img src={"/images/badge.svg"} alt="icon" className={classes.badge} />
         </div>
         <Grid container spacing={2} className={classes.gridContainer}>
-          <Grid item sm={12} lg={4}>
+          <Grid item xs={12} sm={12} lg={4}>
             <Card className={classes.card}>
               <div className={classes.cardHeaderContainer}>
                 <Typography className={classes.cardHeader}>Links:</Typography>
@@ -448,7 +454,7 @@ const Home = (props) => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item sm={12} lg={4}>
+          <Grid item xs={12} sm={12} lg={4}>
             <Card>
               <div className={classes.cardHeaderContainer}>
                 <Typography className={classes.cardHeader}>
@@ -484,7 +490,7 @@ const Home = (props) => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item sm={12} lg={4}>
+          <Grid item xs={12} sm={12} lg={4}>
             <Card className={classes.card}>
               <div className={classes.cardHeaderContainer}>
                 <Typography className={classes.cardHeader}>

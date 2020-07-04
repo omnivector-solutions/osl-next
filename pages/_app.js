@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import { ThemeProvider, CssBaseline } from "@material-ui/core";
 import theme from "../components/theme";
+import { DefaultSeo } from "next-seo";
+
+// import your default seo configuration
+import SEO from "../lib/next-seo.config";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -17,6 +21,7 @@ export default function MyApp(props) {
 
   return (
     <React.Fragment>
+      <DefaultSeo {...SEO} />
       <Head>
         <title>My page</title>
         <meta
