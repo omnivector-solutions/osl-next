@@ -20,7 +20,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
-import OVLogo from "../public/images/OVLogoHoriz2color.svg";
+import OVLogo from "../public/images/ov-logo-horiz-2color.svg";
 import Contact from "./contact";
 import Link from "./link";
 
@@ -68,8 +68,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   logo: {
-    height: "6em",
-    marginLeft: "24px",
+    height: "5.5em",
+    margin: "24px",
     [theme.breakpoints.down("md")]: {
       height: "4em",
       margin: "4px",
@@ -256,9 +256,9 @@ export default function Header(props) {
                 ? classes.toolbar
                 : classes.toolbarTransparent
             }>
-            <Button href={"/"}>
+            <Link href={"/"}>
               <OVLogo className={classes.logo} />
-            </Button>
+            </Link>
             {matches ? drawer : buttons}
           </Toolbar>
         </AppBar>

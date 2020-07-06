@@ -13,6 +13,8 @@ import {
   Button,
   TextField,
   InputAdornment,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core/";
 
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
@@ -98,14 +100,11 @@ const useStyles = makeStyles((theme) => ({
   },
   cli: {
     margin: "10px",
-    width: "400px",
+    width: "100%",
   },
-  bundleLink: {
-    marginRight: "auto",
-    marginLeft: "8px",
-  },
-  deploy: {
-    marginRight: "8px",
+  button: {
+    width: "45%",
+    margin: "8px",
   },
   relatedCharmsContainer: {
     display: "block",
@@ -119,6 +118,8 @@ const useStyles = makeStyles((theme) => ({
 const bundlesPanel = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [bundleList, setBundleList] = useState(props.bundles);
+  const theme = useTheme();
+  const small = useMediaQuery(theme.breakpoints.up("sm"));
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -201,10 +202,6 @@ const bundlesPanel = (props) => {
                 />
               </div>
               <div className={clsx(classes.column25, classes.divider)}>
-                <Typography variant="caption">Tags:</Typography>
-                <div></div>
-              </div>
-              <div className={clsx(classes.column25, classes.divider)}>
                 <Typography variant="caption">Configuration:</Typography>
                 <div className={classes.relatedCharmsContainer}>
                   {Object.keys(bundle.Meta["bundle-metadata"].applications).map(
@@ -228,9 +225,8 @@ const bundlesPanel = (props) => {
                 size="small"
                 color="secondary"
                 variant="contained"
-                startIcon={<CodeIcon />}
-                className={classes.bundleLink}
-                size="large"
+                startIcon={small ? <CodeIcon /> : null}
+                className={classes.button}
                 component={Link}
                 href={`/solutions/bundles/${bundle.Meta["id-name"].Name}`}>
                 Details
@@ -250,9 +246,8 @@ const bundlesPanel = (props) => {
                 size="small"
                 color="primary"
                 variant="contained"
-                className={classes.deploy}
-                startIcon={<CloudUploadIcon />}
-                size="large"
+                className={classes.button}
+                startIcon={small ? <CloudUploadIcon /> : null}
                 href={`https://jujucharms.com/new/?dd=${bundle.Id.substring(
                   3
                 )}`}>

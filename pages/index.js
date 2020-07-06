@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.2em",
     },
   },
-  boxesImg: {
+  img: {
     width: "35vw",
     margin: "2vw",
     [theme.breakpoints.down("xs")]: {
@@ -196,11 +196,11 @@ const Home = (props) => {
               <img
                 src={"/images/boxes.png"}
                 alt="icon"
-                className={classes.boxesImg}
+                className={classes.img}
               />
             </Grid>
           ) : null}
-          <Grid item xs={12} sm={7} md={6} className={classes.header}>
+          <Grid item xs={12} sm={7} md={6}>
             <div className={classes.introContainer}>
               <Typography className={classes.title}>
                 Introducing a better way to deploy Slurm Workload Manager
@@ -337,7 +337,7 @@ const Home = (props) => {
                 <Typography className={classes.body}>
                   The Slurm Charms are software components that contain the
                   entire logic required to install, configure, connect and
-                  maintain each Slurm application?!!?!?!?!? .
+                  maintain each Slurm application.
                 </Typography>
                 <Typography className={classes.cardSubHeader}>
                   Slurm Bundles:

@@ -1,7 +1,4 @@
-const withPlugins = require("next-compose-plugins");
-const optimizedImages = require("next-optimized-images");
-
-module.exports = withPlugins([optimizedImages], {
+module.exports = {
   target: "serverless",
   webpack(config) {
     config.module.rules.push({
@@ -13,4 +10,4 @@ module.exports = withPlugins([optimizedImages], {
     });
     return config;
   },
-});
+};

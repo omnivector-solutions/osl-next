@@ -115,14 +115,11 @@ const useStyles = makeStyles((theme) => ({
   },
   cli: {
     margin: "10px",
-    width: "400px",
+    width: "100%",
   },
-  charmLink: {
-    marginRight: "auto",
-    marginLeft: "8px",
-  },
-  deploy: {
-    marginRight: "8px",
+  button: {
+    width: "45%",
+    margin: "8px",
   },
 }));
 
@@ -188,9 +185,9 @@ const charmsPanel = (props) => {
               aria-controls={charm.data.Name}
               id={charm.data.Name}>
               <img
-                src={require(`https://api.jujucharms.com/charmstore/v5/${charm.Id.substring(
+                src={`https://api.jujucharms.com/charmstore/v5/${charm.Id.substring(
                   3
-                )}/icon.svg`)}
+                )}/icon.svg`}
                 alt="icon"
                 className={classes.img}
               />
@@ -254,7 +251,7 @@ const charmsPanel = (props) => {
                 size="small"
                 color="secondary"
                 variant="contained"
-                className={classes.charmLink}
+                className={classes.button}
                 startIcon={small ? <CodeIcon /> : null}
                 component={Link}
                 href={`/solutions/charms/${charm.data.Name}`}>
@@ -275,7 +272,7 @@ const charmsPanel = (props) => {
                 size="small"
                 color="primary"
                 variant="contained"
-                className={classes.deploy}
+                className={classes.button}
                 startIcon={small ? <CloudUploadIcon /> : null}
                 href={`https://jujucharms.com/new/?dd=${charm.Id.substring(
                   3

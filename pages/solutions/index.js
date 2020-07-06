@@ -3,7 +3,6 @@ import React from "react";
 import {
   List,
   ListItem,
-  ListItemText,
   makeStyles,
   Container,
   Grid,
@@ -42,8 +41,30 @@ const useStyles = makeStyles((theme) => ({
       height: 0,
     },
   },
+  gridContainer: {
+    margin: "0 10vw",
+    width: "80vw",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 3vw",
+      width: "94vw",
+    },
+  },
   marginDiv: {
     height: "5vh",
+  },
+  introContainer: {
+    margin: "12px",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  main: {
+    ...theme.typography.body,
+    fontSize: "1.4em",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "1.2em",
+    },
   },
   backgroundImage: {
     backgroundColor: "#f0f0f0",
@@ -57,31 +78,9 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     lineHeight: "1.15em",
   },
-  headerBody: {
-    marginTop: "8px",
-    width: "40vw",
-    ...theme.typography.body,
-    fontSize: "1.4em",
-    [theme.breakpoints.down("md")]: {
-      width: "60vw",
-      fontSize: "1.2em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "88vw",
-      marginTop: "16px",
-    },
-  },
   body: {
     ...theme.typography.body,
     fontSize: "1.2em",
-  },
-  headerContainer: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    [theme.breakpoints.down("xs")]: {
-      margin: "1em",
-    },
   },
   cardHeaderContainer: {
     backgroundColor: theme.palette.primary.main,
@@ -93,13 +92,6 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     lineHeight: "1em",
     padding: "12px",
-  },
-  cardSubHeader: {
-    ...theme.typography.header,
-    fontSize: "1.3em",
-    color: theme.palette.primary.main,
-    lineHeight: "1em",
-    padding: "12px 0",
   },
   img: {
     width: "80%",
@@ -119,23 +111,22 @@ const Solutions = (props) => {
     <Layout>
       <div className={classes.toolbarMargin} />
       <div className={classes.backgroundImage}>
-        <Container maxWidth="lg">
-          <Grid container spacing={2} className={classes.gridContainer}>
-            <Grid item xs={12} className={classes.marginDiv} />
-            {small ? (
-              <Grid item xs={4} className={classes.imgContainer}>
-                <img
-                  src={"/images/hand.svg"}
-                  alt="icon"
-                  className={classes.img}
-                />
-              </Grid>
-            ) : null}
-            <Grid item sm={8} md={8} className={classes.headerContainer}>
+        <Grid container spacing={2} className={classes.gridContainer}>
+          {small ? (
+            <Grid item xs={10} sm={5} md={6}>
+              <img
+                src={"/images/hand.svg"}
+                alt="icon"
+                className={classes.img}
+              />
+            </Grid>
+          ) : null}
+          <Grid item xs={12} sm={7} md={6}>
+            <div className={classes.introContainer}>
               <Typography className={classes.title}>
                 Application modelling for every cloud
               </Typography>
-              <Typography className={classes.headerBody}>
+              <Typography className={classes.main}>
                 Juju is an open source application modelling tool that allows us
                 to deploy, configure, scale and operate cloud infrastructures
                 quickly and efficiently on public clouds such as AWS, GCE, and
@@ -149,108 +140,106 @@ const Solutions = (props) => {
                 in or out with ease, sharing the operational knowledge and
                 making the most of the wider community.
               </Typography>
-            </Grid>
-            <Grid item xs={12} className={classes.marginDiv} />
-
-            <Grid item xs={12} sm={12} md={4}>
-              <Card>
-                <div className={classes.cardHeaderContainer}>
-                  <Typography className={classes.cardHeader}>Snaps </Typography>
-                </div>
-                <CardContent>
-                  <Typography className={classes.body}>
-                    Snaps are app packages for desktop, cloud and IoT that are
-                    easy to install, secure, cross-platform and dependency-free.
-                  </Typography>
-                  <List dense>
-                    <ListItem>
-                      <Typography className={classes.body}>
-                        <strong>snap</strong> is both the command line interface
-                        and the application package format
-                      </Typography>
-                    </ListItem>
-                    <ListItem>
-                      <Typography className={classes.body}>
-                        <strong>snapd</strong> is the background service that
-                        manages and maintains snaps
-                      </Typography>
-                    </ListItem>
-                    <ListItem>
-                      <Typography className={classes.body}>
-                        <strong>snapcraft </strong> is the command and the
-                        framework we use to build snaps
-                      </Typography>
-                    </ListItem>
-                    <ListItem>
-                      <Typography className={classes.body}>
-                        <strong>Snap Store </strong>provides a place to upload
-                        and distribute snaps
-                      </Typography>
-                    </ListItem>
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4}>
-              <Card>
-                <div className={classes.cardHeaderContainer}>
-                  <Typography className={classes.cardHeader}>Charms</Typography>
-                </div>
-                <CardContent>
-                  <Typography className={classes.body}>
-                    Charms are collections of scripts that contain all the
-                    operations necessary to deploy, configure, scale, and
-                    maintain cloud applications easily with Juju. Charms
-                    encapsulate a single application and all the code and
-                    know-how it takes to operate it, such as how to combine and
-                    work with other related applications or how to upgrade it.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4}>
-              <Card>
-                <div className={classes.cardHeaderContainer}>
-                  <Typography className={classes.cardHeader}>
-                    Bundles
-                  </Typography>
-                </div>
-                <CardContent>
-                  <Typography className={classes.body}>
-                    Bundles are ready-to-run collections of applications which
-                    have been modelled to work together — this can include
-                    particular configurations and relations between the software
-                    to be deployed.
-                    <br />
-                    Bundles may also be optimised for different deployment
-                    scenarios of the same software — for example, a scale-out
-                    production ready version like{" "}
-                    <a href={"https://jaas.ai/canonical-kubernetes"}>
-                      The Canonical Distribution of Kubernetes
-                    </a>
-                    , or a development friendly test version like{" "}
-                    <a href={"https://jaas.ai/kubernetes-core"}>
-                      Kubernetes Core.
-                    </a>
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} className={classes.marginDiv} />
-
-            <Grid item xs={12} md={6}>
-              <BundlesPanel
-                header
-                bundles={props.bundles}
-                className={classes.gridItem}
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <CharmsPanel charms={props.charms} header={true} />
-            </Grid>
+            </div>
           </Grid>
-          <div className={classes.marginDiv} />
-        </Container>
+          <Grid item xs={12} className={classes.marginDiv} />
+
+          <Grid item xs={12} sm={12} md={4}>
+            <Card>
+              <div className={classes.cardHeaderContainer}>
+                <Typography className={classes.cardHeader}>Snaps </Typography>
+              </div>
+              <CardContent>
+                <Typography className={classes.body}>
+                  Snaps are app packages for desktop, cloud and IoT that are
+                  easy to install, secure, cross-platform and dependency-free.
+                </Typography>
+                <List dense>
+                  <ListItem>
+                    <Typography className={classes.body}>
+                      <strong>snap</strong> is both the command line interface
+                      and the application package format
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <Typography className={classes.body}>
+                      <strong>snapd</strong> is the background service that
+                      manages and maintains snaps
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <Typography className={classes.body}>
+                      <strong>snapcraft </strong> is the command and the
+                      framework we use to build snaps
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <Typography className={classes.body}>
+                      <strong>Snap Store </strong>provides a place to upload and
+                      distribute snaps
+                    </Typography>
+                  </ListItem>
+                </List>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4}>
+            <Card>
+              <div className={classes.cardHeaderContainer}>
+                <Typography className={classes.cardHeader}>Charms</Typography>
+              </div>
+              <CardContent>
+                <Typography className={classes.body}>
+                  Charms are collections of scripts that contain all the
+                  operations necessary to deploy, configure, scale, and maintain
+                  cloud applications easily with Juju. Charms encapsulate a
+                  single application and all the code and know-how it takes to
+                  operate it, such as how to combine and work with other related
+                  applications or how to upgrade it.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4}>
+            <Card>
+              <div className={classes.cardHeaderContainer}>
+                <Typography className={classes.cardHeader}>Bundles</Typography>
+              </div>
+              <CardContent>
+                <Typography className={classes.body}>
+                  Bundles are ready-to-run collections of applications which
+                  have been modelled to work together — this can include
+                  particular configurations and relations between the software
+                  to be deployed.
+                  <br />
+                  Bundles may also be optimised for different deployment
+                  scenarios of the same software — for example, a scale-out
+                  production ready version like{" "}
+                  <a href={"https://jaas.ai/canonical-kubernetes"}>
+                    The Canonical Distribution of Kubernetes
+                  </a>
+                  , or a development friendly test version like{" "}
+                  <a href={"https://jaas.ai/kubernetes-core"}>
+                    Kubernetes Core.
+                  </a>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} className={classes.marginDiv} />
+
+          <Grid item xs={12} md={6}>
+            <BundlesPanel
+              header
+              bundles={props.bundles}
+              className={classes.gridItem}
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <CharmsPanel charms={props.charms} header={true} />
+          </Grid>
+        </Grid>
+        <div className={classes.marginDiv} />
       </div>
     </Layout>
   );
