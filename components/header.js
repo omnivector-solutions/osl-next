@@ -145,9 +145,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
     marginTop: "16px",
   },
-  anchor: {
-    color: "black",
-  },
 }));
 
 export default function Header(props) {

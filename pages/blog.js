@@ -23,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
       height: 0,
     },
   },
+  gridContainer: {
+    margin: "0 10vw",
+    width: "80vw",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 3vw",
+      width: "94vw",
+    },
+  },
   backgroundImage: {
     minHeight: "100vh",
     backgroundColor: "#f9f9f9",
@@ -30,21 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
   marginDiv: {
     height: "1em",
-  },
-  mainPostContainer: {
-    backgroundColor: theme.palette.grey[800],
-    color: theme.palette.common.white,
-    marginBottom: theme.spacing(4),
-    height: "200px",
-  },
-
-  mainFeaturedPostContent: {
-    position: "relative",
-    padding: theme.spacing(3),
-    [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(6),
-      paddingRight: 0,
-    },
   },
   card: {
     display: "flex",
@@ -124,8 +117,8 @@ const Blog = (props) => {
       <div className={classes.toolbarMargin} />
       <div className={classes.marginDiv} />
       <div className={classes.backgroundImage}>
-        <Container maxWidth="lg">
-          <main>
+        <Grid container spacing={2} className={classes.gridContainer}>
+          <Grid item xs={12}>
             <Link href={`/posts/${props.allPostsData[0].id}`}>
               <img className={classes.img} src={props.allPostsData[0].image} />
               <Typography className={classes.headerText}>
@@ -138,43 +131,38 @@ const Blog = (props) => {
                 Continue reading...
               </Typography>
             </Link>
-            {/* End main featured post */}
-            {/* Sub featured posts */}
-            <Grid container spacing={4} className={classes.grid}>
-              {props.allPostsData.slice(1).map((post) => (
-                <Grid item key={post.id} xs={12} md={6}>
-                  <Link href={`/posts/${post.id}`}>
-                    <Card className={classes.card}>
-                      <div className={classes.cardDetails}>
-                        <CardContent>
-                          <Typography variant="subtitle1" color="textSecondary">
-                            {post.date}
-                          </Typography>
-                          <Typography component="h2" variant="h5">
-                            {post.title}
-                          </Typography>
-                          <Typography variant="subtitle1" paragraph>
-                            {post.description}
-                          </Typography>
-                          <Typography>Continue reading...</Typography>
-                        </CardContent>
-                      </div>
-                      <Hidden xsDown>
-                        <CardMedia
-                          className={classes.cardMedia}
-                          image={post.image}
-                          title="Image title"
-                        />
-                      </Hidden>
-                    </Card>
-                  </Link>
-                </Grid>
-              ))}
+          </Grid>
+          {props.allPostsData.slice(1).map((post) => (
+            <Grid item key={post.id} xs={12} md={6}>
+              <Link href={`/posts/${post.id}`}>
+                <Card className={classes.card}>
+                  <div className={classes.cardDetails}>
+                    <CardContent>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        {post.date}
+                      </Typography>
+                      <Typography component="h2" variant="h5">
+                        {post.title}
+                      </Typography>
+                      <Typography variant="subtitle1" paragraph>
+                        {post.description}
+                      </Typography>
+                      <Typography>Continue reading...</Typography>
+                    </CardContent>
+                  </div>
+                  <Hidden xsDown>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={post.image}
+                      title="Image title"
+                    />
+                  </Hidden>
+                </Card>
+              </Link>
             </Grid>
-          </main>
-        </Container>
+          ))}
+        </Grid>
       </div>
-      <div className={classes.marginDiv} />
     </Layout>
   );
 };
