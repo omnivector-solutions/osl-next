@@ -188,9 +188,9 @@ const charmsPanel = (props) => {
               aria-controls={charm.data.Name}
               id={charm.data.Name}>
               <img
-                src={`https://api.jujucharms.com/charmstore/v5/${charm.Id.substring(
+                src={require(`https://api.jujucharms.com/charmstore/v5/${charm.Id.substring(
                   3
-                )}/icon.svg`}
+                )}/icon.svg`)}
                 alt="icon"
                 className={classes.img}
               />
