@@ -7,7 +7,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Hidden from "@material-ui/core/Hidden";
 import Link from "../components/link";
-import Container from "@material-ui/core/Container";
 
 import { getSortedPostsData } from "../lib/posts";
 import Layout from "../components/layout";
@@ -119,14 +118,14 @@ const Blog = (props) => {
       <div className={classes.backgroundImage}>
         <Grid container spacing={2} className={classes.gridContainer}>
           <Grid item xs={12}>
+            <img className={classes.img} src={props.allPostsData[0].image} />
+            <Typography className={classes.headerText}>
+              {props.allPostsData[0].title}
+            </Typography>
+            <Typography className={classes.subheaderText}>
+              {props.allPostsData[0].description}
+            </Typography>
             <Link href={`/posts/${props.allPostsData[0].id}`}>
-              <img className={classes.img} src={props.allPostsData[0].image} />
-              <Typography className={classes.headerText}>
-                {props.allPostsData[0].title}
-              </Typography>
-              <Typography className={classes.subheaderText}>
-                {props.allPostsData[0].description}
-              </Typography>
               <Typography className={classes.linkText}>
                 Continue reading...
               </Typography>
@@ -134,31 +133,29 @@ const Blog = (props) => {
           </Grid>
           {props.allPostsData.slice(1).map((post) => (
             <Grid item key={post.id} xs={12} md={6}>
-              <Link href={`/posts/${post.id}`}>
-                <Card className={classes.card}>
-                  <div className={classes.cardDetails}>
-                    <CardContent>
-                      <Typography variant="subtitle1" color="textSecondary">
-                        {post.date}
-                      </Typography>
-                      <Typography component="h2" variant="h5">
-                        {post.title}
-                      </Typography>
-                      <Typography variant="subtitle1" paragraph>
-                        {post.description}
-                      </Typography>
-                      <Typography>Continue reading...</Typography>
-                    </CardContent>
-                  </div>
-                  <Hidden xsDown>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image={post.image}
-                      title="Image title"
-                    />
-                  </Hidden>
-                </Card>
-              </Link>
+              <Card className={classes.card}>
+                <CardContent className={classes.cardDetails} t>
+                  <Typography variant="subtitle1" color="textSecondary">
+                    {post.date}
+                  </Typography>
+                  <Typography component="h2" variant="h5">
+                    {post.title}
+                  </Typography>
+                  <Typography variant="subtitle1" paragraph>
+                    {post.description}
+                  </Typography>
+                  <Link href={`/posts/${post.id}`}>
+                    <Typography>Continue reading...</Typography>
+                  </Link>
+                </CardContent>
+                <Hidden xsDown>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image={post.image}
+                    title="Image title"
+                  />
+                </Hidden>
+              </Card>
             </Grid>
           ))}
         </Grid>

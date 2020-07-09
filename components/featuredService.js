@@ -50,8 +50,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const FeaturedService = (props) => {
-  console.log("Featured Service props: ", props);
-
   const classes = useStyles();
   return (
     <div className={classes.container} key={props.id}>

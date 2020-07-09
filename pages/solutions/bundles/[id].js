@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     height: "1em",
   },
   headerText: {
-    fontFamily: "Ubuntu",
+    fontFamily: "Overpass",
     fontSize: "2.2em",
     fontWeight: 600,
     marginLeft: "12px",

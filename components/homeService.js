@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   description: {
-    fontFamily: "Ubuntu",
+    fontFamily: "Overpass",
     textAlign: "center",
   },
   graphic: {

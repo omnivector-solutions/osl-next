@@ -10,14 +10,12 @@ export default async (req, res) => {
     })
     .catch((error) => {
       // Log friendly error
-      console.log("error ", error);
 
       if (error.response) {
         // Extract error msg
         const { message, code, response } = error;
         // Extract response msg
         const { headers, body } = response;
-        console.log("code, body: ", code, body.errors[0].message);
         return { statusCode: code, message: body.errors[0].message };
       }
     });

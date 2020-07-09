@@ -81,7 +81,15 @@ const Files = (props) => {
           setContent(response);
           setIsLoading(false);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          if (error.response) {
+            // Extract error msg
+            const { message, code, response } = error;
+            // Extract response msg
+            const { headers, body } = response;
+            return { statusCode: code, message: body.errors[0].message };
+          }
+        });
     }
   }, [selected]);
 

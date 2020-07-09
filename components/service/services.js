@@ -20,14 +20,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "3em",
     textAlign: "center",
     fontWeight: "bold",
-    fontFamily: "Ubuntu,Arial,libra sans,sans-serif",
+    fontFamily: "Overpass,Arial,libra sans,sans-serif",
     margin: "8px",
     color: "black",
   },
   ServiceText: {
     fontSize: "1em",
     textAlign: "center",
-    fontFamily: "Ubuntu,Arial,libra sans,sans-serif",
+    fontFamily: "Overpass,Arial,libra sans,sans-serif",
     color: "black",
   },
   ServiceTextContainer: {

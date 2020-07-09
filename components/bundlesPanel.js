@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   heading: {
-    fontFamily: "Ubuntu",
+    fontFamily: "Overpass",
     textTransform: "none",
     fontSize: "2.2em",
     fontWeight: 600,
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "8px",
   },
   secondaryHeading: {
-    fontFamily: "Ubuntu",
+    fontFamily: "Overpass",
     textTransform: "none",
     fontSize: "2.2em",
     fontWeight: 200,
@@ -233,7 +233,6 @@ const bundlesPanel = (props) => {
               </Button>
 
               <TextField
-                id="outlined-basic"
                 label="Deploy with CLI:"
                 type="text"
                 size="small"

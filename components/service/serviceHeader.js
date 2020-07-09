@@ -1,11 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   Container: {
     display: "flex",
     margin: "5vw 10vw",
-    width: "50%"
+    width: "50%",
   },
   containerImg: {
     objectFit: "cover",
@@ -17,12 +17,12 @@ const useStyles = makeStyles(theme => ({
       width: "80vw",
       height: "50vh",
       borderRadius: "36px 36px 36px 36px",
-      boxShadow: "4px 4px 8px rgba(0, 0, 0, .9)"
-    }
+      boxShadow: "4px 4px 8px rgba(0, 0, 0, .9)",
+    },
   },
   ServiceText: {
     fontSize: "1.9vh",
-    fontFamily: "Ubuntu",
+    fontFamily: "Overpass",
     width: "25vw",
     position: "relative",
     marginTop: "-24px",
@@ -42,14 +42,14 @@ const useStyles = makeStyles(theme => ({
       margin: "auto",
       left: "20vw",
       opacity: 1,
-      backgroundColor: "rgba(255, 255, 255, .9)"
-    }
+      backgroundColor: "rgba(255, 255, 255, .9)",
+    },
   },
   ServiceTitle: {
     borderRadius: "0px 24px 24px 0px",
     fontSize: "4vw",
     fontWeight: "bold",
-    fontFamily: "Ubuntu,Arial,libra sans,sans-serif",
+    fontFamily: "Overpass,Arial,libra sans,sans-serif",
     width: "50vw",
     position: "relative",
     top: ".05vw",
@@ -67,12 +67,12 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
       margin: "auto",
       top: "25vw",
-      left: "8vw"
-    }
-  }
+      left: "8vw",
+    },
+  },
 }));
 
-const ServiceHeader = props => {
+const ServiceHeader = (props) => {
   const classes = useStyles();
 
   return (

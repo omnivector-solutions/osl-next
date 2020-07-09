@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heading: {
     width: "35%",
-    fontFamily: "Ubuntu",
+    fontFamily: "Overpass",
     textTransform: "none",
     fontSize: "1em",
     fontWeight: 600,
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "8px",
   },
   secondaryHeading: {
-    fontFamily: "Ubuntu",
+    fontFamily: "Overpass",
     textTransform: "none",
     fontSize: "1em",
     fontWeight: 200,
@@ -134,8 +134,6 @@ const charmsPanel = (props) => {
   const [expanded, setExpanded] = React.useState(false);
 
   const expandPanel = (panel) => (event, isExpanded) => {
-    console.log("Event: ", event);
-
     setExpanded(isExpanded ? panel : false);
   };
 
@@ -259,7 +257,6 @@ const charmsPanel = (props) => {
               </Button>
 
               <TextField
-                id="outlined-basic"
                 label="Deploy with CLI:"
                 type="text"
                 size="small"

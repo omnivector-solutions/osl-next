@@ -243,7 +243,7 @@ export default function Header(props) {
   const currentRoute = "/";
 
   return (
-    <Fragment>
+    <nav>
       <ElevationScroll>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar
@@ -263,6 +263,6 @@ export default function Header(props) {
       <div
         className={currentRoute !== "/" ? classes.toolbarMargin : undefined}
       />
-    </Fragment>
+    </nav>
   );
 }

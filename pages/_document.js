@@ -8,8 +8,28 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,600;0,900;1,600;1,900&display=swap"
+            rel="stylesheet"></link>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+          <meta
+            name="description"
+            content="Omnivector Solutions Limited. Application modelling for every cloud."
+          />
+          <meta property="og:type" content="website" />
+          <meta
+            name="og:title"
+            property="og:title"
+            content="Omnivector Solutions Limited"
+          />
+          <meta
+            name="og:description"
+            property="og:description"
+            content="Application modelling for every cloud."
+          />
+          <meta property="og:site_name" content="Omnivector Solutions" />
+          <meta property="og:url" content="omnivector.solutions" />
         </Head>
         <body>
           <Main />

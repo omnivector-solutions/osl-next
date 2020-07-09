@@ -145,7 +145,8 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     color: "black",
-    width: "100px",
+    maxWidth: "100px",
+    maxHeight: "100px",
     margin: "12px",
     [theme.breakpoints.down("sm")]: {
       width: "75px",
@@ -194,7 +195,7 @@ const Home = (props) => {
           {small ? (
             <Grid item xs={10} sm={5} md={6}>
               <img
-                src={"/images/boxes.png"}
+                src={"/images/boxes.svg"}
                 alt="icon"
                 className={classes.img}
               />
@@ -234,10 +235,10 @@ const Home = (props) => {
               </div>
               <CardContent>
                 <Typography className={classes.body}>
-                  OmniVector's Slurm snap can be found in the snap store{" "}
-                  <a href={"https://www.snapcraft.io/slurm"}>here</a>. We have
-                  created an open ecosystem around the packaging and delivery of
-                  Slurm itself and supporting software systems.
+                  OmniVector's Slurm snap can be found in the snap store:{" "}
+                  <a href={"https://www.snapcraft.io/slurm"}>Snapcraft.io</a>.
+                  We have created an open ecosystem around the packaging and
+                  delivery of Slurm itself and supporting software systems.
                 </Typography>
                 <Iframe
                   url="https://snapcraft.io/slurm/embedded?button=black"
@@ -385,13 +386,13 @@ const Home = (props) => {
                 </Typography>
                 <div className={classes.links}>
                   <Button
-                    color="secondary"
+                    color="primary"
                     startIcon={<NavigateNextIcon />}
                     href="https://schedmd.com/">
                     SchedMD
                   </Button>
                   <Button
-                    color="secondary"
+                    color="primary"
                     startIcon={<NavigateNextIcon />}
                     href="https://schedmd.com/">
                     Slurm Docs
@@ -402,7 +403,7 @@ const Home = (props) => {
                 </Typography>
                 <div className={classes.links}>
                   <Button
-                    color="secondary"
+                    color="primary"
                     startIcon={<NavigateNextIcon />}
                     href="https://snapcraft.io/slurm">
                     Snapcraft.io
@@ -413,21 +414,21 @@ const Home = (props) => {
                 </Typography>
                 <div className={classes.links}>
                   <Button
-                    color="secondary"
+                    color="primary"
                     startIcon={<NavigateNextIcon />}
                     component={Link}
                     href="/solutions/charms/slurm-controller">
                     Slurm Controller
                   </Button>
                   <Button
-                    color="secondary"
+                    color="primary"
                     startIcon={<NavigateNextIcon />}
                     component={Link}
                     href="/solutions/charms/slurm-dbd">
                     Slurm Dbd
                   </Button>
                   <Button
-                    color="secondary"
+                    color="primary"
                     startIcon={<NavigateNextIcon />}
                     component={Link}
                     href="/solutions/charms/slurm-node">
@@ -439,13 +440,13 @@ const Home = (props) => {
                 </Typography>
                 <div className={classes.links}>
                   <Button
-                    color="secondary"
+                    color="primary"
                     startIcon={<NavigateNextIcon />}
                     href="https://jaas.ai/slurm-core/bundle/0">
                     Slurm Core
                   </Button>
                   <Button
-                    color="secondary"
+                    color="primary"
                     startIcon={<NavigateNextIcon />}
                     href="https://jaas.ai/slurm-openfoam/bundle/0">
                     Slurm OpenFoam
@@ -518,7 +519,7 @@ const Home = (props) => {
                   rel="noopener noreferrer">
                   <Button
                     variant="outlined"
-                    color="secondary"
+                    color="primary"
                     endIcon={<OpenInNewIcon />}>
                     Discourse
                   </Button>

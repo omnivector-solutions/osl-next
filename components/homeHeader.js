@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
     objectPosition: "50 -50px",
   },
   headerText: {
-    fontFamily: "Ubuntu",
-    fontWeight: 700,
+    fontFamily: "Overpass",
+    fontWeight: 900,
     textAlign: "center",
     color: "white",
     margin: 0,
@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
     textShadow: "4px 4px 8px rgba(0, 0, 0, 1)",
   },
   smallHeader: {
-    fontFamily: "Ubuntu",
-    fontWeight: 400,
+    fontFamily: "Overpass",
+    fontWeight: 600,
     textAlign: "center",
     color: "white",
     margin: "1vw",

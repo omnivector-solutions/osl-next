@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+jspm_packages
 
 # testing
 /coverage
@@ -34,4 +35,3 @@ yarn-error.log*
 # serverless
 .serverless
 .serverless_nextjs/
-sendgrid.env
