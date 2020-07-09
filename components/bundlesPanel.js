@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
+import SVG from "react-inlinesvg";
 
 import {
   makeStyles,
@@ -111,7 +112,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "30vw",
   },
   diagram: {
-    maxWidth: "100%",
+    maxWidth: "90%",
+    margin: "5%",
   },
 }));
 
@@ -193,12 +195,27 @@ const bundlesPanel = (props) => {
                 <Typography variant="body2">
                   {bundle.Meta.Description}
                 </Typography>
-                <img
+                <SVG
+                  baseURL="/"
+                  cacheRequests={true}
+                  description="diagram"
+                  loader={<span>Loading...</span>}
+                  onError={(error) => console.log(error.message)}
+                  onLoad={(src, hasCache) => console.log(src, hasCache)}
+                  preProcessor={(code) =>
+                    code.replace(
+                      new RegExp("../../~omnivector/", "g"),
+                      "https://api.jujucharms.com/charmstore/v5/~omnivector/"
+                    )
+                  }
                   src={`https://api.jujucharms.com/charmstore/v5/${bundle.Id.substring(
                     3
                   )}/diagram.svg`}
-                  alt="diagram"
+                  alt={bundle.Id}
                   className={classes.diagram}
+                  title={bundle.Id}
+                  uniqueHash={bundle.Id}
+                  uniquifyIDs={true}
                 />
               </div>
               <div className={clsx(classes.column25, classes.divider)}>
