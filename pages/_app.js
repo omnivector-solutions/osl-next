@@ -23,7 +23,7 @@ export default function MyApp(props) {
     <React.Fragment>
       <DefaultSeo {...SEO} />
       <Head>
-        <title>My page</title>
+        <title>Omnivector Solutions</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"

@@ -13,6 +13,14 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 110,
     color: "white",
   },
+  buttonsContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+  button: {
+    margin: "4px",
+  },
 }));
 
 const Contact = () => {
@@ -122,16 +130,25 @@ const Contact = () => {
                   }
                   margin="normal"
                 />
-                <Button
-                  type="button"
-                  className="outline"
-                  onClick={handleReset}
-                  disabled={!dirty || isSubmitting}>
-                  Reset
-                </Button>
-                <Button type="submit" disabled={isSubmitting}>
-                  Submit
-                </Button>
+
+                <div className={classes.buttonsContainer}>
+                  <Button
+                    className={classes.button}
+                    type="button"
+                    variant="contained"
+                    onClick={handleReset}
+                    disabled={!dirty || isSubmitting}>
+                    Reset
+                  </Button>
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    disabled={isSubmitting}>
+                    Submit
+                  </Button>
+                </div>
               </form>
             );
           }}
