@@ -113,6 +113,7 @@ const useStyles = makeStyles((theme) => ({
   },
   diagram: {
     maxWidth: "90%",
+    height: "250px",
     margin: "5%",
   },
 }));
@@ -204,8 +205,8 @@ const bundlesPanel = (props) => {
                   onLoad={(src, hasCache) => console.log(src, hasCache)}
                   preProcessor={(code) =>
                     code.replace(
-                      new RegExp("../../~omnivector/", "g"),
-                      "https://api.jujucharms.com/charmstore/v5/~omnivector/"
+                      new RegExp("../../", "g"),
+                      "https://api.jujucharms.com/charmstore/v5/"
                     )
                   }
                   src={`https://api.jujucharms.com/charmstore/v5/${bundle.Id.substring(

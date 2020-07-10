@@ -2,13 +2,9 @@
 # https://github.com/serverless-nextjs/serverless-next.js/blob/master/README.md#inputs
 
 oslNext:
-  service: osl-next
-  # app and org for use with dashboard.serverless.com
-  app: osl-next
-  org: omnivector
   component: serverless-next.js
   inputs:
-    domain: ["development", "omnivector.solutions"] # [ sub-domain, domain ]
+    domain: ["www", "omnivector.solutions"] # [ sub-domain, domain ]
     # build:
     # args: ["test", "testArgument"]
     # env:

@@ -190,6 +190,7 @@ const Home = (props) => {
   return (
     <Layout>
       <div className={classes.toolbarMargin} />
+
       <div className={classes.backgroundImage}>
         <Grid container spacing={2} className={classes.gridContainer}>
           {small ? (
@@ -216,7 +217,7 @@ const Home = (props) => {
               <Button
                 size="small"
                 component={Link}
-                href={"/posts/slurm-snap-release-1"}
+                href={"/posts/slurm-charms"}
                 className={classes.button}
                 startIcon={<NavigateNextIcon />}>
                 Read More

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://omnivector.solutions/</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/blog</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions</loc>
+  <lastmod>2020-07-09T23:05:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/posts/slurm-charms</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/slurm-core</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/slurm-openfoam</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/slurm-controller</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/slurm-dbd</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/slurm-node</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/jaas.ai/u/omnivector</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/posts/welcome</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/ceph-core</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/ceph-extended</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/elasticsearch-7x</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/elasticsearch-core</loc>
+  <lastmod>2020-07-09T23:05:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/elasticsearch-non-uniform</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/elk-core</loc>
+  <lastmod>2020-07-09T23:05:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/hadoop-spark-jupyter-conda</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/keg-core</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/kubernetes-core-aws</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/kubernetes-core-canal</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/peatio-core-k8s</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/redis-cluster</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/redis-singleton</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/sentry-all-in-one</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/sentry-decoupled</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/slurm-hpc-min</loc>
+  <lastmod>2020-07-09T23:05:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/spark-jupyter-conda-base</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/spark-jupyter-conda-extended</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/bundles/spark-jupyter-core</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/open-foam</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/redis</loc>
+  <lastmod>2020-07-09T23:05:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/elasticsearch</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/kibana</loc>
+  <lastmod>2020-07-09T23:05:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/sentry</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/logstash</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/jupyter-notebook</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/apt-cacher-ng</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/datadog-agent</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/jupyter-docker</loc>
+  <lastmod>2020-07-09T23:05:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/aws-elb</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/newrelic-infra</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/conda</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/bitcoind</loc>
+  <lastmod>2020-07-09T23:05:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/zookeeper</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/thelounge</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/spark</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/nri-redis</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/nri-elasticsearch</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/owncloud</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/peatio-k8s</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/bitcoind-k8s</loc>
+  <lastmod>2020-07-09T23:05:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/vault-k8s</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/jupyter-k8s</loc>
+  <lastmod>2020-07-09T23:05:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/elastic-operator-k8s</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/rabbitmq-k8s</loc>
+  <lastmod>2020-07-09T23:05:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/solutions/charms/redis-k8s</loc>
+  <lastmod>2020-07-09T23:05:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/slurm-core</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/slurm-openfoam</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/ceph-core</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/ceph-extended</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/elasticsearch-7x</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/elasticsearch-core</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/elasticsearch-non-uniform</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/elk-core</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/hadoop-spark-jupyter-conda</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/keg-core</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/kubernetes-core-aws</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/kubernetes-core-canal</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/peatio-core-k8s</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/redis-cluster</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/redis-singleton</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/sentry-all-in-one</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/sentry-decoupled</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/slurm-hpc-min</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/spark-jupyter-conda-base</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/spark-jupyter-conda-extended</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://omnivector.solutions/charms/spark-jupyter-core</loc>
+  <lastmod>2020-07-09T23:05:48+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>

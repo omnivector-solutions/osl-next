@@ -8,6 +8,24 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-172285140-1"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `<!-- Global site tag (gtag.js) - Google Analytics -->
+              <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172285140-1"></script>
+              <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'UA-172285140-1');
+              </script>
+              `,
+            }}
+          />
           <link
             href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,600;0,900;1,600;1,900&display=swap"
             rel="stylesheet"></link>

@@ -9,7 +9,12 @@ thumbnail: "/images/bigdata-thumb.jpg"
 
 ![logo](/images/ov-logo-horiz-3color.svg)
 
-# These charms enable Slurm Workload Manager to be installed and managed via JuJu.
+
+### COMING SOON
+
+# We're working hard to get this content complete. Please check back soon for the complete write up.
+
+<!-- # These charms enable Slurm Workload Manager to be installed and managed via JuJu.
 
 > *"The Slurm Workload Manager (formerly known as Simple Linux Utility for Resource Management or SLURM), or Slurm, is a free and open-source job scheduler for Linux and Unix-like kernels, used by many of the world's supercomputers and computer clusters."*
 
@@ -25,4 +30,4 @@ thumbnail: "/images/bigdata-thumb.jpg"
 5. ## Scale out and scale back
 6. ## Perform health checks
 7. ## Undertake operational actions
-8. ## Benchmark
+8. ## Benchmark -->
