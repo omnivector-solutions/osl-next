@@ -101,7 +101,6 @@ const useStyles = makeStyles((theme) => ({
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
-  console.log();
   return {
     props: {
       allPostsData,
