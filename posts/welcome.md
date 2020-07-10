@@ -3,8 +3,8 @@ title: "Welcome to our new website!"
 description: "We're working hard to create usefull content to help our community learn and grow. "
 date: "2020-07-09"
 author: "Cory Zimmerman"
-image: "/images/hpc.jpg"
-thumbnail: "/images/hpc-thumb.jpg"
+image: "/images/slurm-charms.jpg"
+thumbnail: "/images/slurm-charms-thumb.jpg"
 ---
 
 ![logo](/images/ov-logo-horiz-3color.svg)

@@ -6,13 +6,13 @@ import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
+  gridContainer: {
+    marginTop: "16px",
+  },
   paper: {
-    display: "flex",
     padding: theme.spacing(2),
     textAlign: "center",
-    alignContent: "center",
-    justifyContent: "center",
-    width: "100px",
+    width: "110px",
   },
   logo: {
     height: "60px",
@@ -95,10 +95,16 @@ const SlurmSnapDistros = () => {
   ];
 
   return (
-    <Grid container spacing={0}>
+    <Grid
+      container
+      direction="row"
+      justify="center"
+      alignItems="flex-start"
+      spacing={2}
+      className={classes.gridContainer}>
       {distros.map((distro, index) => {
         return (
-          <Grid item xs key={index}>
+          <Grid item key={index}>
             <Button href={distro.link}>
               <Paper className={classes.paper}>
                 <div className={classes.logoContainer}>

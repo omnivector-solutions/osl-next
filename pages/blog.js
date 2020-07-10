@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
-
+  console.log();
   return {
     props: {
       allPostsData,
@@ -151,7 +151,7 @@ const Blog = (props) => {
                 <Hidden xsDown>
                   <CardMedia
                     className={classes.cardMedia}
-                    image={post.image}
+                    image={post.thumbnail}
                     title="Image title"
                   />
                 </Hidden>
