@@ -1,13 +1,18 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Hidden from "@material-ui/core/Hidden";
-import Link from "../components/link";
+import {
+  Hidden,
+  Paper,
+  CardMedia,
+  CardContent,
+  Card,
+  Grid,
+  Typography,
+  makeStyles,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core";
 
+import Link from "../components/link";
 import { getSortedPostsData } from "../lib/posts";
 import Layout from "../components/layout";
 
@@ -48,54 +53,72 @@ const useStyles = makeStyles((theme) => ({
     width: 160,
   },
   img: {
-    width: "100%",
-    height: "300px",
-    objectFit: "cover",
-    backgroundColor: theme.palette.grey[800],
-    marginBottom: theme.spacing(1),
-    filter: "brightness(30%)",
-    borderRadius: "8px",
-    boxShadow: "2px 2px 1px #aaaaaa",
+    height: "100%",
+  },
+  imgContainer: {
+    backgroundColor: theme.palette.primary.main,
+    display: "flex",
+    flexDirection: "row-reverse",
+    overflow: "hidden",
+    height: "265px",
+    [theme.breakpoints.down("md")]: {
+      height: "245px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "180px",
+    },
   },
   headerText: {
     ...theme.typography.header,
-    color: theme.palette.primary.light,
-    width: "500px",
-    position: "absolute",
-    top: "5em",
-    marginLeft: "1em",
+    fontSize: "2.5vw",
+    lineHeight: "100%",
+    width: "35vw",
     [theme.breakpoints.down("md")]: {
-      top: "2.2em",
+      fontSize: "2.3vw",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2.2vw",
     },
     [theme.breakpoints.down("xs")]: {
-      top: "1.8em",
+      fontSize: "1.8em",
+      width: "65vw",
     },
   },
   subheaderText: {
+    marginTop: "16px",
     ...theme.typography.subheader,
-    width: "500px",
-    position: "absolute",
-    top: "18em",
-    marginLeft: "2em",
+    fontSize: "1.4vw",
+    lineHeight: "120%",
+    width: "35vw",
     [theme.breakpoints.down("md")]: {
-      top: "2.2em",
+      marginTop: "16px",
+      fontSize: "1.2em",
     },
     [theme.breakpoints.down("xs")]: {
-      top: "1.8em",
+      fontSize: "1.2em",
+      width: "65vw",
+    },
+  },
+  header: {
+    width: "50%",
+    margin: "3em",
+    position: "absolute",
+    top: "9em",
+    [theme.breakpoints.down("md")]: {
+      top: "5em",
+      width: "60%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      top: "4em",
+      width: "80%",
     },
   },
   linkText: {
+    ...theme.typography.header,
     color: theme.palette.secondary.light,
     width: "500px",
-    position: "absolute",
-    top: "25em",
-    marginLeft: "2em",
-    [theme.breakpoints.down("md")]: {
-      top: "2.2em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "1.8em",
-    },
+    fontSize: "1.4em",
+    marginTop: ".4em",
   },
 }));
 
@@ -110,6 +133,8 @@ export async function getStaticProps() {
 
 const Blog = (props) => {
   const classes = useStyles();
+  const theme = useTheme();
+  const small = useMediaQuery(theme.breakpoints.up("sm"));
   return (
     <Layout>
       <div className={classes.toolbarMargin} />
@@ -117,7 +142,7 @@ const Blog = (props) => {
       <div className={classes.backgroundImage}>
         <Grid container spacing={2} className={classes.gridContainer}>
           <Grid item xs={12}>
-            <img className={classes.img} src={props.allPostsData[0].image} />
+            {/* <img className={classes.img} src={props.allPostsData[0].image} />
             <Typography className={classes.headerText}>
               {props.allPostsData[0].title}
             </Typography>
@@ -128,7 +153,28 @@ const Blog = (props) => {
               <Typography className={classes.linkText}>
                 Continue reading...
               </Typography>
-            </Link>
+            </Link> */}
+            <Paper className={classes.imgContainer}>
+              {small ? (
+                <img
+                  className={classes.img}
+                  src={props.allPostsData[0].image}
+                />
+              ) : null}
+            </Paper>
+            <div className={classes.header}>
+              <Typography className={classes.headerText}>
+                {props.allPostsData[0].title}
+              </Typography>
+              <Typography className={classes.subheaderText}>
+                {props.allPostsData[0].description}
+              </Typography>
+              <Link href={`/posts/${props.allPostsData[0].id}`}>
+                <Typography className={classes.linkText}>
+                  Continue reading...
+                </Typography>
+              </Link>
+            </div>
           </Grid>
           {props.allPostsData.slice(1).map((post) => (
             <Grid item key={post.id} xs={12} md={6}>

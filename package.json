@@ -10,7 +10,6 @@
   "dependencies": {
     "@material-ui/core": "^4.9.13",
     "@material-ui/icons": "^4.9.1",
-    "@react-spring/parallax": "9.0.0-canary.808.8.4a87fcb",
     "@sendgrid/mail": "^7.2.1",
     "clsx": "^1.1.0",
     "es6-promise": "^4.2.8",

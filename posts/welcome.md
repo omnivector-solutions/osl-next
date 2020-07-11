@@ -1,18 +1,23 @@
 ---
 title: "Welcome to our new website!"
-description: "We're working hard to create usefull content to help our community learn and grow. "
-date: "2020-07-09"
+description: "Blog Content coming soon...."
+date: "2020-07-08"
 author: "Cory Zimmerman"
-image: "/images/slurm-charms.jpg"
-thumbnail: "/images/slurm-charms-thumb.jpg"
+image: "/images/welcome.jpg"
+thumbnail: "/images/welcome-thumb.jpg"
 ---
 
-![logo](/images/ov-logo-horiz-3color.svg)
+### Welcome to our new website!
 
-# Thanks for stopping by! 
+Check out the source code [here](https://github.com/omnivector-solutions/osl-next).
 
-### We're working hard to create usefull content to help our community learn and grow. 
+---
 
-### We will be posting more soon, so check back often. 
+- #### Next.js for static rendering
+- #### Material UI for styling
+- #### serverless-next.js for dead simple deploy
+- #### SendGrid for email
 
-# Thanks!
+---
+
+### Thanks for stopping by!

@@ -244,7 +244,7 @@ const Home = (props) => {
                 <Iframe
                   url="https://snapcraft.io/slurm/embedded?button=black"
                   width="100%"
-                  height="400px"
+                  height="318px"
                   display="initial"
                   position="relative"
                   className={classes.iframe}

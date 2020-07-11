@@ -1,33 +1,24 @@
 ---
-title: "Anouncing the release of the Omnivector Slurm Charms."
-description: "This is the first in a series of posts that will show you how to manage your Slurm instalation using  Omnivectors Slurm Charms."
-date: "2020-07-12"
-author: "James Beedy"
-image: "/images/bigdata.jpg"
-thumbnail: "/images/bigdata-thumb.jpg"
+title: "Anouncing the release of Slurm Charms and Snap."
+description: "Omnivector is excticed to announce the release of our new Slurm charms."
+date: "2020-07-10"
+author: "Cory Zimmerman"
+image: "/images/present.jpg"
+thumbnail: "/images/present-thumb.jpg"
 ---
 
-![logo](/images/ov-logo-horiz-3color.svg)
+## We've released an initial set of Charms that are nearing producton ready. We're working on creating additional content on how to use them. Until then, you can check out the docs for each charm here:
 
+1. ### [charm-slurmctld](https://github.com/omnivector-solutions/charm-slurmctld)
+2. ### [charm-slurmdbd](https://github.com/omnivector-solutions/charm-slurmdbd)
+3. ### [charm-slurmd](https://github.com/omnivector-solutions/charm-slurmd)
 
-### COMING SOON
+### MORE COMING SOON!
 
-# We're working hard to get this content complete. Please check back soon for the complete write up.
-
-<!-- # These charms enable Slurm Workload Manager to be installed and managed via JuJu.
-
-> *"The Slurm Workload Manager (formerly known as Simple Linux Utility for Resource Management or SLURM), or Slurm, is a free and open-source job scheduler for Linux and Unix-like kernels, used by many of the world's supercomputers and computer clusters."*
-
-### This post assumes you have a working JuJu controller that is ready for use. For more info about getting JuJu running, read [this](https://www.example.com) guide. 
-
-1. ## Install
-
-2. ## Configure
-
-
-3. ## Connect
-4. ## Upgrade and update
-5. ## Scale out and scale back
-6. ## Perform health checks
-7. ## Undertake operational actions
-8. ## Benchmark -->
+1. #### Installation
+2. #### Configuration
+3. #### Development Environment
+4. #### Scaling out
+5. #### LMA
+6. #### Production Jobs
+7. #### Benchmarking
