@@ -133,11 +133,36 @@ const Solutions = (props) => {
                 VSphere.
                 <br />
                 <br />
-                One of the main advantages of Juju is its dynamic configuration
-                ability, which allows you to re-configure services on the fly,
-                add, remove, or change relationships between services, and scale
-                in or out with ease, sharing the operational knowledge and
-                making the most of the wider community.
+                Omnivector is dedicated to the Open Source communinty!
+                <ul>
+                  <li>Look through our Charms and Bundles library below.</li>
+                  <li>
+                    Check us out on{" "}
+                    <a
+                      href="https://github.com/omnivector-solutions"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      GitHub
+                    </a>
+                  </li>
+                  <li>
+                    Join us on{" "}
+                    <a
+                      href="https://community.omnivector.solutions/"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      Discourse
+                    </a>
+                  </li>
+                </ul>
+                Or shoot us an{" "}
+                <a
+                  href="mailto:info@omnivector.solutions"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  email
+                </a>{" "}
+                to talk about your application lifecyle requirements.
               </Typography>
             </div>
           </Grid>
@@ -214,11 +239,17 @@ const Solutions = (props) => {
                   Bundles may also be optimised for different deployment
                   scenarios of the same software — for example, a scale-out
                   production ready version like{" "}
-                  <a href={"https://jaas.ai/canonical-kubernetes"}>
+                  <a
+                    href={"https://jaas.ai/canonical-kubernetes"}
+                    target="_blank"
+                    rel="noopener noreferrer">
                     The Canonical Distribution of Kubernetes
                   </a>
                   , or a development friendly test version like{" "}
-                  <a href={"https://jaas.ai/kubernetes-core"}>
+                  <a
+                    href={"https://jaas.ai/kubernetes-core"}
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Kubernetes Core.
                   </a>
                 </Typography>

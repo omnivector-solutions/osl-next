@@ -3,7 +3,7 @@ title: "Anouncing the release of Slurm Charms and Snap."
 description: "Omnivector is excticed to announce the release of our new Slurm charms."
 date: "2020-07-10"
 author: "Cory Zimmerman"
-image: "/images/present.jpg"
+image: "/images/present.png"
 thumbnail: "/images/present-thumb.jpg"
 ---
 
