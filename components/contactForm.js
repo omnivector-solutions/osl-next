@@ -57,6 +57,7 @@ const Contact = () => {
             const msg = {
               to: "info@omnivector.solutions",
               from: "info@omnivector.solutions",
+              bcc: "8139504@bcc.hubspot.com",
               subject: `Website Contact Form: ${Date(Date.now())}`,
               html: `<p><strong>Name: </strong> ${values.name}</p><p><strong>Email: </strong> ${values.email}</p> <hr /><p><strong>Message: </strong> ${values.message}</p>`,
             };

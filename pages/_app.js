@@ -22,13 +22,13 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <DefaultSeo {...SEO} />
-      <Head>
+      {/* <Head>
         <title>Omnivector Solutions</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-      </Head>
+      </Head> */}
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />

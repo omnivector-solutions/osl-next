@@ -122,15 +122,15 @@ const Solutions = (props) => {
           ) : null}
           <Grid item xs={12} sm={7} md={6}>
             <div className={classes.introContainer}>
-              <Typography className={classes.title}>
-                Application modelling for every cloud
-              </Typography>
+              <h1 className={classes.title}>
+                DevOps Consulting &#38; Application modelling for every cloud
+              </h1>
               <Typography className={classes.main}>
-                Juju is an open source application modelling tool that allows us
-                to deploy, configure, scale and operate cloud infrastructures
-                quickly and efficiently on public clouds such as AWS, GCE, and
-                Azure along with private ones such as MAAS, OpenStack, and
-                VSphere.
+                Omnivector provides tooling and automation to deploy, configure,
+                and scale cloud infrastructures quickly and efficiently on
+                public and private clouds. Our consultants provide enterprise
+                cloud architecture expertise and strategy that helps companies
+                build integrated development and operations teams.
                 <br />
                 <br />
                 Omnivector is dedicated to the Open Source communinty!

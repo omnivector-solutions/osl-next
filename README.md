@@ -14,7 +14,7 @@
 git clone https://github.com/omnivector-solutions/osl-next.git
 npm install
 touch .env.local
-     add the SENDGRID_API_KEY kay and value
+     add the SENDGRID_API_KEY key and value
 source .env.local
 npm run dev
 ```

@@ -164,9 +164,9 @@ const Blog = (props) => {
               ) : null}
             </Paper>
             <div className={classes.header}>
-              <Typography className={classes.headerText}>
+              <h1 className={classes.headerText}>
                 {props.allPostsData[0].title}
-              </Typography>
+              </h1>
               <Typography className={classes.subheaderText}>
                 {props.allPostsData[0].description}
               </Typography>
@@ -184,9 +184,9 @@ const Blog = (props) => {
                   <Typography variant="subtitle1" color="textSecondary">
                     {post.date}
                   </Typography>
-                  <Typography component="h2" variant="h5">
+                  <h1 component="h2" variant="h5">
                     {post.title}
-                  </Typography>
+                  </h1>
                   <Typography variant="subtitle1" paragraph>
                     {post.description}
                   </Typography>

@@ -103,6 +103,12 @@ const useStyles = makeStyles((theme) => ({
       width: "0",
     },
   },
+  imgContainer: {
+    width: "35vw",
+    [theme.breakpoints.down("xs")]: {
+      width: "0",
+    },
+  },
   gridContainer: {
     margin: "0 10vw",
     width: "80vw",
@@ -190,11 +196,10 @@ const Home = (props) => {
   return (
     <Layout>
       <div className={classes.toolbarMargin} />
-
       <div className={classes.backgroundImage}>
         <Grid container spacing={2} className={classes.gridContainer}>
           {small ? (
-            <Grid item xs={10} sm={5} md={6}>
+            <Grid item xs={10} sm={5} md={6} className={classes.imgContainer}>
               <img
                 src={"/images/boxes.svg"}
                 alt="icon"
@@ -204,9 +209,9 @@ const Home = (props) => {
           ) : null}
           <Grid item xs={12} sm={7} md={6}>
             <div className={classes.introContainer}>
-              <Typography className={classes.title}>
+              <h1 className={classes.title}>
                 Introducing a better way to deploy Slurm Workload Manager
-              </Typography>
+              </h1>
               <Typography className={classes.main}>
                 We are excited to introduce the OmniVector Slurm HPC suite. We
                 have cultivated elements from each domain; infrastructure

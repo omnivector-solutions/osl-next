@@ -23,7 +23,7 @@ const Footer = (props) => {
 
   return (
     <footer className={classes.footer}>
-      <Hidden mdDown>TEST</Hidden>
+      <Hidden mdDown>footer</Hidden>
     </footer>
   );
 };
