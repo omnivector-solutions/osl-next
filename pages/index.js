@@ -309,8 +309,8 @@ const Home = (props) => {
                   Slurm workload manager by SchedMD®
                 </Typography>
                 <Typography className={classes.body}>
-                  SchedMD® (<a href={"https://schedmd.com/"}>website</a>) is
-                  the core company behind the Slurm workload manager software, a
+                  SchedMD® (<a href={"https://schedmd.com/"}>website</a>) is the
+                  core company behind the Slurm workload manager software, a
                   free open-source workload manager designed specifically to
                   satisfy the demanding needs of high performance computing.
                   Slurm is in widespread use at government laboratories,

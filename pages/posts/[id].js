@@ -90,6 +90,17 @@ const useStyles = makeStyles((theme) => ({
     padding: "24px",
     marginTop: "1em",
   },
+  markdown: {
+    ...theme.typography.body,
+    fontSize: "1.4em",
+    padding: "1% 5%",
+    heading: {
+      fontSize: 48,
+    },
+  },
+  dateAuthor: {
+    textAlign: "right",
+  },
   header: {
     width: "50%",
     margin: "3em",
@@ -146,7 +157,10 @@ const Post = (props) => {
                 color="textSecondary">
                 Posted: {props.postData.date}
               </Typography>
-              <ReactMarkdown source={props.postData.content} />
+              <ReactMarkdown
+                source={props.postData.content}
+                className={classes.markdown}
+              />
             </Paper>
           </Grid>
         </Grid>

@@ -4,7 +4,7 @@
 oslNext:
   component: serverless-next.js
   inputs:
-    domain: ["staging", "omnivector.solutions"] # [ sub-domain, domain ]
+    domain: ["www", "omnivector.solutions"] # [ sub-domain, domain ]
     # build:
     # args: ["test", "testArgument"]
     # env:

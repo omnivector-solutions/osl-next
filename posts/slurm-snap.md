@@ -11,7 +11,7 @@ Now that Slurm is available for download from the [Snap Store](https://snapcraft
 
 If you're unfamiliar with Snaps, they are self-contained software packages that can be deployed across a range of Linux distros. Unlike other packaging tools, Snaps dont require a special adaptation for each Linux distribution. This is especially helpfull in the HPC world as each cluster may have its own unique Linux requirements. The Slurm Snap provides a single package that can be deployed on a CentOS or RedHat cluster the same way it would be deployed to Ubuntu.
 
-### Install
+### Install:
 
 If your running Ubuntu, Manjaro, KDE Neon & a [few others](https://snapcraft.io/docs/installing-snapd), Snap is most likely pre-installed and ready to go. If not, you can find instalation instrustions for distributions without snap pre-installed [here](https://snapcraft.io/docs/installing-snapd).
 
@@ -21,7 +21,7 @@ Confirm that you have snap installed correctly by typing the folling command in 
 snap help --all
 ```
 
-You should see an output of available snap commands. If not, refer back to the install instructions for your specifc distro.
+You should see an output of available snap commands. If not, refer back to the [install instructions](https://snapcraft.io/docs/installing-snapd) for your specifc distro.
 
 Once you have verified that snap is running, installing Slurm takes one simple command:
 
@@ -35,7 +35,7 @@ This command will pull down the Slurm package from [snapcraft.io](https://snapcr
 
 ### Basic Configuration:
 
-Now that Slurm is installed, it time to get it configured. The snap supports running different components of Slurm depending on what `snap.mode` has been configured.
+Now that Slurm is installed, it's time to get it configured. The snap supports running different components of Slurm depending on what `snap.mode` has been configured.
 
 The following `snap.mode` values are supported:
 
@@ -48,20 +48,21 @@ The following `snap.mode` values are supported:
 - `slurmd`
 - `slurmrestd`
 
-Since we are installing on to a dev box, we will configure Slurm to run all if its daemons on a single resource:
+Since we're deploying to a dev box, we will configure Slurm to run all if its daemons on a single resource:
 
 ```bash
 snap set slurm snap.mode=all
 ```
 
-The above command configures the `snap.mode` to `all` mode. This runs all of the Slurm daemons including MySQL and Munged in an all-in-one local development mode.
+The above command configures the `snap.mode` to `all`. This runs all of the Slurm daemons including MySQL and Munged in an all-in-one local development mode.
 
-Thats it! Slurm is now installed with `snap.mode` set to `all`.
+Thats it! Slurm is now installed with snap.mode set to all. This means that you are now running a fully functioning Slurm deploy on your machine.
 
-You can interact with individual services using `snap services`. Example:
+You can verify that each of the respective Slurm services have started by using the `snap services` command:
 
 ```bash
 $ snap services slurm
+
 Service           Startup  Current  Notes
 slurm.munged      enabled  active   -
 slurm.mysql       enabled  active   -
@@ -71,7 +72,7 @@ slurm.slurmdbd    enabled  active   -
 slurm.slurmrestd  enabled  active   -
 ```
 
-The following Slurm related commands are now available:
+The following commands exposed via the snap, are now available:
 
 - munge
 - remunge
@@ -112,7 +113,7 @@ $ srun -pdebug -n1 -l hostname
 0: slurm-dev
 ```
 
-### Logging
+### Logging:
 
 All services log their stdout to journald. The logs can be accessed by typing the following:
 
@@ -133,28 +134,6 @@ Log files are found at `/var/snap/slurm/common/var/log/`. For example, the log f
 
     /var/snap/slurm/common/var/log/slurm/slurmctld.log
 
-### Advanced Configuration
-
-Configuration files can be found in under `/var/snap/slurm/common/var/etc`.
-
-For testing purposes, you can manually edit the `.conf` files located under `/var/snap/slurm/common/etc/`. However, **any** changes you make to `slurm.conf` or `slurmdbd.conf` will be overwritten when the `snap.mode` is changed.
-
-Persistent changes to the Slurm configuration files are made using the `.yaml` files located under `/var/snap/slurm/common/etc/slurm-configurator`. For example, if you wanted to change the port slurmd runs on, you would edit the `slurm.yaml` file here:
-
-    /var/snap/slurm/common/etc/slurm-configurator/slurm.yaml
-
-To apply any configuration changes to the above file, you need to restart the slurm daemons that run inside the snap. Assuming the `snap.mode=all`, run the following command:
-
-    snap set slurm snap.mode=all
-
-This will render the slurm.yaml -> slurm.conf and restart the appropriate daemons.
-
-To modify the Node Healthcheck configuration, edit the file located here:
-
-    /var/snap/slurm/common/etc/nhc/nhc.conf
-
-NHC is run automatically by Slurmd and changes to `nhc.conf` take effect immediately.
-
-When configuring Slurm to run as part of a large-scale compute cluster, remember to adjust the system configuration files according. More information about this can be found [here](https://slurm.schedmd.com/big_sys.html).
-
 ### Closing:
+
+This post clearly demonstrates how simple it is to deploy Slurm to a single development box. Production deploments of Slurm usually require much more configuration and fine tuning. I will follow up soon with a post detailing how easy it now is to change advanced configurations options for multi-node deployments. Until then, join us on Discourse [here](https://community.omnivector.solutions/) or subscribe to our mailing list to receive future updates. Cheers!
