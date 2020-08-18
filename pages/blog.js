@@ -1,5 +1,5 @@
 import React from "react";
-import { getAllPosts } from "../lib/discourseApi";
+import { getAllPostData } from "../lib/discourseApi";
 
 import {
   Hidden,
@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export async function getStaticProps() {
-  const posts = await getAllPosts();
+  const posts = await getAllPostData();
 
   console.log("BLOG POSTS: ", posts);
   const allPostsData = getSortedPostsData();
