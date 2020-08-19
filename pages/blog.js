@@ -15,7 +15,6 @@ import {
 } from "@material-ui/core";
 
 import Link from "../components/link";
-import { getSortedPostsData } from "../lib/posts";
 import Layout from "../components/layout";
 
 const useStyles = makeStyles((theme) => ({
@@ -128,17 +127,15 @@ const useStyles = makeStyles((theme) => ({
 export async function getStaticProps() {
   const posts = await getAllPostData();
 
-  console.log("BLOG POSTS: ", posts);
-  const allPostsData = getSortedPostsData();
   return {
     props: {
-      allPostsData,
+      posts,
     },
   };
 }
 
 const Blog = (props) => {
-  // console.log(props);
+  console.log(props);
   const classes = useStyles();
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.up("sm"));
@@ -151,32 +148,33 @@ const Blog = (props) => {
           <Grid item xs={12}>
             <Paper className={classes.imgContainer}>
               {small ? (
-                <img
-                  className={classes.img}
-                  src={props.allPostsData[0].image}
-                />
+                <img className={classes.img} src={props.posts[0].image_url} />
               ) : null}
             </Paper>
             <div className={classes.header}>
-              <h1 className={classes.headerText}>
-                {/* {props.postData.topics.topics[0].title} */}
-              </h1>
+              {props.posts[0].unicode_title ? (
+                <h1 className={classes.headerText}>
+                  {props.posts[0].unicode_title}
+                </h1>
+              ) : (
+                <h1 className={classes.headerText}>{props.posts[0].title}</h1>
+              )}
               <Typography className={classes.subheaderText}>
-                {props.allPostsData[0].description}
+                {props.posts[0].description}
               </Typography>
-              <Link href={`/posts/${props.allPostsData[0].id}`}>
+              <Link href={`/posts/${props.posts[0].slug}`}>
                 <Typography className={classes.linkText}>
                   Continue reading...
                 </Typography>
               </Link>
             </div>
           </Grid>
-          {/* {props.allPostsData.slice(1).map((post) => (
+          {props.posts.slice(1).map((post) => (
             <Grid item key={post.id} xs={12} md={6}>
               <Card className={classes.card}>
                 <CardContent className={classes.cardDetails} t>
                   <Typography variant="subtitle1" color="textSecondary">
-                    {post.date}
+                    {post.created_at}
                   </Typography>
                   <h1 component="h2" variant="h5">
                     {post.title}
@@ -197,7 +195,7 @@ const Blog = (props) => {
                 </Hidden>
               </Card>
             </Grid>
-          ))} */}
+          ))}
         </Grid>
       </div>
     </Layout>
