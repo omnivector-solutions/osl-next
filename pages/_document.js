@@ -52,13 +52,6 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            type="text/javascript"
-            id="hs-script-loader"
-            async
-            defer
-            src="//js.hs-scripts.com/8139504.js"
-          />
         </body>
       </Html>
     );

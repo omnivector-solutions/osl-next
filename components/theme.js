@@ -6,6 +6,7 @@ const oslLightBlue = "#7FB2F0";
 const oslRed = "#E6191E";
 const oslPink = "#F17398";
 const oslOrange = "#FF8B00";
+const oslDarkOrange = "#CE5317";
 
 export default createMuiTheme({
   palette: {
@@ -16,6 +17,7 @@ export default createMuiTheme({
       red: `${oslRed}`,
       pink: `${oslPink}`,
       orange: `${oslOrange}`,
+      darkOrange: `${oslDarkOrange}`,
     },
     primary: {
       main: `${oslBlue}`,
